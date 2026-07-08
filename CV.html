@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syed Raheel Abbas - Executive Portfolio & Resume</title>
+  <!-- Google Fonts for High-End Corporate Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,600;1,400&family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS Framework CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons CDN Pack -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            display: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .resume-page {
+      background: #ffffff;
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+      width: 210mm;
+      min-height: 297mm;
+      padding: 18mm 15mm;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .letter-spacing-wide {
+      letter-spacing: 0.18em;
+    }
+
+    .letter-spacing-widest {
+      letter-spacing: 0.25em;
+    }
+
+    /* Custom Organic Morphed Style for Portrait Frame */
+    .morphed-frame {
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .morphed-frame:hover {
+      border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    }
+
+    /* Print engine styling overrides */
+    @media print {
+      body {
+        background-color: #fff !important;
+        margin: 0;
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .resume-page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        height: auto !important;
+        padding: 15mm 15mm !important;
+        page-break-after: always;
+        overflow: hidden;
+      }
+      .resume-page:last-child {
+        page-break-after: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased print:bg-white">
+
+  <!-- Interactive Workspace Control Panel -->
+  <div class="no-print sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 py-3 px-6 shadow-sm flex flex-wrap gap-4 items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="h-9 w-9 rounded-full bg-indigo-900 flex items-center justify-center text-white font-bold">SR</div>
+      <div>
+        <h1 class="text-sm font-bold text-slate-900">Syed Raheel Abbas — Resume Workspace</h1>
+        <p class="text-xs text-slate-500">Interactive Tech QA Resume (Optimized for digital view & print preview)</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <!-- Light / Low-ink theme print selector -->
+      <button onclick="changeAccent('#f1f5f9', true)" class="w-6 h-6 rounded-full bg-[#f1f5f9] border border-slate-400 hover:scale-110 transition-transform" title="Eco Print (Light Gray Ink Mode)"></button>
+      <button onclick="changeAccent('#6b1d3f', false)" class="w-6 h-6 rounded-full bg-[#6b1d3f] border border-slate-300 hover:scale-110 transition-transform" title="Burgundy Theme"></button>
+      <button onclick="changeAccent('#1e1b4b', false)" class="w-6 h-6 rounded-full bg-[#1e1b4b] border border-slate-300 hover:scale-110 transition-transform" title="Royal Indigo Theme"></button>
+      <button onclick="changeAccent('#0f172a', false)" class="w-6 h-6 rounded-full bg-[#0f172a] border border-slate-300 hover:scale-110 transition-transform" title="Slate Theme"></button>
+      
+      <button onclick="window.print()" class="ml-2 bg-indigo-900 hover:bg-indigo-950 text-white text-xs font-semibold px-4 py-2.5 rounded shadow transition-all flex items-center gap-2">
+        <i class="fa-solid fa-print"></i> Save as PDF / Print
+      </button>
+    </div>
+  </div>
+
+  <div class="max-w-[210mm] mx-auto py-4 print:py-0">
+
+    <!-- PAGE 1 OF RESUME -->
+    <div id="page-1" class="resume-page flex flex-col justify-between">
+      <div>
+        
+        <!-- HEADER -->
+        <div class="relative flex justify-between items-center gap-6 border-b border-slate-100 pb-5">
+          <div class="flex-1">
+            <h1 class="font-display font-light text-3xl tracking-[0.2em] text-slate-900 uppercase">
+              Syed Raheel Abbas
+            </h1>
+            <h2 id="accent-text-1" class="font-display font-semibold text-[10.5px] tracking-wider text-indigo-900 uppercase mt-2 transition-colors duration-300">
+              Senior Project Manager &bull; Head of QA & ALM &bull; FinTech & Core Banking Leader
+            </h2>
+            
+            <!-- Contact Details Row (Unified in secure 2-column grid to prevent overflow wrapping) -->
+            <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-[10.5px] text-slate-600 font-sans mt-5 max-w-lg">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-phone text-slate-400 w-3.5 text-center"></i>
+                <span class="whitespace-nowrap">+92 333 2177016, +92 340 7177016</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-slate-400 w-3.5 text-center"></i>
+                <span class="whitespace-nowrap">Bahaderabad, Karachi, Pakistan</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-envelope text-slate-400 w-3.5 text-center"></i>
+                <a href="mailto:sraheelabbas@gmail.com" class="hover:underline whitespace-nowrap">sraheelabbas@gmail.com</a>
+              </div>
+              <div class="flex items-center gap-2 text-indigo-900 font-semibold">
+                <i class="fa-brands fa-linkedin text-indigo-700 w-3.5 text-center"></i>
+                <a href="https://www.linkedin.com/in/raheelabbas/" target="_blank" class="hover:underline whitespace-nowrap">linkedin.com/in/raheelabbas</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Creative Organic Morphed Avatar Frame (loads resume3.jpg) -->
+          <div class="relative w-32 h-32 flex-shrink-0">
+            <div class="absolute inset-0 bg-indigo-900/10 morphed-frame scale-105 border border-indigo-900/20 shadow-sm"></div>
+            <img id="avatar-img" src="resume3.jpg" alt="Syed Raheel Abbas" 
+                 class="w-full h-full object-cover morphed-frame relative z-10 border-2 border-white shadow-md"
+                 onerror="handleImageFallback()">
+            <div id="avatar-fallback" class="hidden absolute inset-0 w-full h-full morphed-frame bg-slate-100 border border-slate-300 flex flex-col items-center justify-center text-slate-400 relative z-10">
+              <i class="fa-regular fa-user text-3xl mb-1"></i>
+              <span class="text-[9px] font-semibold text-slate-500 uppercase tracking-wider">Photo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUMMARY PANEL -->
+        <div id="summary-strip" class="bg-indigo-950 text-white p-5 rounded-lg my-5 transition-colors duration-300">
+          <h3 class="font-display font-semibold text-[10px] tracking-[0.2em] text-slate-200 uppercase mb-2">
+            Professional Summary
+          </h3>
+          <p class="text-[11.5px] leading-relaxed text-slate-200 text-justify">
+            Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leading cross-functional teams to deliver critical national-level and regulatory digital solutions. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging the gap between complex technological development and business-driven product management.
+          </p>
+        </div>
+
+        <!-- SKILLS MATRIX -->
+        <div class="mb-6">
+          <div class="border-b border-slate-200 pb-1 mb-3">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase">
+              Skills & Expertise
+            </h3>
+          </div>
+          
+          <div class="space-y-3 text-xs">
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px]">Management & Strategy</div>
+              <div class="col-span-9 text-slate-600">PMO Overhauls | Agile/Scrum Methodologies | Portfolio Strategy | IT Governance | Risk Mitigation</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px]">Banking & FinTech</div>
+              <div class="col-span-9 text-slate-600">Temenos T24 Core Banking | SYMBOLS Core | Branchless Banking (UBL OMNI) | Financial Switches | ISO 8583 Standards</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px]">QA & DevOps</div>
+              <div class="col-span-9 text-slate-600">Test Strategies (STLC) | Team Foundation Server (TFS) | VSTS / Azure DevOps | Automated Releases | Bug Life Cycle</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px]">Performance & Tooling</div>
+              <div class="col-span-9 text-slate-600">JMeter | Selenium | HP Performance Loader | SQL Server | Power BI | WebLoad | Netsparker Security</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div>
+          <div class="border-b border-slate-200 pb-1 mb-4">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase">
+              Work Experience
+            </h3>
+          </div>
+
+          <div class="space-y-5">
+            <!-- JOB 1 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide">Senior Project Manager</span>
+                <span class="text-[11px] text-slate-500 font-medium">Nov 2023 -- Present</span>
+              </div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase">JS Bank | Karachi, Pakistan</div>
+              <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify">
+                <li><strong class="text-slate-800">PMO Framework Overhaul:</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, optimizing metrics tracking and reducing average project delivery cycles by 22%.</li>
+                <li><strong class="text-slate-800">OpenProject Setup:</strong> Spearheaded the direct installation and optimization of OpenProject for JS Bank PMO department, boosting task orchestration and visual progress visibility.</li>
+                <li><strong class="text-slate-800">Strategic Deliveries:</strong> Managed critical integrations including RTGS -- PRISM, CRP -- Trade IQ, and Blockchain-based EKYC compliance.</li>
+              </ul>
+            </div>
+
+            <!-- JOB 2 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide">Unit Head QA & ALM</span>
+                <span class="text-[11px] text-slate-500 font-medium">Aug 2018 -- Nov 2023</span>
+              </div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase">The Bank of Khyber | Karachi, Pakistan</div>
+              <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify">
+                <li><strong class="text-slate-800">UAT Dashboard Blueprint:</strong> Managed and spearheaded complete Core Banking UAT execution, designing the centralized real-time dashboard and execution workflows for the T24 implementation.</li>
+                <li><strong class="text-slate-800">ITSM Design:</strong> Independently designed, customized, and deployed comprehensive IT Service Management (ITSM) systems via System Center Configuration Manager (SCCM).</li>
+                <li><strong class="text-slate-800">Digital Deliveries:</strong> Supervised automated/manual QA for Remittance BOK, Net Banking, and Mobile Banking solutions, scoring 94% customer UAT ratings at rollout.</li>
+              </ul>
+            </div>
+
+            <!-- JOB 3 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide">Manager QA</span>
+                <span class="text-[11px] text-slate-500 font-medium">May 2017 -- Jul 2018</span>
+              </div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase">VRG (Virtual Remittance Gateway) | Karachi, Pakistan</div>
+              <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify">
+                <li><strong class="text-slate-800">FinTech Platform Testing:</strong> Guided QA schedules for critical high-performance platforms, validating SAP Wallet Solutions Meezan, AMA Accounts, and ISO 8583 switch systems.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER Page 1 -->
+      <div class="border-t border-slate-100 pt-3 flex justify-between items-center text-[10px] text-slate-400 font-medium uppercase tracking-widest mt-4">
+        <span>Syed Raheel Abbas</span>
+        <span>Page 1 of 2</span>
+      </div>
+    </div>
+
+
+    <!-- PAGE 2 OF RESUME -->
+    <div id="page-2" class="resume-page flex flex-col justify-between">
+      <div>
+        
+        <!-- COMPACT HEADER WITH DETAILED CONTACTS (LinkedIn Line-wrap safety preserved) -->
+        <div class="border-b border-slate-200 pb-3 mb-5 flex justify-between items-center">
+          <div>
+            <h2 class="font-display font-light text-xl tracking-[0.15em] text-slate-900 uppercase">Syed Raheel Abbas</h2>
+            <p id="accent-text-2" class="text-[9.5px] text-indigo-900 font-semibold uppercase tracking-wide mt-0.5">Senior Project Manager &bull; Head of QA & ALM &bull; FinTech & Core Banking Leader</p>
+          </div>
+          <div class="text-right text-[10px] text-slate-500 space-y-0.5">
+            <div>+92 333 2177016 | +92 340 7177016</div>
+            <div>Bahaderabad, Karachi, Pakistan</div>
+            <div class="text-indigo-900 font-semibold whitespace-nowrap">
+              <a href="https://www.linkedin.com/in/raheelabbas/" target="_blank">linkedin.com/in/raheelabbas</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TWO COLUMN LAYOUT: Core Work history vs Creative Sidebar -->
+        <div class="grid grid-cols-12 gap-6 items-start">
+          
+          <!-- LEFT SIDE (col-span-8) - Formal Experience & Education ONLY -->
+          <div class="col-span-8 space-y-5">
+            
+            <!-- EXPERIENCE CONTINUED -->
+            <div class="space-y-4">
+              <div class="border-b border-slate-200 pb-1">
+                <h3 class="font-display font-medium text-xs tracking-[0.15em] text-slate-900 uppercase">
+                  Work Experience (Continued)
+                </h3>
+              </div>
+
+              <!-- JOB 4 (UBL) -->
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide">Head of QA & ALM</span>
+                  <span class="text-[11px] text-slate-500 font-medium">Nov 2009 -- May 2017</span>
+                </div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">UBL (United Bank Limited) | Karachi, Pakistan</div>
+                <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify">
+                  <li><strong class="text-slate-800">TFS Customizations:</strong> Designed the Custom Change Management Portal (CMC) and integrated complete automated change workflows by customizing TFS pipelines.</li>
+                  <li><strong class="text-slate-800">OMNI & Net Banking:</strong> Directed automated validations across UBL OMNI (branchless bank) scaling regression coverage to 85% via Selenium scripts.</li>
+                </ul>
+              </div>
+
+              <!-- JOB 5 (Kalsoft) -->
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide">Team Lead -- QA & BA</span>
+                  <span class="text-[11px] text-slate-500 font-medium">Oct 2006 -- Nov 2009</span>
+                </div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">Kalsoft Ltd. | Karachi, Pakistan</div>
+                <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify">
+                  <li><strong class="text-slate-800">CMMI Audit Operations:</strong> Worked side-by-side with senior audit teams to standardise systems, securing global CMMI Process Level 3 Certification.</li>
+                </ul>
+              </div>
+
+              <!-- JOB 6 (Aventech) -->
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide">Senior SE (QA)</span>
+                  <span class="text-[11px] text-slate-500 font-medium">Feb 2005 -- Sep 2006</span>
+                </div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">Aventech Pvt Ltd. | Karachi, Pakistan</div>
+                <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify">
+                  <li>Delivered QA, verification schedules, and client-facing validations for John Lewis Department Store and GlaxoSmithKline.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- EDUCATION -->
+            <div>
+              <div class="border-b border-slate-200 pb-1 mb-3">
+                <h3 class="font-display font-medium text-xs tracking-[0.15em] text-slate-900 uppercase">
+                  Education & Training
+                </h3>
+              </div>
+              <div class="grid grid-cols-2 gap-4 text-xs">
+                <div>
+                  <div class="font-bold text-slate-900">Masters in CS (MS)</div>
+                  <div class="text-slate-600 text-[11px]">Mohammad Ali Jinnah University</div>
+                  <div class="text-slate-400 text-[10px]">Graduated: 2006</div>
+                </div>
+                <div>
+                  <div class="font-bold text-slate-900">Bachelors in CS (BS)</div>
+                  <div class="text-slate-600 text-[11px]">Shah Abdul Latif University</div>
+                  <div class="text-slate-400 text-[10px]">Graduated: 2002</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT SIDE (col-span-4) - Dynamic Light theme supports background colors smoothly -->
+          <div id="side-block" class="col-span-4 bg-indigo-950 text-white rounded-xl p-4 space-y-5 transition-colors duration-300">
+            
+            <!-- STRENGTHS -->
+            <div>
+              <div class="flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3" id="side-border-1">
+                <i class="fa-solid fa-hand-fist text-xs"></i>
+                <h4 class="font-display font-bold text-[10px] tracking-widest uppercase">Strengths</h4>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-[10px]">
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
+                  <i class="fa-solid fa-paint-brush text-[8px] text-red-700"></i> Creativity
+                </span>
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
+                  <i class="fa-solid fa-shield-halved text-[8px] text-indigo-800"></i> Courage
+                </span>
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
+                  <i class="fa-solid fa-heart text-[8px] text-rose-600"></i> Sincerity
+                </span>
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
+                  <i class="fa-solid fa-brain text-[8px] text-amber-600"></i> Wisdom
+                </span>
+              </div>
+            </div>
+
+            <!-- LANGUAGES (Donut indicators) -->
+            <div>
+              <div class="flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3" id="side-border-2">
+                <i class="fa-solid fa-globe text-xs"></i>
+                <h4 class="font-display font-bold text-[10px] tracking-widest uppercase">Languages</h4>
+              </div>
+              <div class="grid grid-cols-2 gap-y-3.5 gap-x-2">
+                <!-- Urdu -->
+                <div class="text-center">
+                  <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="9"/>
+                    </svg>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">90%</span>
+                  </div>
+                  <span class="block text-[8.5px] font-semibold mt-1">Urdu</span>
+                </div>
+                <!-- English -->
+                <div class="text-center">
+                  <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="18"/>
+                    </svg>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">80%</span>
+                  </div>
+                  <span class="block text-[8.5px] font-semibold mt-1">English</span>
+                </div>
+                <!-- Punjabi -->
+                <div class="text-center">
+                  <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="31"/>
+                    </svg>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">65%</span>
+                  </div>
+                  <span class="block text-[8.5px] font-semibold mt-1">Punjabi</span>
+                </div>
+                <!-- Sindhi -->
+                <div class="text-center">
+                  <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="62"/>
+                    </svg>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">30%</span>
+                  </div>
+                  <span class="block text-[8.5px] font-semibold mt-1">Sindhi</span>
+                </div>
+                <!-- Arabic -->
+                <div class="text-center">
+                  <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="66"/>
+                    </svg>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">25%</span>
+                  </div>
+                  <span class="block text-[8.5px] font-semibold mt-1">Arabic</span>
+                </div>
+                <!-- Farsi -->
+                <div class="text-center">
+                  <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="70"/>
+                    </svg>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">20%</span>
+                  </div>
+                  <span class="block text-[8.5px] font-semibold mt-1">Farsi</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- POC DETAILS -->
+            <div class="border-t border-white/10 pt-3" id="side-border-3">
+              <h4 class="font-display font-bold text-[9px] tracking-widest uppercase text-slate-300 mb-2">POC Advancements</h4>
+              <ul class="text-[10px] space-y-1.5">
+                <li class="flex items-start gap-1.5">
+                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i> SonarQube Code Analysis
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i> Halo ITSM Service Desks
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SPECIAL HIGHLIGHTS (Khas kamyabiyan & Health Practitioner Licensure) -->
+        <div class="mt-6">
+          <div class="border-b border-slate-200 pb-1 mb-3">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase">
+              Featured Milestones & Trainings
+            </h3>
+          </div>
+          <div class="grid grid-cols-2 gap-3.5">
+            <!-- ALM Landmark -->
+            <div class="bg-slate-50 border-l-4 border-indigo-900 p-2.5 rounded-r-lg shadow-sm">
+              <div class="flex items-center gap-1.5 text-[10.5px] font-bold text-slate-900 mb-1">
+                <i class="fa-solid fa-star text-amber-500 text-[10px]"></i> UBL Asia ALM Pioneer
+              </div>
+              <p class="text-[10px] text-slate-600 text-justify">
+                Championed and personally orchestrated the <span class="font-semibold text-slate-800">first-ever Microsoft TFS implementation in Asia's financial sector</span> at UBL, unifying 100+ multi-site developers.
+              </p>
+            </div>
+            <!-- Health Certification & anti aging -->
+            <div class="bg-slate-50 border-l-4 border-indigo-900 p-2.5 rounded-r-lg shadow-sm">
+              <div class="flex items-center gap-1.5 text-[10.5px] font-bold text-slate-900 mb-1">
+                <i class="fa-solid fa-heart-pulse text-rose-600 text-[10px]"></i> Naturopathy & Anti-Aging
+              </div>
+              <p class="text-[10px] text-slate-600 text-justify">
+                Certified Naturopathic Practitioner specializing in <span class="font-semibold text-slate-800">Food as Medicine Protocols & Anti-Aging Science</span>, managing customized holistic wellness therapies.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXTRACURRICULAR PORTFOLIO (Lectureship, Cricket, and Photography Cards) -->
+        <div class="mt-6">
+          <div class="border-b border-slate-200 pb-1 mb-3">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase">
+              Extracurricular Portfolio
+            </h3>
+          </div>
+          <div class="grid grid-cols-4 gap-3">
+            <!-- Lectureship Card -->
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center">
+              <i class="fa-solid fa-graduation-cap text-indigo-700 text-sm mb-1"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider">Visiting Faculty</span>
+              <span class="text-[8px] text-slate-500 leading-tight">Teaching Masters (MS) Classes (2006-Present)</span>
+            </div>
+            <!-- Photography Card -->
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center">
+              <i class="fa-solid fa-camera text-indigo-700 text-sm mb-1"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider">Photography</span>
+              <span class="text-[8.5px] text-slate-500">Professional Shooter</span>
+            </div>
+            <!-- Pro Cricket Card -->
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center">
+              <i class="fa-solid fa-baseball-bat-ball text-indigo-700 text-sm mb-1"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider">Pro Cricket</span>
+              <span class="text-[8.5px] text-slate-500">Active Team Player</span>
+            </div>
+            <!-- Philanthropy Card -->
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center">
+              <i class="fa-solid fa-hands-helping text-indigo-700 text-sm mb-1"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider">Philanthropy</span>
+              <span class="text-[8.5px] text-slate-500">Community Support</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER Page 2 -->
+      <div class="border-t border-slate-100 pt-3 flex justify-between items-center text-[10px] text-slate-400 font-medium uppercase tracking-widest mt-4">
+        <span>Syed Raheel Abbas</span>
+        <span>Page 2 of 2</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Failsafe callback for profile images
+    function handleImageFallback() {
+      const img = document.getElementById('avatar-img');
+      if (img.src.endsWith('resume3.jpg')) {
+        img.src = 'profile.png';
+      } else if (img.src.endsWith('profile.png')) {
+        img.src = 'profile.jpg';
+      } else {
+        img.classList.add('hidden');
+        document.getElementById('avatar-fallback').classList.remove('hidden');
+      }
+    }
+
+    // Interactive color transition switches
+    function changeAccent(colorHex, isLight) {
+      const summaryStrip = document.getElementById('summary-strip');
+      const sideBlock = document.getElementById('side-block');
+      const text1 = document.getElementById('accent-text-1');
+      const text2 = document.getElementById('accent-text-2');
+      const sideBorder1 = document.getElementById('side-border-1');
+      const sideBorder2 = document.getElementById('side-border-2');
+      const sideBorder3 = document.getElementById('side-border-3');
+      
+      const summaryTitle = summaryStrip.querySelector('h3');
+      const summaryText = summaryStrip.querySelector('p');
+      const sidePocTitle = sideBlock.querySelector('#side-border-3 h4');
+
+      summaryStrip.style.backgroundColor = colorHex;
+      sideBlock.style.backgroundColor = colorHex;
+
+      if (isLight) {
+        // High-contrast configurations for printing
+        summaryStrip.className = "bg-slate-100 p-5 rounded-lg my-5 border border-slate-200 transition-all duration-300";
+        summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] text-slate-800 uppercase mb-2";
+        summaryText.className = "text-[11.5px] leading-relaxed text-slate-700 text-justify";
+
+        sideBlock.className = "col-span-4 bg-slate-50 text-slate-900 rounded-xl p-4 space-y-5 border border-slate-200 transition-all duration-300";
+        text1.style.color = "#1e293b";
+        text2.style.color = "#1e293b";
+
+        sideBorder1.className = "flex items-center gap-2 border-b border-slate-300 pb-1.5 mb-3";
+        sideBorder2.className = "flex items-center gap-2 border-b border-slate-300 pb-1.5 mb-3";
+        sideBorder3.className = "border-t border-slate-300 pt-3";
+        
+        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase text-slate-700 mb-2";
+
+        document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(0,0,0,0.1)'));
+        document.querySelectorAll('.lang-circle').forEach(c => c.setAttribute('stroke', '#1e293b'));
+        document.querySelectorAll('.lang-percent-text').forEach(t => t.className = "absolute text-[7.5px] font-bold lang-percent-text text-slate-800");
+        document.querySelectorAll('.strength-badge').forEach(b => {
+          b.className = "strength-badge bg-white text-slate-900 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-slate-200";
+        });
+      } else {
+        // High-contrast configurations for executive dark mode palettes
+        summaryStrip.className = "bg-indigo-950 p-5 rounded-lg my-5 transition-all duration-300 text-white";
+        summaryTitle.className = "font-display font-semibold text-[10px] tracking-[0.2em] text-slate-200 uppercase mb-2";
+        summaryText.className = "text-[11.5px] leading-relaxed text-slate-200 text-justify";
+
+        sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 transition-all duration-300 text-white";
+        text1.style.color = colorHex;
+        text2.style.color = colorHex;
+
+        sideBorder1.className = "flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3";
+        sideBorder2.className = "flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3";
+        sideBorder3.className = "border-t border-white/10 pt-3";
+        
+        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase text-slate-300 mb-2";
+
+        document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(255,255,255,0.15)'));
+        document.querySelectorAll('.lang-circle').forEach(c => c.setAttribute('stroke', '#ffffff'));
+        document.querySelectorAll('.lang-percent-text').forEach(t => t.className = "absolute text-[7.5px] font-bold lang-percent-text text-white");
+        document.querySelectorAll('.strength-badge').forEach(b => {
+          b.className = "strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm";
+        });
+      }
+    }
+  </script>
+</body>
+</html>
