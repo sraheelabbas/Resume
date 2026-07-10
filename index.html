@@ -8,7 +8,7 @@
   <!-- Google Fonts for Dynamic Layout Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS Framework -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons pack -->
@@ -29,21 +29,95 @@
   </script>
   
   <style>
+    /* CSS Variables for 100% Reliable Contrast Themes */
+    :root {
+      --accent-color: #1e293b;
+      --accent-light: #f1f5f9;
+      --summary-bg: #f1f5f9;
+      --summary-text: #334155;
+      --summary-title: #0f172a;
+      --side-bg: #f8fafc;
+      --side-text: #334155;
+      --side-header-border: #cbd5e1;
+      --side-title-text: #0f172a;
+      --page-bg: #ffffff;
+      --body-bg: #f1f5f9;
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      
+      /* Interactive Workspace Rulers */
+      --page-padding: 16mm;
+      --section-gap: 1.25rem;
+      --base-font-size: 11px;
+    }
+
+    /* Burgundy Theme Custom Properties */
+    .theme-burgundy {
+      --accent-color: #6b1d3f;
+      --accent-light: #fdf2f5;
+      --summary-bg: #fdf2f5;
+      --summary-text: #5c142b;
+      --summary-title: #440c1e;
+      --side-bg: #fcf5f7;
+      --side-text: #5c142b;
+      --side-header-border: #f4d0d8;
+      --side-title-text: #440c1e;
+      --page-bg: #ffffff;
+      --body-bg: #fbf1f4;
+      --text-main: #330312;
+      --text-muted: #5c202e;
+    }
+
+    /* Indigo Theme Custom Properties */
+    .theme-indigo {
+      --accent-color: #1e1b4b;
+      --accent-light: #e0e7ff;
+      --summary-bg: #eef2ff;
+      --summary-text: #1e1b4b;
+      --summary-title: #1e1b4b;
+      --side-bg: #f5f7ff;
+      --side-text: #312e81;
+      --side-header-border: #c7d2fe;
+      --side-title-text: #1e1b4b;
+      --page-bg: #ffffff;
+      --body-bg: #f0f4fc;
+      --text-main: #0f172a;
+      --text-muted: #312e81;
+    }
+
+    /* Media Creative (Drastic Dark) Theme Custom Properties */
+    .theme-creative {
+      --accent-color: #f59e0b;
+      --accent-light: #1e293b;
+      --summary-bg: #0f172a;
+      --summary-text: #f8fafc;
+      --summary-title: #f59e0b;
+      --side-bg: #1e293b;
+      --side-text: #cbd5e1;
+      --side-header-border: #f59e0b;
+      --side-title-text: #f59e0b;
+      --page-bg: #0b0f19;
+      --body-bg: #080a10;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
     body {
-      background-color: #f1f5f9;
+      background-color: var(--body-bg);
       font-family: 'Inter', sans-serif;
       transition: background-color 0.3s ease;
     }
     
     .resume-page {
-      background: #ffffff;
+      background: var(--page-bg);
       box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
       width: 210mm;
       min-height: 297mm;
-      padding: 18mm 15mm;
+      padding: var(--page-padding) var(--page-padding);
       margin: 20px auto;
       position: relative;
       transition: all 0.4s ease;
+      color: var(--text-main);
     }
 
     /* Morphing layout effects for photo frames */
@@ -57,7 +131,16 @@
       transform: scale(1.03);
     }
 
-    /* Print System Overrides */
+    /* Apply CSS Variable Sizes */
+    .section-gap-element {
+      margin-bottom: var(--section-gap);
+    }
+    
+    p, li, span, div, a {
+      font-size: var(--base-font-size);
+    }
+
+    /* Print System Overrides - Explicitly locked to prevent 3rd/4th page spillover */
     @media print {
       body {
         background-color: #fff !important;
@@ -66,18 +149,33 @@
       }
       .no-print {
         display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .resume-page {
         margin: 0 !important;
         box-shadow: none !important;
-        width: 100% !important;
-        height: auto !important;
-        padding: 15mm 15mm !important;
+        border: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        padding: 14mm 14mm !important;
         page-break-after: always;
-        overflow: hidden;
+        page-break-inside: avoid !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
       }
       .resume-page:last-child {
-        page-break-after: avoid;
+        page-break-after: avoid !important;
+      }
+      /* Tighten text and line spacing slightly to fit within print box bounds */
+      p, li, span, div {
+        font-size: 99.5% !important;
+        line-height: 1.35 !important;
+      }
+      ul.list-disc {
+        padding-left: 12px !important;
       }
     }
   </style>
@@ -85,12 +183,15 @@
 <body class="text-slate-800 antialiased print:bg-white">
 
   <!-- Interactive control panel -->
-  <div class="no-print sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 py-3.5 px-6 shadow-sm flex flex-wrap gap-4 items-center justify-between">
+  <div class="no-print sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800 py-3.5 px-6 shadow-sm flex flex-wrap gap-4 items-center justify-between text-white">
     <div class="flex items-center gap-3">
-      <div class="h-9 w-9 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold transition-all duration-300" id="brand-logo">SR</div>
+      <!-- Mini avatar brand logo replacing old SR placeholder -->
+      <img id="brand-logo-img" src="resume3.jpg" alt="Syed Raheel Abbas" 
+           class="h-9 w-9 rounded-full object-cover border-2 border-indigo-500 shadow-sm"
+           onerror="this.src='profile.png'">
       <div>
-        <h1 class="text-sm font-bold text-slate-900">Syed Raheel Abbas — Interactive Workspace</h1>
-        <p class="text-xs text-slate-500">Premium Portfolio Engine &bull; Toggle themes dynamically below</p>
+        <h1 class="text-sm font-bold text-white tracking-wide">Syed Raheel Abbas — Interactive Workspace</h1>
+        <p class="text-[11px] text-slate-400">Premium Portfolio Engine &bull; Toggle themes dynamically below</p>
       </div>
     </div>
     
@@ -99,28 +200,49 @@
       <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-1">Select Theme:</span>
       
       <!-- Eco Print (Default) -->
-      <button onclick="applyTheme('eco')" class="bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
-        <span class="w-3 h-3 rounded-full bg-slate-400 border border-slate-600"></span> Eco Print
+      <button onclick="applyTheme('eco')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+        <span class="w-3 h-3 rounded-full bg-slate-400 border border-white"></span> Eco Print
       </button>
       
       <!-- Executive Burgundy -->
-      <button onclick="applyTheme('burgundy')" class="bg-rose-550 hover:bg-rose-950 border border-rose-800 text-slate-700 hover:text-white text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+      <button onclick="applyTheme('burgundy')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
         <span class="w-3 h-3 rounded-full bg-[#6b1d3f]"></span> Burgundy
       </button>
 
       <!-- Royal Indigo -->
-      <button onclick="applyTheme('indigo')" class="bg-indigo-50 hover:bg-indigo-950 border border-indigo-300 text-slate-700 hover:text-white text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+      <button onclick="applyTheme('indigo')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
         <span class="w-3 h-3 rounded-full bg-[#1e1b4b]"></span> Indigo
       </button>
 
       <!-- Media Creative (Drastic) -->
-      <button onclick="applyTheme('creative')" class="bg-amber-50 hover:bg-amber-950 border border-amber-300 text-slate-700 hover:text-white text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+      <button onclick="applyTheme('creative')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
         <span class="w-3 h-3 rounded-full bg-amber-500"></span> Media Creative
       </button>
+    </div>
+
+    <!-- Live Workspace Rulers (Creative controls) -->
+    <div class="flex flex-wrap items-center gap-4 border-l border-slate-800 pl-4">
+      <div class="flex flex-col">
+        <span class="text-[10px] text-slate-400 font-bold uppercase">Section Gap</span>
+        <input type="range" min="8" max="24" value="20" class="w-20 accent-indigo-500 bg-slate-800 cursor-pointer h-1 rounded" id="gap-slider" oninput="updateGap(this.value)">
+      </div>
+      <div class="flex flex-col">
+        <span class="text-[10px] text-slate-400 font-bold uppercase">Font Size</span>
+        <input type="range" min="10" max="13" value="11" class="w-20 accent-indigo-500 bg-slate-800 cursor-pointer h-1 rounded" id="font-slider" oninput="updateFontSize(this.value)">
+      </div>
       
-      <button onclick="window.print()" class="ml-2 bg-slate-900 hover:bg-black text-white text-[11px] font-bold px-4 py-1.5 rounded shadow transition-all flex items-center gap-1.5">
-        <i class="fa-solid fa-print"></i> Save PDF / Print
-      </button>
+      <!-- Control Actions -->
+      <div class="flex items-center gap-2">
+        <button id="edit-mode-btn" onclick="toggleLiveEdit()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5" title="Click directly on any text below to edit your resume in real-time!">
+          <i class="fa-solid fa-pen"></i> Enable Live Edit
+        </button>
+        <button onclick="toggleTypography()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-font"></i> Switch Font
+        </button>
+        <button onclick="window.print()" class="ml-2 bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-bold px-4 py-1.5 rounded shadow transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-print"></i> Save PDF / Print
+        </button>
+      </div>
     </div>
   </div>
 
@@ -133,15 +255,15 @@
         <!-- HEADER (Naam, Title aur Contacts) -->
         <div class="relative flex justify-between items-center gap-6 border-b border-slate-100 pb-5">
           <div class="flex-1" id="header-text-block">
-            <h1 id="main-name-title" class="font-display font-light text-3xl tracking-[0.2em] text-slate-900 uppercase transition-all duration-300">
+            <h1 id="main-name-title" class="font-display font-light text-3xl tracking-[0.2em] uppercase transition-all duration-300">
               Syed Raheel Abbas
             </h1>
-            <h2 id="accent-text-1" class="font-display font-semibold text-[10.5px] tracking-wider text-slate-700 uppercase mt-2 transition-all duration-300">
+            <h2 id="accent-text-1" class="font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300">
               Senior Project Manager &bull; Head of QA & ALM &bull; FinTech & Core Banking Leader
             </h2>
             
             <!-- Contact Details Grid -->
-            <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-[10.5px] text-slate-600 font-sans mt-5 max-w-lg" id="contact-grid">
+            <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-[10.5px] font-sans mt-5 max-w-lg" id="contact-grid">
               <div class="flex items-center gap-2">
                 <i class="fa-solid fa-phone text-slate-400 w-3.5 text-center"></i>
                 <span class="whitespace-nowrap">+92 333 2177016, +92 340 7177016</span>
@@ -155,14 +277,20 @@
                 <a href="mailto:sraheelabbas@gmail.com" class="hover:underline whitespace-nowrap">sraheelabbas@gmail.com</a>
               </div>
               <div class="flex items-center gap-2 font-semibold" id="header-linkedin-wrap">
-                <i class="fa-brands fa-linkedin text-slate-500 w-3.5 text-center" id="header-linkedin-icon"></i>
+                <i class="fa-brands fa-linkedin w-3.5 text-center" id="header-linkedin-icon"></i>
                 <a href="https://www.linkedin.com/in/raheelabbas/" target="_blank" class="hover:underline whitespace-nowrap">linkedin.com/in/raheelabbas</a>
+              </div>
+              <!-- Premium custom shortlink row matching template spacing rules -->
+              <div class="flex items-center gap-2 font-semibold col-span-2 mt-0.5" id="header-portfolio-wrap">
+                <i class="fa-solid fa-globe w-3.5 text-center" id="header-portfolio-icon"></i>
+                <span class="text-slate-400 font-normal mr-1">Online Workspace:</span>
+                <a href="https://bit.ly/4f3ue0q" target="_blank" class="hover:underline whitespace-nowrap">bit.ly/4f3ue0q</a>
               </div>
             </div>
           </div>
 
-          <!-- Morphing Shaded Profile Frame Structure -->
-          <div class="relative w-32 h-32 flex-shrink-0">
+          <!-- Overlapping Creative Shaded Morphed Frame -->
+          <div class="relative w-36 h-36 flex-shrink-0 -mb-12 translate-y-6 z-20">
             <!-- Morphing back drop glow shadow (changes dynamically) -->
             <div id="morphed-shadow-glow" class="absolute inset-0 bg-slate-300/30 border border-slate-400/20 morphed-frame scale-105 shadow-sm transition-all duration-300"></div>
             <!-- Main Portrait clip layer -->
@@ -177,48 +305,48 @@
           </div>
         </div>
 
-        <!-- SUMMARY PANEL -->
-        <div id="summary-strip" class="bg-slate-100 text-slate-800 p-5 rounded-lg my-5 border border-slate-200 transition-all duration-300">
-          <h3 class="font-display font-bold text-[10px] tracking-[0.2em] text-slate-800 uppercase mb-2" id="summary-title">
+        <!-- SUMMARY PANEL (Layers set to z-10 to stay beautifully behind the overlap) -->
+        <div id="summary-strip" class="p-5 rounded-lg my-5 border relative z-10 transition-all duration-300">
+          <h3 class="font-display font-bold text-[10px] tracking-[0.2em] uppercase mb-2" id="summary-title">
             Professional Summary
           </h3>
-          <p class="text-[11.5px] leading-relaxed text-slate-700 text-justify" id="summary-text">
+          <p class="text-[11.5px] leading-relaxed text-justify" id="summary-text">
             Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leading cross-functional teams to deliver critical national-level and regulatory digital solutions. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging the gap between complex technological development and business-driven product management.
           </p>
         </div>
 
         <!-- SKILLS MATRIX -->
-        <div class="mb-6">
-          <div class="border-b border-slate-200 pb-1 mb-3" id="skills-border-bottom">
-            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase" id="skills-section-header">
+        <div class="section-gap-element">
+          <div class="border-b pb-1 mb-3" id="skills-border-bottom">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] uppercase" id="skills-section-header">
               Skills & Expertise
             </h3>
           </div>
           
           <div class="space-y-3 text-xs" id="skills-block-grid">
             <div class="grid grid-cols-12 gap-4">
-              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px] section-skill-label">Management & Strategy</div>
+              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label">Management & Strategy</div>
               <div class="col-span-9 text-slate-600 section-skill-detail">PMO Overhauls | Agile/Scrum Methodologies | Portfolio Strategy | IT Governance | Risk Mitigation</div>
             </div>
             <div class="grid grid-cols-12 gap-4">
-              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px] section-skill-label">Banking & FinTech</div>
-              <div class="col-span-9 text-slate-600 section-skill-detail">Temenos T24 Core Banking | SYMBOLS Core | Branchless Banking (UBL OMNI) | Financial Switches | ISO 8583 Standards</div>
+              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label">Banking & FinTech</div>
+              <div class="col-span-9 text-slate-600">Temenos T24 Core Banking | SYMBOLS Core | Branchless Banking (UBL OMNI) | Financial Switches | ISO 8583 Standards</div>
             </div>
             <div class="grid grid-cols-12 gap-4">
-              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px] section-skill-label">QA & DevOps</div>
-              <div class="col-span-9 text-slate-600 section-skill-detail">Test Strategies (STLC) | Team Foundation Server (TFS) | VSTS / Azure DevOps | Automated Releases | Bug Life Cycle</div>
+              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label">QA & DevOps</div>
+              <div class="col-span-9 text-slate-600">Test Strategies (STLC) | Team Foundation Server (TFS) | VSTS / Azure DevOps | Automated Releases | Bug Life Cycle</div>
             </div>
             <div class="grid grid-cols-12 gap-4">
-              <div class="col-span-3 font-semibold text-slate-800 uppercase tracking-wide text-[10px] section-skill-label">Performance & Tooling</div>
-              <div class="col-span-9 text-slate-600 section-skill-detail">JMeter | Selenium | HP Performance Loader | SQL Server | Power BI | WebLoad | Netsparker Security</div>
+              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label">Performance & Tooling</div>
+              <div class="col-span-9 text-slate-600">JMeter | Selenium | HP Performance Loader | SQL Server | Power BI | WebLoad | Netsparker Security</div>
             </div>
           </div>
         </div>
 
         <!-- EXPERIENCE -->
         <div>
-          <div class="border-b border-slate-200 pb-1 mb-4" id="exp-border-bottom">
-            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase" id="exp-section-header">
+          <div class="border-b pb-1 mb-4" id="exp-border-bottom">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] uppercase" id="exp-section-header">
               Work Experience
             </h3>
           </div>
@@ -227,40 +355,40 @@
             <!-- JOB 1 -->
             <div>
               <div class="flex justify-between items-baseline mb-1">
-                <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide job-title-text">Senior Project Manager</span>
+                <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Senior Project Manager</span>
                 <span class="text-[11px] text-slate-500 font-medium">Nov 2023 -- Present</span>
               </div>
-              <div class="text-[10px] text-slate-700 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">JS Bank | Karachi, Pakistan</div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">JS Bank | Karachi, Pakistan</div>
               <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                <li><strong class="text-slate-800 strong-highlights">PMO Framework Overhaul:</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, optimizing metrics tracking and reducing average project delivery cycles by 22%.</li>
-                <li><strong class="text-slate-800 strong-highlights">OpenProject Setup:</strong> Spearheaded the direct installation and optimization of OpenProject for JS Bank PMO department, boosting task orchestration and visual progress visibility.</li>
-                <li><strong class="text-slate-800 strong-highlights">Strategic Deliveries:</strong> Managed critical integrations including RTGS -- PRISM, CRP -- Trade IQ, and Blockchain-based EKYC compliance.</li>
+                <li><strong class="text-slate-800 focus-strong">PMO Framework Overhaul:</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, optimizing metrics tracking and reducing average project delivery cycles by 22%.</li>
+                <li><strong class="text-slate-800 focus-strong">OpenProject Setup:</strong> Spearheaded the direct installation and optimization of OpenProject for JS Bank PMO department, boosting task orchestration and visual progress visibility.</li>
+                <li><strong class="text-slate-800 focus-strong">Strategic Deliveries:</strong> Managed critical integrations including RTGS -- PRISM, CRP -- Trade IQ, and Blockchain-based EKYC compliance.</li>
               </ul>
             </div>
 
             <!-- JOB 2 -->
             <div>
               <div class="flex justify-between items-baseline mb-1">
-                <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide job-title-text">Unit Head QA & ALM</span>
+                <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Unit Head QA & ALM</span>
                 <span class="text-[11px] text-slate-500 font-medium">Aug 2018 -- Nov 2023</span>
               </div>
-              <div class="text-[10px] text-slate-700 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">The Bank of Khyber | Karachi, Pakistan</div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">The Bank of Khyber | Karachi, Pakistan</div>
               <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                <li><strong class="text-slate-800 strong-highlights">UAT Dashboard Blueprint:</strong> Managed and spearheaded complete Core Banking UAT execution, designing the centralized real-time dashboard and execution workflows for the T24 implementation.</li>
-                <li><strong class="text-slate-800 strong-highlights">ITSM Design:</strong> Independently designed, customized, and deployed comprehensive IT Service Management (ITSM) systems via System Center Configuration Manager (SCCM).</li>
-                <li><strong class="text-slate-800 strong-highlights">Digital Deliveries:</strong> Supervised automated/manual QA for Remittance BOK, Net Banking, and Mobile Banking solutions, scoring 94% customer UAT ratings at rollout.</li>
+                <li><strong class="text-slate-800 focus-strong">UAT Dashboard Blueprint:</strong> Managed and spearheaded complete Core Banking UAT execution, designing the centralized real-time dashboard and execution workflows for the T24 implementation.</li>
+                <li><strong class="text-slate-800 focus-strong">ITSM Design:</strong> Independently designed, customized, and deployed comprehensive IT Service Management (ITSM) systems via System Center Configuration Manager (SCCM).</li>
+                <li><strong class="text-slate-800 focus-strong">Digital Deliveries:</strong> Supervised automated/manual QA for Remittance BOK, Net Banking, and Mobile Banking solutions, scoring 94% customer UAT ratings at rollout.</li>
               </ul>
             </div>
 
             <!-- JOB 3 -->
             <div>
               <div class="flex justify-between items-baseline mb-1">
-                <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide job-title-text">Manager QA</span>
+                <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Manager QA</span>
                 <span class="text-[11px] text-slate-500 font-medium">May 2017 -- Jul 2018</span>
               </div>
-              <div class="text-[10px] text-slate-700 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">VRG (Virtual Remittance Gateway) | Karachi, Pakistan</div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">VRG (Virtual Remittance Gateway) | Karachi, Pakistan</div>
               <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                <li><strong class="text-slate-800 strong-highlights">FinTech Platform Testing:</strong> Guided QA schedules for critical high-performance platforms, validating SAP Wallet Solutions Meezan, AMA Accounts, and ISO 8583 switch systems.</li>
+                <li><strong class="text-slate-800 focus-strong">FinTech Platform Testing:</strong> Guided QA schedules for critical high-performance platforms, validating SAP Wallet Solutions Meezan, AMA Accounts, and ISO 8583 switch systems.</li>
               </ul>
             </div>
           </div>
@@ -284,14 +412,17 @@
         <!-- COMPACT HEADER WITH DETAILED CONTACTS (LinkedIn Line-wrap safety preserved) -->
         <div class="border-b border-slate-200 pb-3 mb-5 flex justify-between items-center" id="page2-header">
           <div>
-            <h2 class="font-display font-light text-xl tracking-[0.15em] text-slate-900 uppercase" id="p2-name">Syed Raheel Abbas</h2>
-            <p id="accent-text-2" class="text-[9.5px] text-slate-700 font-semibold uppercase tracking-wide mt-0.5">Senior Project Manager &bull; Head of QA & ALM &bull; FinTech & Core Banking Leader</p>
+            <h2 class="font-display font-light text-xl tracking-[0.15em] uppercase" id="p2-name">Syed Raheel Abbas</h2>
+            <p id="accent-text-2" class="text-[9.5px] font-semibold uppercase tracking-wide mt-0.5">Senior Project Manager &bull; Head of QA & ALM &bull; FinTech & Core Banking Leader</p>
           </div>
           <div class="text-right text-[10px] text-slate-500 space-y-0.5" id="p2-contacts">
             <div>+92 333 2177016 | +92 340 7177016</div>
             <div>Bahaderabad, Karachi, Pakistan</div>
-            <div class="font-semibold whitespace-nowrap text-slate-700" id="p2-linkedin-wrap">
+            <div class="font-semibold whitespace-nowrap" id="p2-linkedin-wrap">
               <a href="https://www.linkedin.com/in/raheelabbas/" target="_blank">linkedin.com/in/raheelabbas</a>
+            </div>
+            <div class="font-semibold whitespace-nowrap" id="p2-portfolio-wrap">
+              <a href="https://bit.ly/4f3ue0q" target="_blank">bit.ly/4f3ue0q</a>
             </div>
           </div>
         </div>
@@ -305,7 +436,7 @@
             <!-- EXPERIENCE CONTINUED -->
             <div class="space-y-4">
               <div class="border-b border-slate-200 pb-1" id="exp2-border-bottom">
-                <h3 class="font-display font-medium text-xs tracking-[0.15em] text-slate-900 uppercase" id="exp2-title">
+                <h3 class="font-display font-medium text-xs tracking-[0.15em] uppercase" id="exp2-title">
                   Work Experience (Continued)
                 </h3>
               </div>
@@ -313,35 +444,35 @@
               <!-- JOB 4 (UBL) -->
               <div>
                 <div class="flex justify-between items-baseline mb-1">
-                  <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide job-title-text">Head of QA & ALM</span>
+                  <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Head of QA & ALM</span>
                   <span class="text-[11px] text-slate-500 font-medium">Nov 2009 -- May 2017</span>
                 </div>
-                <div class="text-[10px] text-slate-700 font-semibold tracking-wide mb-1 uppercase company-sub-label">UBL (United Bank Limited) | Karachi, Pakistan</div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase company-sub-label">UBL (United Bank Limited) | Karachi, Pakistan</div>
                 <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                  <li><strong class="text-slate-800 strong-highlights">TFS Customizations:</strong> Designed the Custom Change Management Portal (CMC) and integrated complete automated change workflows by customizing TFS pipelines.</li>
-                  <li><strong class="text-slate-800 strong-highlights">OMNI & Net Banking:</strong> Directed automated validations across UBL OMNI (branchless bank) scaling regression coverage to 85% via Selenium scripts.</li>
+                  <li><strong class="text-slate-800 focus-strong">TFS Customizations:</strong> Designed the Custom Change Management Portal (CMC) and integrated complete automated change workflows by customizing TFS pipelines.</li>
+                  <li><strong class="text-slate-800 focus-strong">OMNI & Net Banking:</strong> Directed automated validations across UBL OMNI (branchless bank) scaling regression coverage to 85% via Selenium scripts.</li>
                 </ul>
               </div>
 
               <!-- JOB 5 (Kalsoft) -->
               <div>
                 <div class="flex justify-between items-baseline mb-1">
-                  <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide job-title-text">Team Lead -- QA & BA</span>
+                  <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Team Lead -- QA & BA</span>
                   <span class="text-[11px] text-slate-500 font-medium">Oct 2006 -- Nov 2009</span>
                 </div>
-                <div class="text-[10px] text-slate-700 font-semibold tracking-wide mb-1 uppercase company-sub-label">Kalsoft Ltd. | Karachi, Pakistan</div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase company-sub-label">Kalsoft Ltd. | Karachi, Pakistan</div>
                 <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                  <li><strong class="text-slate-800 strong-highlights">CMMI Audit Operations:</strong> Worked side-by-side with senior audit teams to standardise systems, securing global CMMI Process Level 3 Certification.</li>
+                  <li><strong class="text-slate-800 focus-strong">CMMI Audit Operations:</strong> Worked side-by-side with senior audit teams to standardise systems, securing global CMMI Process Level 3 Certification.</li>
                 </ul>
               </div>
 
               <!-- JOB 6 (Aventech) -->
               <div>
                 <div class="flex justify-between items-baseline mb-1">
-                  <span class="font-semibold text-xs text-slate-900 uppercase tracking-wide job-title-text">Senior SE (QA)</span>
+                  <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Senior SE (QA)</span>
                   <span class="text-[11px] text-slate-500 font-medium">Feb 2005 -- Sep 2006</span>
                 </div>
-                <div class="text-[10px] text-slate-700 font-semibold tracking-wide mb-1 uppercase company-sub-label">Aventech Pvt Ltd. | Karachi, Pakistan</div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase company-sub-label">Aventech Pvt Ltd. | Karachi, Pakistan</div>
                 <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                   <li>Delivered QA, verification schedules, and client-facing validations for John Lewis Department Store and GlaxoSmithKline.</li>
                 </ul>
@@ -351,7 +482,7 @@
             <!-- EDUCATION -->
             <div>
               <div class="border-b border-slate-200 pb-1 mb-3" id="edu-border-bottom">
-                <h3 class="font-display font-medium text-xs tracking-[0.15em] text-slate-900 uppercase" id="edu-title">
+                <h3 class="font-display font-medium text-xs tracking-[0.15em] uppercase" id="edu-title">
                   Education & Training
                 </h3>
               </div>
@@ -372,25 +503,25 @@
           </div>
 
           <!-- RIGHT SIDE (col-span-4) - Responsive colors applied smoothly -->
-          <div id="side-block" class="col-span-4 bg-slate-50 text-slate-900 rounded-xl p-4 space-y-5 border border-slate-200 transition-all duration-300">
+          <div id="side-block" class="col-span-4 bg-indigo-950 text-white rounded-xl p-4 space-y-5 transition-all duration-300">
             
             <!-- STRENGTHS -->
             <div>
-              <div class="flex items-center gap-2 border-b border-slate-300 pb-1.5 mb-3" id="side-border-1">
+              <div class="flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3" id="side-border-1">
                 <i class="fa-solid fa-hand-fist text-xs"></i>
                 <h4 class="font-display font-bold text-[10px] tracking-widest uppercase">Strengths</h4>
               </div>
               <div class="grid grid-cols-2 gap-2 text-[10px]">
-                <span class="strength-badge bg-white text-slate-900 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-slate-200">
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
                   <i class="fa-solid fa-paint-brush text-[8px] text-red-700"></i> Creativity
                 </span>
-                <span class="strength-badge bg-white text-slate-900 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-slate-200">
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
                   <i class="fa-solid fa-shield-halved text-[8px] text-indigo-800"></i> Courage
                 </span>
-                <span class="strength-badge bg-white text-slate-900 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-slate-200">
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
                   <i class="fa-solid fa-heart text-[8px] text-rose-600"></i> Sincerity
                 </span>
-                <span class="strength-badge bg-white text-slate-900 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-slate-200">
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
                   <i class="fa-solid fa-brain text-[8px] text-amber-600"></i> Wisdom
                 </span>
               </div>
@@ -398,7 +529,7 @@
 
             <!-- LANGUAGES (Donut indicators) -->
             <div>
-              <div class="flex items-center gap-2 border-b border-slate-300 pb-1.5 mb-3" id="side-border-2">
+              <div class="flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3" id="side-border-2">
                 <i class="fa-solid fa-globe text-xs"></i>
                 <h4 class="font-display font-bold text-[10px] tracking-widest uppercase">Languages</h4>
               </div>
@@ -407,10 +538,10 @@
                 <div class="text-center">
                   <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
                     <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(0,0,0,0.1)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#1e293b" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="9"/>
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="9"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text text-slate-800">90%</span>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">90%</span>
                   </div>
                   <span class="block text-[8.5px] font-semibold mt-1">Urdu</span>
                 </div>
@@ -418,10 +549,10 @@
                 <div class="text-center">
                   <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
                     <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(0,0,0,0.1)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#1e293b" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="18"/>
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="18"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text text-slate-800">80%</span>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">80%</span>
                   </div>
                   <span class="block text-[8.5px] font-semibold mt-1">English</span>
                 </div>
@@ -429,10 +560,10 @@
                 <div class="text-center">
                   <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
                     <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(0,0,0,0.1)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#1e293b" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="31"/>
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="31"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text text-slate-800">65%</span>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">65%</span>
                   </div>
                   <span class="block text-[8.5px] font-semibold mt-1">Punjabi</span>
                 </div>
@@ -440,10 +571,10 @@
                 <div class="text-center">
                   <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
                     <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(0,0,0,0.1)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#1e293b" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="62"/>
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="62"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text text-slate-800">30%</span>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">30%</span>
                   </div>
                   <span class="block text-[8.5px] font-semibold mt-1">Sindhi</span>
                 </div>
@@ -451,10 +582,10 @@
                 <div class="text-center">
                   <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
                     <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(0,0,0,0.1)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#1e293b" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="66"/>
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="66"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text text-slate-800">25%</span>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">25%</span>
                   </div>
                   <span class="block text-[8.5px] font-semibold mt-1">Arabic</span>
                 </div>
@@ -462,10 +593,10 @@
                 <div class="text-center">
                   <div class="relative w-9 h-9 mx-auto flex items-center justify-center">
                     <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(0,0,0,0.1)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#1e293b" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="70"/>
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="88" stroke-dashoffset="70"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text text-slate-800">20%</span>
+                    <span class="absolute text-[7.5px] font-bold lang-percent-text">20%</span>
                   </div>
                   <span class="block text-[8.5px] font-semibold mt-1">Farsi</span>
                 </div>
@@ -473,14 +604,14 @@
             </div>
 
             <!-- POC DETAILS -->
-            <div class="border-t border-slate-300 pt-3" id="side-border-3">
-              <h4 class="font-display font-bold text-[9px] tracking-widest uppercase text-slate-700 mb-2" id="poc-sub-title">POC Advancements</h4>
+            <div class="border-t border-white/10 pt-3" id="side-border-3">
+              <h4 class="font-display font-bold text-[9px] tracking-widest uppercase text-slate-300 mb-2" id="poc-sub-title">POC Advancements</h4>
               <ul class="text-[10px] space-y-1.5" id="poc-list-items">
-                <li class="flex items-start gap-1.5 text-slate-700">
-                  <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5" id="poc-tick-1"></i> SonarQube Code Analysis
+                <li class="flex items-start gap-1.5">
+                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5" id="poc-tick-1"></i> SonarQube Code Analysis
                 </li>
-                <li class="flex items-start gap-1.5 text-slate-700">
-                  <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5" id="poc-tick-2"></i> Halo ITSM Service Desks
+                <li class="flex items-start gap-1.5">
+                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5" id="poc-tick-2"></i> Halo ITSM Service Desks
                 </li>
               </ul>
             </div>
@@ -492,26 +623,26 @@
         <!-- SPECIAL HIGHLIGHTS (Khas kamyabiyan & Health Practitioner Licensure) -->
         <div class="mt-6">
           <div class="border-b border-slate-200 pb-1 mb-3" id="highlights-border-bottom">
-            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase" id="highlights-title">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] uppercase" id="highlights-title">
               Featured Milestones & Trainings
             </h3>
           </div>
           <div class="grid grid-cols-2 gap-3.5" id="milestones-parent">
             <!-- ALM Landmark -->
-            <div class="bg-slate-50 border-l-4 border-slate-700 p-2.5 rounded-r-lg shadow-sm milestone-card">
-              <div class="flex items-center gap-1.5 text-[10.5px] font-bold text-slate-900 mb-1 milestone-header">
+            <div class="bg-slate-50 border-l-4 border-indigo-900 p-2.5 rounded-r-lg shadow-sm milestone-card">
+              <div class="flex items-center gap-1.5 text-[10.5px] font-bold mb-1">
                 <i class="fa-solid fa-star text-amber-500 text-[10px]"></i> UBL Asia ALM Pioneer
               </div>
-              <p class="text-[10px] text-slate-600 text-justify milestone-desc">
+              <p class="text-[10px] text-slate-600 text-justify">
                 Championed and personally orchestrated the <span class="font-semibold text-slate-800 focus-strong">first-ever Microsoft TFS implementation in Asia's financial sector</span> at UBL, unifying 100+ multi-site developers.
               </p>
             </div>
             <!-- Health Certification & anti aging -->
-            <div class="bg-slate-50 border-l-4 border-slate-700 p-2.5 rounded-r-lg shadow-sm milestone-card">
-              <div class="flex items-center gap-1.5 text-[10.5px] font-bold text-slate-900 mb-1 milestone-header">
+            <div class="bg-slate-50 border-l-4 border-indigo-900 p-2.5 rounded-r-lg shadow-sm milestone-card">
+              <div class="flex items-center gap-1.5 text-[10.5px] font-bold mb-1">
                 <i class="fa-solid fa-heart-pulse text-rose-600 text-[10px]"></i> Naturopathy & Anti-Aging
               </div>
-              <p class="text-[10px] text-slate-600 text-justify milestone-desc">
+              <p class="text-[10px] text-slate-600 text-justify">
                 Certified Naturopathic Practitioner specializing in <span class="font-semibold text-slate-800 focus-strong">Food as Medicine Protocols & Anti-Aging Science</span>, managing customized holistic wellness therapies.
               </p>
             </div>
@@ -521,34 +652,34 @@
         <!-- EXTRACURRICULAR PORTFOLIO (Lectureship, Cricket, and Photography Cards) -->
         <div class="mt-6">
           <div class="border-b border-slate-200 pb-1 mb-3" id="extra-border-bottom">
-            <h3 class="font-display font-medium text-xs tracking-[0.25em] text-slate-900 uppercase" id="extra-title">
+            <h3 class="font-display font-medium text-xs tracking-[0.25em] uppercase" id="extra-title">
               Extracurricular Portfolio
             </h3>
           </div>
-          <div class="grid grid-cols-4 gap-3" id="portfolio-cards-grid">
+          <div class="grid grid-cols-4 gap-3">
             <!-- Lectureship Card -->
-            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center portfolio-card">
-              <i class="fa-solid fa-graduation-cap text-slate-750 text-sm mb-1 card-icon"></i>
-              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider card-title">Visiting Faculty</span>
-              <span class="text-[8px] text-slate-500 leading-tight card-desc">Teaching Masters (MS) Classes (2006-Present)</span>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center extra-card">
+              <i class="fa-solid fa-graduation-cap text-indigo-700 text-sm mb-1 extra-icon"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider extra-text-title">Visiting Faculty</span>
+              <span class="text-[8px] text-slate-500 leading-tight extra-text-desc">Teaching Masters (MS) Classes (2006-Present)</span>
             </div>
             <!-- Photography Card -->
-            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center portfolio-card">
-              <i class="fa-solid fa-camera text-slate-750 text-sm mb-1 card-icon"></i>
-              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider card-title">Photography</span>
-              <span class="text-[8.5px] text-slate-500 card-desc">Professional Shooter</span>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center extra-card">
+              <i class="fa-solid fa-camera text-indigo-700 text-sm mb-1 extra-icon"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider extra-text-title">Photography</span>
+              <span class="text-[8.5px] text-slate-500 extra-text-desc">Professional Shooter</span>
             </div>
             <!-- Pro Cricket Card -->
-            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center portfolio-card">
-              <i class="fa-solid fa-baseball-bat-ball text-slate-750 text-sm mb-1 card-icon"></i>
-              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider card-title">Pro Cricket</span>
-              <span class="text-[8.5px] text-slate-500 card-desc">Active Team Player</span>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center extra-card">
+              <i class="fa-solid fa-baseball-bat-ball text-indigo-700 text-sm mb-1 extra-icon"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider extra-text-title">Pro Cricket</span>
+              <span class="text-[8.5px] text-slate-500 extra-text-desc">Active Team Player</span>
             </div>
             <!-- Philanthropy Card -->
-            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center">
-              <i class="fa-solid fa-hands-helping text-indigo-700 text-sm mb-1"></i>
-              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider">Philanthropy</span>
-              <span class="text-[8.5px] text-slate-500">Community Support</span>
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 shadow-sm flex flex-col items-center justify-center text-center extra-card">
+              <i class="fa-solid fa-hands-helping text-indigo-700 text-sm mb-1 extra-icon"></i>
+              <span class="text-[9.5px] font-bold text-slate-800 uppercase tracking-wider extra-text-title">Philanthropy</span>
+              <span class="text-[8.5px] text-slate-500 extra-text-desc">Community Support</span>
             </div>
           </div>
         </div>
@@ -578,8 +709,20 @@
       }
     }
 
+    // Dynamic Spacing and Font Adjustments
+    function updateGap(val) {
+      document.documentElement.style.setProperty('--section-gap', (val / 16) + 'rem');
+    }
+
+    function updateFontSize(val) {
+      document.documentElement.style.setProperty('--base-font-size', val + 'px');
+    }
+
     // Dynamic UI Theme Engines
-    function changeAccent(colorHex, isLight) {
+    function applyTheme(themeName) {
+      const body = document.body;
+      body.classList.remove('theme-eco', 'theme-burgundy', 'theme-indigo', 'theme-creative');
+      
       const summaryStrip = document.getElementById('summary-strip');
       const sideBlock = document.getElementById('side-block');
       const text1 = document.getElementById('accent-text-1');
@@ -587,37 +730,48 @@
       const sideBorder1 = document.getElementById('side-border-1');
       const sideBorder2 = document.getElementById('side-border-2');
       const sideBorder3 = document.getElementById('side-border-3');
-      
-      const summaryTitle = summaryStrip.querySelector('h3');
-      const summaryText = summaryStrip.querySelector('p');
-      const sidePocTitle = sideBlock.querySelector('#side-border-3 h4');
+      const summaryTitle = document.getElementById('summary-title');
+      const summaryText = document.getElementById('summary-text');
+      const sidePocTitle = document.getElementById('poc-sub-title');
+      const glow = document.getElementById('morphed-shadow-glow');
+      const linkedInIcon = document.getElementById('header-linkedin-icon');
+      const linkedInWrap = document.getElementById('header-linkedin-wrap');
+      const portfolioIcon = document.getElementById('header-portfolio-icon');
+      const portfolioWrap = document.getElementById('header-portfolio-wrap');
+      const p2PortfolioWrap = document.getElementById('p2-portfolio-wrap');
+      const p2LinkedInWrap = document.getElementById('p2-linkedin-wrap');
 
-      summaryStrip.style.backgroundColor = colorHex;
-      sideBlock.style.backgroundColor = colorHex;
+      if (themeName === 'eco') {
+        body.classList.add('theme-eco');
+        document.documentElement.style.setProperty('--accent-color', '#1e293b');
+        document.documentElement.style.setProperty('--accent-light', '#f1f5f9');
+        document.documentElement.style.setProperty('--summary-bg', '#f1f5f9');
+        document.documentElement.style.setProperty('--summary-text', '#334155');
+        document.documentElement.style.setProperty('--summary-title', '#0f172a');
+        document.documentElement.style.setProperty('--side-bg', '#f8fafc');
+        document.documentElement.style.setProperty('--side-text', '#334155');
+        document.documentElement.style.setProperty('--side-header-border', '#cbd5e1');
+        document.documentElement.style.setProperty('--side-title-text', '#0f172a');
+        document.documentElement.style.setProperty('--page-bg', '#ffffff');
+        document.documentElement.style.setProperty('--body-bg', '#f1f5f9');
+        document.documentElement.style.setProperty('--text-main', '#1e293b');
+        document.documentElement.style.setProperty('--text-muted', '#475569');
 
-      if (isLight) {
-        // Theme 1: Default Eco Printable Styles
-        summaryStrip.className = "bg-slate-100 p-5 rounded-lg my-5 border border-slate-200 transition-all duration-300";
-        summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] text-slate-800 uppercase mb-2";
-        summaryText.className = "text-[11.5px] leading-relaxed text-slate-700 text-justify";
+        summaryStrip.className = "p-5 rounded-lg my-5 border relative z-10 transition-all duration-300 bg-slate-100 border-slate-200";
+        summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] uppercase mb-2 text-slate-800";
+        summaryText.className = "text-[11.5px] leading-relaxed text-justify text-slate-700";
 
-        sideBlock.className = "col-span-4 bg-slate-50 text-slate-900 rounded-xl p-4 space-y-5 border border-slate-200 transition-all duration-300";
-        text1.style.color = "#1e293b";
-        text1.className = "font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300";
-        text2.style.color = "#1e293b";
-        text2.className = "text-[9.5px] font-semibold uppercase tracking-wide mt-0.5";
+        sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 border transition-all duration-300 bg-slate-50 border-slate-200 text-slate-700";
+        text1.className = "font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300 text-slate-700";
+        text2.className = "text-[9.5px] font-semibold uppercase tracking-wide mt-0.5 text-slate-700";
 
-        sideBorder1.className = "flex items-center gap-2 border-b border-slate-300 pb-1.5 mb-3";
-        sideBorder2.className = "flex items-center gap-2 border-b border-slate-300 pb-1.5 mb-3";
-        sideBorder3.className = "border-t border-slate-300 pt-3";
-        
-        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase text-slate-700 mb-2";
+        sideBorder1.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-slate-200 text-slate-800";
+        sideBorder2.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-slate-200 text-slate-800";
+        sideBorder3.className = "border-t pt-3 border-slate-200";
+        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase mb-2 text-slate-700";
 
-        // Update photo shadow glow
-        const glow = document.getElementById('morphed-shadow-glow');
         glow.className = "absolute inset-0 bg-slate-300/30 border border-slate-400/20 morphed-frame scale-105 shadow-sm transition-all duration-300";
 
-        // Update SVGs and circles for Eco Print Contrast
         document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(0,0,0,0.1)'));
         document.querySelectorAll('.lang-circle').forEach(c => {
           c.setAttribute('stroke', '#1e293b');
@@ -627,137 +781,214 @@
         document.querySelectorAll('.strength-badge').forEach(b => {
           b.className = "strength-badge bg-white text-slate-900 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-slate-200";
         });
-        
-        // Dynamic fonts reset
-        document.getElementById('main-name-title').className = "font-display font-light text-3xl tracking-[0.2em] text-slate-900 uppercase transition-all duration-300";
-        document.getElementById('p2-name').className = "font-display font-light text-xl tracking-[0.15em] text-slate-900 uppercase transition-all duration-300";
+        document.querySelectorAll('.milestone-card').forEach(m => m.className = "border-l-4 p-2.5 rounded-r-lg shadow-sm milestone-card bg-slate-50 border-slate-700 text-slate-600");
+        document.querySelectorAll('.extra-card').forEach(x => x.className = "p-2.5 rounded-lg border shadow-sm flex flex-col items-center justify-center text-center extra-card bg-slate-50 border-slate-200");
+        document.querySelectorAll('.extra-icon').forEach(i => i.className = "fa-solid text-sm mb-1 extra-icon text-slate-700");
+        document.querySelectorAll('.extra-text-title').forEach(t => t.className = "text-[9.5px] font-bold uppercase tracking-wider extra-text-title text-slate-800");
+        document.querySelectorAll('.extra-text-desc').forEach(d => d.className = "text-[8px] leading-tight extra-text-desc text-slate-500");
 
-      } else if (colorHex === '#6b1d3f') {
-        // Theme 2: Executive Burgundy
-        summaryStrip.className = "bg-rose-955 p-5 rounded-lg my-5 transition-all duration-300 text-white";
-        summaryTitle.className = "font-display font-semibold text-[10px] tracking-[0.2em] text-slate-200 uppercase mb-2";
-        summaryText.className = "text-[11.5px] leading-relaxed text-slate-100 text-justify";
+        document.getElementById('main-name-title').className = "font-display font-light text-3xl tracking-[0.2em] uppercase transition-all duration-300 text-slate-900";
+        document.getElementById('p2-name').className = "font-display font-light text-xl tracking-[0.15em] uppercase transition-all duration-300 text-slate-900";
+        linkedInIcon.className = "fa-brands fa-linkedin text-slate-500 w-3.5 text-center";
+        linkedInWrap.className = "flex items-center gap-2 font-semibold text-slate-700";
+        portfolioIcon.className = "fa-solid fa-globe text-slate-500 w-3.5 text-center";
+        portfolioWrap.className = "flex items-center gap-2 font-semibold text-slate-700 col-span-2 mt-0.5";
+        p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-slate-500";
+        p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-slate-500";
 
-        sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 transition-all duration-300 text-white";
-        text1.style.color = "#6b1d3f";
-        text1.className = "font-serif font-bold text-[11px] tracking-wide mt-2 transition-all duration-300";
-        text2.style.color = "#6b1d3f";
-        text2.className = "font-serif text-[10px] font-semibold mt-0.5";
+      } else if (themeName === 'burgundy') {
+        body.classList.add('theme-burgundy');
+        document.documentElement.style.setProperty('--accent-color', '#6b1d3f');
+        document.documentElement.style.setProperty('--accent-light', '#fdf2f5');
+        document.documentElement.style.setProperty('--summary-bg', '#fdf2f5');
+        document.documentElement.style.setProperty('--summary-text', '#5c142b');
+        document.documentElement.style.setProperty('--summary-title', '#440c1e');
+        document.documentElement.style.setProperty('--side-bg', '#fcf5f7');
+        document.documentElement.style.setProperty('--side-text', '#5c142b');
+        document.documentElement.style.setProperty('--side-header-border', '#f4d0d8');
+        document.documentElement.style.setProperty('--side-title-text', '#440c1e');
+        document.documentElement.style.setProperty('--page-bg', '#ffffff');
+        document.documentElement.style.setProperty('--body-bg', '#fbf1f4');
+        document.documentElement.style.setProperty('--text-main', '#330312');
+        document.documentElement.style.setProperty('--text-muted', '#5c202e');
 
-        sideBorder1.className = "flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3";
-        sideBorder2.className = "flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3";
-        sideBorder3.className = "border-t border-white/10 pt-3";
-        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase text-slate-200 mb-2";
+        summaryStrip.className = "p-5 rounded-lg my-5 border relative z-10 transition-all duration-300 bg-[#fdf2f5] border-[#f4d0d8]";
+        summaryTitle.className = "font-serif font-bold text-[10px] tracking-[0.2em] uppercase mb-2 text-[#6b1d3f]";
+        summaryText.className = "text-[11.5px] leading-relaxed text-justify text-[#5c142b]";
 
-        // Update photo shadow glow
-        const glow = document.getElementById('morphed-shadow-glow');
+        sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 border transition-all duration-300 bg-[#fcf5f7] border-[#f4d0d8] text-[#5c142b]";
+        text1.className = "font-serif font-bold text-[11px] tracking-wide mt-2 transition-all duration-300 text-[#6b1d3f]";
+        text2.className = "font-serif text-[10px] font-semibold mt-0.5 text-[#6b1d3f]";
+
+        sideBorder1.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-[#f4d0d8] text-[#440c1e]";
+        sideBorder2.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-[#f4d0d8] text-[#440c1e]";
+        sideBorder3.className = "border-t pt-3 border-[#f4d0d8]";
+        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase mb-2 text-[#6b1d3f]";
+
         glow.className = "absolute inset-0 bg-[#6b1d3f]/20 border border-[#6b1d3f]/40 morphed-frame scale-105 shadow-md transition-all duration-300";
 
-        document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(255,255,255,0.15)'));
+        document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(107,29,63,0.1)'));
         document.querySelectorAll('.lang-circle').forEach(c => {
-          c.setAttribute('stroke', '#ffffff');
+          c.setAttribute('stroke', '#6b1d3f');
           c.setAttribute('stroke-width', '3.5');
         });
-        document.querySelectorAll('.lang-percent-text').forEach(t => t.className = "absolute text-[7.5px] font-bold lang-percent-text text-white");
+        document.querySelectorAll('.lang-percent-text').forEach(t => t.className = "absolute text-[7.5px] font-bold lang-percent-text text-[#6b1d3f]");
         document.querySelectorAll('.strength-badge').forEach(b => {
-          b.className = "strength-badge bg-white text-rose-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm";
+          b.className = "strength-badge bg-white text-rose-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-rose-200";
         });
-        
-        // Update to warm classy Serif
-        document.getElementById('main-name-title').className = "font-serif font-semibold text-3xl tracking-[0.1em] text-slate-900 transition-all duration-300";
-        document.getElementById('p2-name').className = "font-serif font-semibold text-xl tracking-[0.08em] text-slate-900 transition-all duration-300";
+        document.querySelectorAll('.milestone-card').forEach(m => m.className = "border-l-4 p-2.5 rounded-r-lg shadow-sm milestone-card bg-[#fdf2f5] border-[#6b1d3f] text-[#5c142b]");
+        document.querySelectorAll('.extra-card').forEach(x => x.className = "p-2.5 rounded-lg border shadow-sm flex flex-col items-center justify-center text-center extra-card bg-[#fcf5f7] border-[#f4d0d8]");
+        document.querySelectorAll('.extra-icon').forEach(i => i.className = "fa-solid text-sm mb-1 extra-icon text-[#6b1d3f]");
+        document.querySelectorAll('.extra-text-title').forEach(t => t.className = "text-[9.5px] font-bold uppercase tracking-wider extra-text-title text-[#440c1e]");
+        document.querySelectorAll('.extra-text-desc').forEach(d => d.className = "text-[8px] leading-tight extra-text-desc text-[#5c202e]");
 
-      } else if (colorHex === '#1e1b4b') {
-        // Theme 3: Royal Tech Indigo
-        summaryStrip.className = "bg-indigo-950 p-5 rounded-lg my-5 transition-all duration-300 text-white";
-        summaryTitle.className = "font-display font-semibold text-[10px] tracking-[0.2em] text-slate-200 uppercase mb-2";
-        summaryText.className = "text-[11.5px] leading-relaxed text-slate-200 text-justify";
+        document.getElementById('main-name-title').className = "font-serif font-semibold text-3xl tracking-[0.1em] transition-all duration-300 text-slate-900";
+        document.getElementById('p2-name').className = "font-serif font-semibold text-xl tracking-[0.08em] transition-all duration-300 text-slate-900";
+        linkedInIcon.className = "fa-brands fa-linkedin text-[#6b1d3f] w-3.5 text-center";
+        linkedInWrap.className = "flex items-center gap-2 font-semibold text-[#6b1d3f]";
+        portfolioIcon.className = "fa-solid fa-globe text-[#6b1d3f] w-3.5 text-center";
+        portfolioWrap.className = "flex items-center gap-2 font-semibold text-[#6b1d3f] col-span-2 mt-0.5";
+        p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-[#6b1d3f]";
+        p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-[#6b1d3f]";
 
-        sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 transition-all duration-300 text-white";
-        text1.style.color = "#1e1b4b";
-        text1.className = "font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300";
-        text2.style.color = "#1e1b4b";
-        text2.className = "text-[9.5px] font-semibold uppercase tracking-wide mt-0.5";
+      } else if (themeName === 'indigo') {
+        body.classList.add('theme-indigo');
+        document.documentElement.style.setProperty('--accent-color', '#1e1b4b');
+        document.documentElement.style.setProperty('--accent-light', '#e0e7ff');
+        document.documentElement.style.setProperty('--summary-bg', '#eef2ff');
+        document.documentElement.style.setProperty('--summary-text', '#1e1b4b');
+        document.documentElement.style.setProperty('--summary-title', '#1e1b4b');
+        document.documentElement.style.setProperty('--side-bg', '#f5f7ff');
+        document.documentElement.style.setProperty('--side-text', '#312e81');
+        document.documentElement.style.setProperty('--side-header-border', '#c7d2fe');
+        document.documentElement.style.setProperty('--side-title-text', '#1e1b4b');
+        document.documentElement.style.setProperty('--page-bg', '#ffffff');
+        document.documentElement.style.setProperty('--body-bg', '#f0f4fc');
+        document.documentElement.style.setProperty('--text-main', '#0f172a');
+        document.documentElement.style.setProperty('--text-muted', '#312e81');
 
-        sideBorder1.className = "flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3";
-        sideBorder2.className = "flex items-center gap-2 border-b border-white/20 pb-1.5 mb-3";
-        sideBorder3.className = "border-t border-white/10 pt-3";
-        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase text-slate-300 mb-2";
+        summaryStrip.className = "p-5 rounded-lg my-5 border relative z-10 transition-all duration-300 bg-[#eef2ff] border-[#c7d2fe]";
+        summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] uppercase mb-2 text-[#1e1b4b]";
+        summaryText.className = "text-[11.5px] leading-relaxed text-justify text-[#1e1b4b]";
 
-        // Update photo shadow glow
-        const glow = document.getElementById('morphed-shadow-glow');
+        sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 border transition-all duration-300 bg-[#f5f7ff] border-[#c7d2fe] text-[#312e81]";
+        text1.className = "font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300 text-[#1e1b4b]";
+        text2.className = "text-[9.5px] font-semibold uppercase tracking-wide mt-0.5 text-[#1e1b4b]";
+
+        sideBorder1.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-[#c7d2fe] text-[#1e1b4b]";
+        sideBorder2.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-[#c7d2fe] text-[#1e1b4b]";
+        sideBorder3.className = "border-t pt-3 border-[#c7d2fe]";
+        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase mb-2 text-[#1e1b4b]";
+
         glow.className = "absolute inset-0 bg-[#1e1b4b]/20 border border-[#1e1b4b]/40 morphed-frame scale-105 shadow-md transition-all duration-300";
 
-        document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(255,255,255,0.15)'));
+        document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(30,27,75,0.1)'));
         document.querySelectorAll('.lang-circle').forEach(c => {
-          c.setAttribute('stroke', '#ffffff');
+          c.setAttribute('stroke', '#1e1b4b');
           c.setAttribute('stroke-width', '3.5');
         });
-        document.querySelectorAll('.lang-percent-text').forEach(t => t.className = "absolute text-[7.5px] font-bold lang-percent-text text-white");
+        document.querySelectorAll('.lang-percent-text').forEach(t => t.className = "absolute text-[7.5px] font-bold lang-percent-text text-[#1e1b4b]");
         document.querySelectorAll('.strength-badge').forEach(b => {
-          b.className = "strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm";
+          b.className = "strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-indigo-200";
         });
+        document.querySelectorAll('.milestone-card').forEach(m => m.className = "border-l-4 p-2.5 rounded-r-lg shadow-sm milestone-card bg-[#eef2ff] border-[#1e1b4b] text-[#312e81]");
+        document.querySelectorAll('.extra-card').forEach(x => x.className = "p-2.5 rounded-lg border shadow-sm flex flex-col items-center justify-center text-center extra-card bg-[#f5f7ff] border-[#c7d2fe]");
+        document.querySelectorAll('.extra-icon').forEach(i => i.className = "fa-solid text-sm mb-1 extra-icon text-[#1e1b4b]");
+        document.querySelectorAll('.extra-text-title').forEach(t => t.className = "text-[9.5px] font-bold uppercase tracking-wider extra-text-title text-[#1e1b4b]");
+        document.querySelectorAll('.extra-text-desc').forEach(d => d.className = "text-[8px] leading-tight extra-text-desc text-[#312e81]");
 
-        document.getElementById('main-name-title').className = "font-display font-light text-3xl tracking-[0.2em] text-slate-900 uppercase transition-all duration-300";
-        document.getElementById('p2-name').className = "font-display font-light text-xl tracking-[0.15em] text-slate-900 uppercase transition-all duration-300";
+        document.getElementById('main-name-title').className = "font-display font-light text-3xl tracking-[0.2em] uppercase transition-all duration-300 text-slate-900";
+        document.getElementById('p2-name').className = "font-display font-light text-xl tracking-[0.15em] uppercase transition-all duration-300 text-slate-900";
+        linkedInIcon.className = "fa-brands fa-linkedin text-[#1e1b4b] w-3.5 text-center";
+        linkedInWrap.className = "flex items-center gap-2 font-semibold text-[#1e1b4b]";
+        portfolioIcon.className = "fa-solid fa-globe text-[#1e1b4b] w-3.5 text-center";
+        portfolioWrap.className = "flex items-center gap-2 font-semibold text-[#1e1b4b] col-span-2 mt-0.5";
+        p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-[#1e1b4b]";
+        p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-[#1e1b4b]";
 
       } else {
-        // Theme 4: Media Creative (Drastic Gold/Charcoal Custom Design)
-        summaryStrip.className = "bg-slate-900 p-5 rounded-lg my-5 border-l-4 border-amber-500 transition-all duration-300 text-white";
-        summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] text-amber-500 uppercase mb-2";
-        summaryText.className = "text-[11.5px] leading-relaxed text-slate-300 text-justify";
+        // Media Creative (Drastic Gold/Charcoal Custom Design)
+        body.classList.add('theme-creative');
+        document.documentElement.style.setProperty('--accent-color', '#f59e0b');
+        document.documentElement.style.setProperty('--accent-light', '#1e293b');
+        document.documentElement.style.setProperty('--summary-bg', '#0f172a');
+        document.documentElement.style.setProperty('--summary-text', '#f8fafc');
+        document.documentElement.style.setProperty('--summary-title', '#f59e0b');
+        document.documentElement.style.setProperty('--side-bg', '#1e293b');
+        document.documentElement.style.setProperty('--side-text', '#cbd5e1');
+        document.documentElement.style.setProperty('--side-header-border', '#f59e0b');
+        document.documentElement.style.setProperty('--side-title-text', '#f59e0b');
+        document.documentElement.style.setProperty('--page-bg', '#0b0f19');
+        document.documentElement.style.setProperty('--body-bg', '#080a10');
+        document.documentElement.style.setProperty('--text-main', '#f8fafc');
+        document.documentElement.style.setProperty('--text-muted', '#94a3b8');
 
-        sideBlock.className = "col-span-4 bg-slate-900 text-white rounded-xl p-4 space-y-5 border-t-4 border-amber-500 transition-all duration-300";
-        text1.style.color = "#d97706";
-        text1.className = "font-display font-bold text-[11px] tracking-widest uppercase mt-2 transition-all duration-300";
-        text2.style.color = "#d97706";
-        text2.className = "text-[10px] font-bold uppercase tracking-widest mt-0.5";
+        summaryStrip.className = "p-5 rounded-lg my-5 border relative z-10 transition-all duration-300 bg-[#0f172a] border-[#1e293b] text-white border-l-4 border-l-amber-500";
+        summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] uppercase mb-2 text-amber-500";
+        summaryText.className = "text-[11.5px] leading-relaxed text-justify text-slate-300";
 
-        sideBorder1.className = "flex items-center gap-2 border-b border-amber-500/30 pb-1.5 mb-3";
-        sideBorder2.className = "flex items-center gap-2 border-b border-amber-500/30 pb-1.5 mb-3";
-        sideBorder3.className = "border-t border-amber-500/20 pt-3";
-        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase text-amber-500 mb-2";
+        sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 border transition-all duration-300 bg-slate-900 border-[#1e293b] border-t-4 border-t-amber-500 text-white";
+        text1.className = "font-display font-bold text-[11px] tracking-widest uppercase mt-2 transition-all duration-300 text-amber-500";
+        text2.className = "text-[10px] font-bold uppercase tracking-widest mt-0.5 text-amber-500";
 
-        // Update photo shadow glow
-        const glow = document.getElementById('morphed-shadow-glow');
-        glow.className = "absolute inset-0 bg-amber-550/30 border border-amber-500/30 morphed-frame scale-105 shadow-md transition-all duration-300 animate-pulse";
+        sideBorder1.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-amber-500/30 text-amber-500";
+        sideBorder2.className = "flex items-center gap-2 border-b pb-1.5 mb-3 border-amber-500/30 text-amber-500";
+        sideBorder3.className = "border-t pt-3 border-amber-500/20";
+        sidePocTitle.className = "font-display font-bold text-[9px] tracking-widest uppercase mb-2 text-amber-500";
+
+        glow.className = "absolute inset-0 bg-amber-500/30 border border-amber-500/30 morphed-frame scale-105 shadow-md transition-all duration-300 animate-pulse";
 
         document.querySelectorAll('.lang-bg-circle').forEach(c => c.setAttribute('stroke', 'rgba(255,255,255,0.1)'));
-        document.querySelectorAll('.lang-circle').forEach(c => c.setAttribute('stroke', '#f59e0b'));
+        document.querySelectorAll('.lang-circle').forEach(c => {
+          c.setAttribute('stroke', '#f59e0b');
+          c.setAttribute('stroke-width', '3.5');
+        });
         document.querySelectorAll('.lang-percent-text').forEach(t => t.className = "absolute text-[7.5px] font-bold lang-percent-text text-amber-500");
         document.querySelectorAll('.strength-badge').forEach(b => {
-          b.className = "strength-badge bg-amber-500 text-slate-950 font-bold px-2 py-1.5 rounded flex items-center gap-1 shadow-sm";
+          b.className = "strength-badge bg-amber-500 text-slate-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm border border-amber-600";
         });
+        document.querySelectorAll('.milestone-card').forEach(m => m.className = "border-l-4 p-2.5 rounded-r-lg shadow-sm milestone-card bg-slate-900 border-amber-500 text-slate-300");
+        document.querySelectorAll('.extra-card').forEach(x => x.className = "p-2.5 rounded-lg border shadow-sm flex flex-col items-center justify-center text-center extra-card bg-[#0f172a] border-[#1e293b]");
+        document.querySelectorAll('.extra-icon').forEach(i => i.className = "fa-solid text-sm mb-1 extra-icon text-amber-500");
+        document.querySelectorAll('.extra-text-title').forEach(t => t.className = "text-[9.5px] font-bold uppercase tracking-wider extra-text-title text-amber-500");
+        document.querySelectorAll('.extra-text-desc').forEach(d => d.className = "text-[8px] leading-tight extra-text-desc text-slate-400");
+
+        document.getElementById('main-name-title').className = "font-display font-bold text-3xl tracking-[0.2em] uppercase transition-all duration-300 text-white";
+        document.getElementById('p2-name').className = "font-display font-bold text-xl tracking-[0.15em] uppercase transition-all duration-300 text-white";
+        linkedInIcon.className = "fa-brands fa-linkedin text-amber-500 w-3.5 text-center";
+        linkedInWrap.className = "flex items-center gap-2 font-semibold text-amber-500";
+        portfolioIcon.className = "fa-solid fa-globe text-amber-500 w-3.5 text-center";
+        portfolioWrap.className = "flex items-center gap-2 font-semibold text-amber-500 col-span-2 mt-0.5";
+        p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-amber-500";
+        p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-amber-500";
       }
     }
 
-    // Comprehensive design helper initialization
-    function applyTheme(themeName) {
-      if (themeName === 'eco') {
-        changeAccent('#f1f5f9', true);
-        document.getElementById('brand-logo').className = "h-9 w-9 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold transition-all duration-300";
-      } else if (themeName === 'burgundy') {
-        changeAccent('#6b1d3f', false);
-        document.getElementById('brand-logo').className = "h-9 w-9 rounded-full bg-[#6b1d3f] flex items-center justify-center text-white font-bold transition-all duration-300";
-      } else if (themeName === 'indigo') {
-        changeAccent('#1e1b4b', false);
-        document.getElementById('brand-logo')?.classList.add('bg-indigo-900');
-        document.getElementById('brand-logo');
-        const srBadge = document.querySelector('.no-print bg-indigo-900');
-        if (srBadge) srBadge.style.backgroundColor = '#1e1b4b';
-      } else if (themeName === 'creative') {
-        changeAccent('#d97706', false);
-        // Special manual override triggers for Media/Creative Theme class
-        const summaryStrip = document.getElementById('summary-strip');
-        const sideBlock = document.getElementById('side-block');
-        const text1 = document.getElementById('accent-text-1');
-        const text2 = document.getElementById('accent-text-2');
-        
-        summaryStrip.style.backgroundColor = '#0f172a'; // Deep slate block
-        sideBlock.style.backgroundColor = '#0f172a'; // Deep slate block
-        text1.style.color = '#d97706';
-        text2.style.color = '#d97701';
+    // Live Edit mode engine toggle
+    function toggleLiveEdit() {
+      const isEditable = document.getElementById('resume-container').getAttribute('contenteditable') === 'true';
+      document.getElementById('resume-container').setAttribute('contenteditable', !isEditable);
+      
+      const btn = document.getElementById('edit-mode-btn');
+      if (!isEditable) {
+        btn.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Live Edit: ON';
+        btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-700');
+        btn.classList.remove('bg-slate-800');
+      } else {
+        btn.innerHTML = '<i class="fa-solid fa-pen"></i> Enable Live Edit';
+        btn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-700');
+        btn.classList.add('bg-slate-800');
       }
+    }
+
+    // Toggle Typography Family
+    let currentFont = 0;
+    const fontClasses = ['font-sans', 'font-serif', 'font-mono'];
+    function toggleTypography() {
+      const body = document.body;
+      body.classList.remove('font-sans', 'font-serif', 'font-mono');
+      currentFont = (currentFont + 1) % fontClasses.length;
+      body.classList.add(fontClasses[currentFont]);
     }
 
     // Default setup
