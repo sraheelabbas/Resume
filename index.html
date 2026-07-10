@@ -8,7 +8,7 @@
   <!-- Google Fonts for Dynamic Layout Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Quicksand:wght=500;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS Framework -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons pack -->
@@ -22,6 +22,7 @@
             sans: ['Inter', 'sans-serif'],
             serif: ['Playfair Display', 'serif'],
             display: ['Montserrat', 'sans-serif'],
+            funky: ['Quicksand', 'sans-serif']
           }
         }
       }
@@ -46,9 +47,9 @@
       --text-muted: #475569;
       
       /* Interactive Workspace Rulers */
-      --page-padding: 16mm;
-      --section-gap: 1.25rem;
-      --base-font-size: 11px;
+      --page-padding: 13mm;
+      --section-gap: 1rem;
+      --base-font-size: 10.5px;
     }
 
     /* Burgundy Theme Custom Properties */
@@ -106,6 +107,9 @@
       background-color: var(--body-bg);
       font-family: 'Inter', sans-serif;
       transition: background-color 0.3s ease;
+      /* Security selections lock */
+      user-select: none;
+      -webkit-user-select: none;
     }
     
     .resume-page {
@@ -160,7 +164,7 @@
         width: 210mm !important;
         height: 297mm !important;
         max-height: 297mm !important;
-        padding: 14mm 14mm !important;
+        padding: 11mm 11mm !important;
         page-break-after: always;
         page-break-inside: avoid !important;
         overflow: hidden !important;
@@ -171,7 +175,7 @@
       }
       /* Tighten text and line spacing slightly to fit within print box bounds */
       p, li, span, div {
-        font-size: 99.5% !important;
+        font-size: 99% !important;
         line-height: 1.35 !important;
       }
       ul.list-disc {
@@ -180,14 +184,14 @@
     }
   </style>
 </head>
-<body class="text-slate-800 antialiased print:bg-white">
+<body class="text-slate-800 antialiased print:bg-white" oncontextmenu="return false;">
 
-  <!-- Interactive control panel -->
+  <!-- Interactive control panel with Enlarged Brand Photo and dynamic Persona Gauge -->
   <div class="no-print sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800 py-3.5 px-6 shadow-sm flex flex-wrap gap-4 items-center justify-between text-white">
     <div class="flex items-center gap-3">
-      <!-- Mini avatar brand logo replacing old SR placeholder -->
+      <!-- Miniature profile image replacing old brand initials -->
       <img id="brand-logo-img" src="resume3.jpg" alt="Syed Raheel Abbas" 
-           class="h-9 w-9 rounded-full object-cover border-2 border-indigo-500 shadow-sm"
+           class="h-14 w-14 rounded-full object-cover border-2 border-indigo-500 shadow-md transform hover:scale-110 transition-transform"
            onerror="this.src='profile.png'">
       <div>
         <h1 class="text-sm font-bold text-white tracking-wide">Syed Raheel Abbas — Interactive Workspace</h1>
@@ -220,15 +224,13 @@
       </button>
     </div>
 
-    <!-- Live Workspace Rulers (Creative controls) -->
+    <!-- Custom Layout Persona Gauge Controls -->
     <div class="flex flex-wrap items-center gap-4 border-l border-slate-800 pl-4">
-      <div class="flex flex-col">
-        <span class="text-[10px] text-slate-400 font-bold uppercase">Section Gap</span>
-        <input type="range" min="8" max="24" value="20" class="w-20 accent-indigo-500 bg-slate-800 cursor-pointer h-1 rounded" id="gap-slider" oninput="updateGap(this.value)">
-      </div>
-      <div class="flex flex-col">
-        <span class="text-[10px] text-slate-400 font-bold uppercase">Font Size</span>
-        <input type="range" min="10" max="13" value="11" class="w-20 accent-indigo-500 bg-slate-800 cursor-pointer h-1 rounded" id="font-slider" oninput="updateFontSize(this.value)">
+      <div class="flex items-center gap-2 bg-slate-800/80 p-1.5 rounded border border-slate-700">
+        <span class="text-[10px] text-slate-400 font-bold uppercase px-2">Persona Meter:</span>
+        <button onclick="setPersona('executive')" class="text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm" id="btn-persona-executive">Normal Person</button>
+        <button onclick="setPersona('funky')" class="text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all" id="btn-persona-funky">Kids (Funky)</button>
+        <button onclick="setPersona('senior')" class="text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all" id="btn-persona-senior">Old Age</button>
       </div>
       
       <!-- Control Actions -->
@@ -236,10 +238,7 @@
         <button id="edit-mode-btn" onclick="toggleLiveEdit()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5" title="Click directly on any text below to edit your resume in real-time!">
           <i class="fa-solid fa-pen"></i> Enable Live Edit
         </button>
-        <button onclick="toggleTypography()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-[11px] font-bold px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
-          <i class="fa-solid fa-font"></i> Switch Font
-        </button>
-        <button onclick="window.print()" class="ml-2 bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-bold px-4 py-1.5 rounded shadow transition-all flex items-center gap-1.5">
+        <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-bold px-4 py-1.5 rounded shadow transition-all flex items-center gap-1.5">
           <i class="fa-solid fa-print"></i> Save PDF / Print
         </button>
       </div>
@@ -252,7 +251,7 @@
     <div id="page-1" class="resume-page flex flex-col justify-between">
       <div>
         
-        <!-- HEADER (Naam, Title aur Contacts) -->
+        <!-- HEADER (Naam, Title aur Contacts - Optimized to prevent spillover) -->
         <div class="relative flex justify-between items-center gap-6 border-b border-slate-100 pb-5">
           <div class="flex-1" id="header-text-block">
             <h1 id="main-name-title" class="font-display font-light text-3xl tracking-[0.2em] uppercase transition-all duration-300">
@@ -262,7 +261,7 @@
               Senior Project Manager &bull; Head of QA & ALM &bull; FinTech & Core Banking Leader
             </h2>
             
-            <!-- Contact Details Grid -->
+            <!-- Contact Details Grid (Fully dynamic, high-density placement) -->
             <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-[10.5px] font-sans mt-5 max-w-lg" id="contact-grid">
               <div class="flex items-center gap-2">
                 <i class="fa-solid fa-phone text-slate-400 w-3.5 text-center"></i>
@@ -283,13 +282,13 @@
               <!-- Premium custom shortlink row matching template spacing rules -->
               <div class="flex items-center gap-2 font-semibold col-span-2 mt-0.5" id="header-portfolio-wrap">
                 <i class="fa-solid fa-globe w-3.5 text-center" id="header-portfolio-icon"></i>
-                <span class="text-slate-400 font-normal mr-1">Online Workspace:</span>
+                <span class="text-slate-400 font-normal mr-1">Online Resume:</span>
                 <a href="https://bit.ly/4f3ue0q" target="_blank" class="hover:underline whitespace-nowrap">bit.ly/4f3ue0q</a>
               </div>
             </div>
           </div>
 
-          <!-- Overlapping Creative Shaded Morphed Frame -->
+          <!-- Overlapping Creative Shaded Morphed Frame (Maintains gorgeous overlapping placement) -->
           <div class="relative w-36 h-36 flex-shrink-0 -mb-12 translate-y-6 z-20">
             <!-- Morphing back drop glow shadow (changes dynamically) -->
             <div id="morphed-shadow-glow" class="absolute inset-0 bg-slate-300/30 border border-slate-400/20 morphed-frame scale-105 shadow-sm transition-all duration-300"></div>
@@ -343,7 +342,7 @@
           </div>
         </div>
 
-        <!-- EXPERIENCE -->
+        <!-- EXPERIENCE (Carefully calibrated to ensure VRG is always 100% visible) -->
         <div>
           <div class="border-b pb-1 mb-4" id="exp-border-bottom">
             <h3 class="font-display font-medium text-xs tracking-[0.25em] uppercase" id="exp-section-header">
@@ -358,7 +357,7 @@
                 <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Senior Project Manager</span>
                 <span class="text-[11px] text-slate-500 font-medium">Nov 2023 -- Present</span>
               </div>
-              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">JS Bank | Karachi, Pakistan</div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase">JS Bank | Karachi, Pakistan</div>
               <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                 <li><strong class="text-slate-800 focus-strong">PMO Framework Overhaul:</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, optimizing metrics tracking and reducing average project delivery cycles by 22%.</li>
                 <li><strong class="text-slate-800 focus-strong">OpenProject Setup:</strong> Spearheaded the direct installation and optimization of OpenProject for JS Bank PMO department, boosting task orchestration and visual progress visibility.</li>
@@ -372,7 +371,7 @@
                 <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Unit Head QA & ALM</span>
                 <span class="text-[11px] text-slate-500 font-medium">Aug 2018 -- Nov 2023</span>
               </div>
-              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">The Bank of Khyber | Karachi, Pakistan</div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase">The Bank of Khyber | Karachi, Pakistan</div>
               <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                 <li><strong class="text-slate-800 focus-strong">UAT Dashboard Blueprint:</strong> Managed and spearheaded complete Core Banking UAT execution, designing the centralized real-time dashboard and execution workflows for the T24 implementation.</li>
                 <li><strong class="text-slate-800 focus-strong">ITSM Design:</strong> Independently designed, customized, and deployed comprehensive IT Service Management (ITSM) systems via System Center Configuration Manager (SCCM).</li>
@@ -380,13 +379,13 @@
               </ul>
             </div>
 
-            <!-- JOB 3 -->
+            <!-- JOB 3 (100% visible and explicitly configured with space margins) -->
             <div>
               <div class="flex justify-between items-baseline mb-1">
                 <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Manager QA</span>
                 <span class="text-[11px] text-slate-500 font-medium">May 2017 -- Jul 2018</span>
               </div>
-              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase company-sub-label">VRG (Virtual Remittance Gateway) | Karachi, Pakistan</div>
+              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1.5 uppercase">VRG (Virtual Remittance Gateway) | Karachi, Pakistan</div>
               <ul class="text-[11px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                 <li><strong class="text-slate-800 focus-strong">FinTech Platform Testing:</strong> Guided QA schedules for critical high-performance platforms, validating SAP Wallet Solutions Meezan, AMA Accounts, and ISO 8583 switch systems.</li>
               </ul>
@@ -447,10 +446,10 @@
                   <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Head of QA & ALM</span>
                   <span class="text-[11px] text-slate-500 font-medium">Nov 2009 -- May 2017</span>
                 </div>
-                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase company-sub-label">UBL (United Bank Limited) | Karachi, Pakistan</div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">UBL (United Bank Limited) | Karachi, Pakistan</div>
                 <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                  <li><strong class="text-slate-800 focus-strong">TFS Customizations:</strong> Designed the Custom Change Management Portal (CMC) and integrated complete automated change workflows by customizing TFS pipelines.</li>
-                  <li><strong class="text-slate-800 focus-strong">OMNI & Net Banking:</strong> Directed automated validations across UBL OMNI (branchless bank) scaling regression coverage to 85% via Selenium scripts.</li>
+                  <li><strong class="text-slate-800">TFS Customizations:</strong> Designed the Custom Change Management Portal (CMC) and integrated complete automated change workflows by customizing TFS pipelines.</li>
+                  <li><strong class="text-slate-800">OMNI & Net Banking:</strong> Directed automated validations across UBL OMNI (branchless bank) scaling regression coverage to 85% via Selenium scripts.</li>
                 </ul>
               </div>
 
@@ -460,9 +459,9 @@
                   <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Team Lead -- QA & BA</span>
                   <span class="text-[11px] text-slate-500 font-medium">Oct 2006 -- Nov 2009</span>
                 </div>
-                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase company-sub-label">Kalsoft Ltd. | Karachi, Pakistan</div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">Kalsoft Ltd. | Karachi, Pakistan</div>
                 <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                  <li><strong class="text-slate-800 focus-strong">CMMI Audit Operations:</strong> Worked side-by-side with senior audit teams to standardise systems, securing global CMMI Process Level 3 Certification.</li>
+                  <li><strong class="text-slate-800">CMMI Audit Operations:</strong> Worked side-by-side with senior audit teams to standardise systems, securing global CMMI Process Level 3 Certification.</li>
                 </ul>
               </div>
 
@@ -472,7 +471,7 @@
                   <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Senior SE (QA)</span>
                   <span class="text-[11px] text-slate-500 font-medium">Feb 2005 -- Sep 2006</span>
                 </div>
-                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase company-sub-label">Aventech Pvt Ltd. | Karachi, Pakistan</div>
+                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">Aventech Pvt Ltd. | Karachi, Pakistan</div>
                 <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                   <li>Delivered QA, verification schedules, and client-facing validations for John Lewis Department Store and GlaxoSmithKline.</li>
                 </ul>
@@ -695,7 +694,83 @@
 
   </div>
 
+  <!-- Global Workspace Copyright & Support Footer (Marked as no-print to preserve pristine paper layouts) -->
+  <footer class="no-print mt-8 mb-4 text-center text-xs text-slate-500 border-t border-slate-200 pt-4 max-w-[210mm] mx-auto px-4">
+    <p class="font-semibold text-slate-600">Copyright &copy; 2026 Syed Raheel Abbas. All rights reserved.</p>
+    <p class="text-[11px] mt-1 text-slate-400">If you are a recruiter looking to connect, or an IT professional looking to request/discuss this premium interactive formatting template, please contact:</p>
+    <p class="text-[11px] mt-1.5 text-indigo-600 font-bold">
+      <i class="fa-solid fa-phone"></i> +92 333 2177016, +92 340 7177016 &bull; <i class="fa-solid fa-envelope"></i> sraheelabbas@gmail.com
+    </p>
+  </footer>
+
+  <!-- Stealth custom interactive toast notification for blocked rights/inspections -->
+  <div id="security-toast" class="no-print fixed bottom-6 right-6 z-50 max-w-sm transform translate-y-20 opacity-0 pointer-events-none transition-all duration-500 ease-out bg-slate-900/95 backdrop-blur text-white p-4.5 rounded-xl border border-slate-700 shadow-2xl flex items-start gap-3">
+    <div class="h-10 w-10 bg-indigo-600/30 rounded-lg flex items-center justify-center text-indigo-400 flex-shrink-0 mt-0.5 border border-indigo-500/20">
+      <i class="fa-solid fa-lock text-lg"></i>
+    </div>
+    <div class="flex-1">
+      <h4 class="text-xs font-bold text-slate-100 tracking-wide">Interactive Content Protected</h4>
+      <p class="text-[10px] text-slate-300 mt-1 leading-relaxed">
+        Copyright &copy; 2026 Syed Raheel Abbas. If you wish to connect, collaborate, or request this exact format template, feel free to reach out directly at:
+      </p>
+      <p class="text-[10.5px] text-indigo-400 font-bold mt-2">
+        <i class="fa-solid fa-phone"></i> +92 333 2177016, +92 340 7177016<br>
+        <i class="fa-solid fa-envelope"></i> sraheelabbas@gmail.com
+      </p>
+    </div>
+    <button onclick="closeSecurityToast()" class="text-slate-400 hover:text-white transition-colors">
+      <i class="fa-solid fa-xmark text-sm"></i>
+    </button>
+  </div>
+
   <script>
+    // Content Security System: Blocks inspections, text copying, and right-clicks with custom premium visual prompts
+    document.addEventListener('contextmenu', event => {
+      event.preventDefault();
+      triggerSecurityToast();
+    });
+
+    document.addEventListener('keydown', event => {
+      // Disables F12
+      if (event.keyCode === 123) {
+        event.preventDefault();
+        triggerSecurityToast();
+      }
+      // Disables Ctrl+Shift+I (Inspect), Ctrl+Shift+C (Element Selector), Ctrl+Shift+J (Console)
+      if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 67 || event.keyCode === 74)) {
+        event.preventDefault();
+        triggerSecurityToast();
+      }
+      // Disables Ctrl+S (Save), Ctrl+U (View Source)
+      if (event.ctrlKey && (event.keyCode === 83 || event.keyCode === 85)) {
+        event.preventDefault();
+        triggerSecurityToast();
+      }
+      // Disables Mac equivalents Command+Option+I, Command+S
+      if (event.metaKey && (event.keyCode === 83 || event.keyCode === 73)) {
+        event.preventDefault();
+        triggerSecurityToast();
+      }
+    });
+
+    // Custom non-blocking interactive safety notification
+    function triggerSecurityToast() {
+      const toast = document.getElementById('security-toast');
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      
+      // Auto close after 12 seconds
+      setTimeout(() => {
+        closeSecurityToast();
+      }, 12000);
+    }
+
+    function closeSecurityToast() {
+      const toast = document.getElementById('security-toast');
+      toast.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+    }
+
     // Failsafe image fallback systems
     function handleImageFallback() {
       const img = document.getElementById('avatar-img');
@@ -709,13 +784,66 @@
       }
     }
 
-    // Dynamic Spacing and Font Adjustments
-    function updateGap(val) {
-      document.documentElement.style.setProperty('--section-gap', (val / 16) + 'rem');
+    // Dynamic Spacing via Layout Persona Gauge
+    function setPersona(persona) {
+      const btnExecutive = document.getElementById('btn-persona-executive');
+      const btnFunky = document.getElementById('btn-persona-funky');
+      const btnSenior = document.getElementById('btn-persona-senior');
+      const body = document.body;
+
+      // Clean active styling
+      btnExecutive.className = "text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all";
+      btnFunky.className = "text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all";
+      btnSenior.className = "text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all";
+      body.classList.remove('font-sans', 'font-funky', 'font-serif');
+
+      if (persona === 'executive') {
+        // Standard, clean high-density layout
+        document.documentElement.style.setProperty('--section-gap', '1rem');
+        document.documentElement.style.setProperty('--page-padding', '12mm');
+        document.documentElement.style.setProperty('--base-font-size', '10px');
+        btnExecutive.className = "text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm";
+        body.classList.add('font-sans');
+        removeEmojis();
+      } else if (persona === 'funky') {
+        // Playful, creative, children-style representation
+        document.documentElement.style.setProperty('--section-gap', '1.25rem');
+        document.documentElement.style.setProperty('--page-padding', '14mm');
+        document.documentElement.style.setProperty('--base-font-size', '11px');
+        btnFunky.className = "text-[10px] font-bold px-2.5 py-1 rounded bg-amber-500 text-slate-900 transition-all shadow-sm";
+        body.classList.add('font-funky');
+        applyEmojis();
+      } else if (persona === 'senior') {
+        // Highly accessible large text for elders or low vision
+        document.documentElement.style.setProperty('--section-gap', '1.4rem');
+        document.documentElement.style.setProperty('--page-padding', '15mm');
+        document.documentElement.style.setProperty('--base-font-size', '13.5px');
+        btnSenior.className = "text-[10px] font-bold px-2.5 py-1 rounded bg-emerald-600 text-white transition-all shadow-sm";
+        body.classList.add('font-serif');
+        removeEmojis();
+      }
     }
 
-    function updateFontSize(val) {
-      document.documentElement.style.setProperty('--base-font-size', val + 'px');
+    // Dynamic injection of colorful emojis to make Funky Mode truly children-focused
+    function applyEmojis() {
+      removeEmojis(); // clear existing first
+      document.getElementById('summary-title').innerHTML = "✨ Professional Summary ✨";
+      document.getElementById('skills-section-header').innerHTML = "🎯 Skills & Expertise 🎯";
+      document.getElementById('exp-section-header').innerHTML = "💼 Work Experience 💼";
+      document.getElementById('exp2-title').innerHTML = "🚀 Work Experience (Continued) 🚀";
+      document.getElementById('edu-title').innerHTML = "🎓 Education & Training 🎓";
+      document.getElementById('highlights-title').innerHTML = "🏆 Featured Milestones & Trainings 🏆";
+      document.getElementById('extra-title').innerHTML = "🎨 Extracurricular Portfolio 🎨";
+    }
+
+    function removeEmojis() {
+      document.getElementById('summary-title').innerHTML = "Professional Summary";
+      document.getElementById('skills-section-header').innerHTML = "Skills & Expertise";
+      document.getElementById('exp-section-header').innerHTML = "Work Experience";
+      document.getElementById('exp2-title').innerHTML = "Work Experience (Continued)";
+      document.getElementById('edu-title').innerHTML = "Education & Training";
+      document.getElementById('highlights-title').innerHTML = "Featured Milestones & Trainings";
+      document.getElementById('extra-title').innerHTML = "Extracurricular Portfolio";
     }
 
     // Dynamic UI Theme Engines
@@ -814,7 +942,7 @@
 
         summaryStrip.className = "p-5 rounded-lg my-5 border relative z-10 transition-all duration-300 bg-[#fdf2f5] border-[#f4d0d8]";
         summaryTitle.className = "font-serif font-bold text-[10px] tracking-[0.2em] uppercase mb-2 text-[#6b1d3f]";
-        summaryText.className = "text-[11.5px] leading-relaxed text-justify text-[#5c142b]";
+        summaryText.className = "text-[11.5px] leading-relaxed text-[#5c142b]";
 
         sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 border transition-all duration-300 bg-[#fcf5f7] border-[#f4d0d8] text-[#5c142b]";
         text1.className = "font-serif font-bold text-[11px] tracking-wide mt-2 transition-all duration-300 text-[#6b1d3f]";
@@ -869,7 +997,7 @@
 
         summaryStrip.className = "p-5 rounded-lg my-5 border relative z-10 transition-all duration-300 bg-[#eef2ff] border-[#c7d2fe]";
         summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] uppercase mb-2 text-[#1e1b4b]";
-        summaryText.className = "text-[11.5px] leading-relaxed text-justify text-[#1e1b4b]";
+        summaryText.className = "text-[11.5px] leading-relaxed text-[#1e1b4b]";
 
         sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 border transition-all duration-300 bg-[#f5f7ff] border-[#c7d2fe] text-[#312e81]";
         text1.className = "font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300 text-[#1e1b4b]";
@@ -925,7 +1053,7 @@
 
         summaryStrip.className = "p-5 rounded-lg my-5 border relative z-10 transition-all duration-300 bg-[#0f172a] border-[#1e293b] text-white border-l-4 border-l-amber-500";
         summaryTitle.className = "font-display font-bold text-[10px] tracking-[0.2em] uppercase mb-2 text-amber-500";
-        summaryText.className = "text-[11.5px] leading-relaxed text-justify text-slate-300";
+        summaryText.className = "text-[11.5px] leading-relaxed text-slate-300";
 
         sideBlock.className = "col-span-4 rounded-xl p-4 space-y-5 border transition-all duration-300 bg-slate-900 border-[#1e293b] border-t-4 border-t-amber-500 text-white";
         text1.className = "font-display font-bold text-[11px] tracking-widest uppercase mt-2 transition-all duration-300 text-amber-500";
@@ -981,19 +1109,10 @@
       }
     }
 
-    // Toggle Typography Family
-    let currentFont = 0;
-    const fontClasses = ['font-sans', 'font-serif', 'font-mono'];
-    function toggleTypography() {
-      const body = document.body;
-      body.classList.remove('font-sans', 'font-serif', 'font-mono');
-      currentFont = (currentFont + 1) % fontClasses.length;
-      body.classList.add(fontClasses[currentFont]);
-    }
-
     // Default setup
     window.onload = function() {
       applyTheme('eco'); // Low-ink Eco Print set as baseline safe startup
+      setPersona('executive'); // Standard layout default startup
     }
   </script>
 </body>
