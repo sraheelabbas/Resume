@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sehrish Raza - Professional Resume</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Professional Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --resume-accent: #0f172a; /* Slate 900 */
+      --resume-accent-subtle: #475569; /* Slate 600 */
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #334155;
+    }
+    .font-serif {
+      font-family: 'Merriweather', serif;
+    }
+    
+    /* A4 Dimensions for Premium Web Preview Container */
+    .a4-page {
+      width: 100%;
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 2.5rem auto;
+      background: #ffffff;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+      padding: 3.5rem 3.5rem;
+      border-top: 10px solid var(--resume-accent);
+      position: relative;
+    }
+
+    /* Print settings for high-fidelity PDF exporting */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .a4-page {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 12mm 15mm;
+        border-top: 8px solid var(--resume-accent);
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-break-inside-avoid {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+    }
+
+    /* Visual highlight for editable elements */
+    [contenteditable="true"] {
+      transition: background-color 0.2s, outline 0.2s;
+    }
+    [contenteditable="true"]:hover {
+      background-color: #f1f5f9;
+      cursor: text;
+    }
+    [contenteditable="true"]:focus {
+      outline: 2px dashed #94a3b8;
+      background-color: #f1f5f9;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Floating Actions (Hidden during print/PDF generation) -->
+  <div class="no-print fixed bottom-8 right-8 flex flex-col gap-3 z-50">
+    <button onclick="window.print()" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl font-semibold tracking-wide transition-all hover:scale-105 flex items-center gap-2">
+      <i class="fa-solid fa-file-pdf"></i> Save / Print PDF
+    </button>
+  </div>
+
+  <main class="a4-page">
+    
+    <!-- HEADER SECTION (ATS-Optimized & Centered) -->
+    <header class="text-center mb-8 pb-6 border-b border-slate-200">
+      <h1 contenteditable="true" class="text-4xl md:text-5xl font-black font-serif text-slate-900 tracking-tight mb-2">Sehrish Raza</h1>
+      <h2 contenteditable="true" class="text-xs md:text-sm font-semibold tracking-[0.25em] text-slate-500 uppercase mb-4">ACCA Affiliate | Finance, Audit &amp; Regulatory Operations</h2>
+      
+      <!-- Contact Info with ATS-friendly pipe separation -->
+      <div class="flex flex-wrap justify-center items-center gap-y-1.5 gap-x-4 text-xs md:text-sm text-slate-600">
+        <span contenteditable="true" class="flex items-center gap-1.5">
+          <i class="fa-solid fa-envelope text-slate-400"></i> sehrishraheeel@gmail.com
+        </span>
+        <span class="text-slate-300 hidden md:inline">|</span>
+        <span contenteditable="true" class="flex items-center gap-1.5">
+          <i class="fa-solid fa-phone text-slate-400"></i> +92 331 2037348
+        </span>
+        <span class="text-slate-300 hidden md:inline">|</span>
+        <span contenteditable="true" class="flex items-center gap-1.5">
+          <i class="fa-solid fa-location-dot text-slate-400"></i> Bahadurabad, Karachi, Pakistan
+        </span>
+      </div>
+    </header>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <section class="mb-7 print-break-inside-avoid">
+      <h3 class="text-sm font-extrabold tracking-[0.15em] text-slate-900 border-b-2 border-slate-900 pb-1 mb-3 uppercase">Professional Summary</h3>
+      <p contenteditable="true" class="text-xs md:text-sm text-slate-700 leading-relaxed text-justify">
+        Results-driven Finance Professional and ACCA Affiliate with robust expertise spanning corporate finance, regulatory compliance, internal controls, and operational reconciliation. Combines a strong foundation in core accounting and financial reporting with specialized, high-stakes experience in depository operations, court-approved corporate schemes, and risk management at the Central Depository Company (CDC) of Pakistan. Highly adaptable and equipped to drive tangible value across Internal Audit, Corporate Finance, and Banking Compliance sectors by optimizing control frameworks, ensuring regulatory alignment, and safeguarding organizational data integrity.
+      </p>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section class="mb-7">
+      <h3 class="text-sm font-extrabold tracking-[0.15em] text-slate-900 border-b-2 border-slate-900 pb-1 mb-4 uppercase">Professional Experience</h3>
+      
+      <!-- Central Depository Company (CDC) -->
+      <div class="mb-6 print-break-inside-avoid">
+        <div class="flex justify-between items-baseline mb-1">
+          <h4 contenteditable="true" class="text-sm md:text-base font-bold text-slate-900 font-serif">Central Depository Company (CDC) of Pakistan</h4>
+          <span contenteditable="true" class="text-xs font-semibold text-slate-500">Karachi, Pakistan</span>
+        </div>
+        
+        <div class="flex justify-between items-center mb-1">
+          <span contenteditable="true" class="text-xs md:text-sm font-semibold italic text-slate-700">Officer (Operations &amp; CDS)</span>
+          <span contenteditable="true" class="text-xs font-semibold text-slate-500">Jul 2026 – Present</span>
+        </div>
+        
+        <div class="flex justify-between items-center mb-3">
+          <span contenteditable="true" class="text-xs md:text-sm font-semibold italic text-slate-700">Intern (Operations &amp; CSS)</span>
+          <span contenteditable="true" class="text-xs font-semibold text-slate-500">Apr 2026 – Jun 2026</span>
+        </div>
+
+        <ul class="list-disc list-outside ml-4 text-xs md:text-sm text-slate-700 space-y-2 marker:text-slate-400">
+          <li contenteditable="true">Manage end-to-end <strong>cash dividend processing</strong>, including register maintenance, eligibility checks, and secure disbursements via the RAAST instant payment system.</li>
+          <li contenteditable="true">Execute critical <strong>corporate actions</strong> in compliance with the Central Depositories Act, 1997 and CDC Regulations, encompassing book closures, bonus issues, and cash dividends.</li>
+          <li contenteditable="true"><strong>Schemes &amp; ESOS Execution:</strong> Execute the formal operational mechanics for court-approved corporate schemes of arrangement and Employee Stock Option Schemes (ESOS), ensuring precise system implementation and depository compliance.</li>
+          <li contenteditable="true">Monitor daily Pakistan Stock Exchange (PSX) announcements via PUCAR and draft/issue accurate <strong>corporate action notices</strong> to corporate stakeholders and issuers.</li>
+          <li contenteditable="true">Reconcile investor proceeds with 1LINK collections for <strong>eIPO and eLoR</strong>; investigate and resolve financial discrepancies and breaks with issuers and partner commercial banks.</li>
+          <li contenteditable="true">Maintain active <strong>risk registers</strong> and strict internal document controls, supporting continuous process improvements to strengthen overall operational resilience.</li>
+          <li contenteditable="true">Review complex client financial statements and corporate legal documentation to authorize <strong>CDS account setup</strong> and ensure ongoing regulatory compliance.</li>
+          <li contenteditable="true">Handle end-to-end <strong>Provision of Information (POI)</strong> requests securely for competent statutory authorities including SECP, Stock Exchange, Courts, and FIA.</li>
+        </ul>
+      </div>
+
+      <!-- KalSoft Pvt Ltd -->
+      <div class="mb-2 print-break-inside-avoid">
+        <div class="flex justify-between items-baseline mb-1">
+          <h4 contenteditable="true" class="text-sm md:text-base font-bold text-slate-900 font-serif">KalSoft Pvt. Ltd.</h4>
+          <span contenteditable="true" class="text-xs font-semibold text-slate-500">Karachi, Pakistan</span>
+        </div>
+        <div class="flex justify-between items-center mb-2">
+          <span contenteditable="true" class="text-xs md:text-sm font-semibold italic text-slate-700">Senior Finance Executive</span>
+          <span contenteditable="true" class="text-xs font-semibold text-slate-500">Aug 2007 – Aug 2009</span>
+        </div>
+        <ul class="list-disc list-outside ml-4 text-xs md:text-sm text-slate-700 space-y-2 marker:text-slate-400">
+          <li contenteditable="true">Oversaw core accounting processes, comprehensive ledger maintenance, and corporate financial reporting cycles.</li>
+          <li contenteditable="true">Prepared corporate financial statements, variance analysis reports, and monthly operating budgets for senior management review.</li>
+          <li contenteditable="true">Streamlined internal accounting workflows, reducing reporting cycle times and enhancing general ledger data accuracy.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CORE COMPETENCIES & SECTOR EXPERTISE (ATS Tags) -->
+    <section class="mb-7 print-break-inside-avoid">
+      <h3 class="text-sm font-extrabold tracking-[0.15em] text-slate-900 border-b-2 border-slate-900 pb-1 mb-4 uppercase">Core Competencies &amp; Sector Expertise</h3>
+      
+      <div class="space-y-3.5">
+        <!-- Finance & Audit Row -->
+        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+          <strong class="text-slate-900 text-xs md:text-sm font-semibold w-36 shrink-0 mt-0.5">Audit &amp; Finance:</strong>
+          <div class="flex flex-wrap gap-1.5">
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Financial Reporting</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Internal Audit</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Variance Analysis</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">General Ledger</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Risk Management</span>
+          </div>
+        </div>
+
+        <!-- Compliance & Regulatory Row -->
+        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+          <strong class="text-slate-900 text-xs md:text-sm font-semibold w-36 shrink-0 mt-0.5">Compliance:</strong>
+          <div class="flex flex-wrap gap-1.5">
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">SECP Guidelines</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Corporate Governance</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Provision of Information (POI)</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Document Controls</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Regulatory Audit Support</span>
+          </div>
+        </div>
+
+        <!-- Operations & Capital Markets Row -->
+        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+          <strong class="text-slate-900 text-xs md:text-sm font-semibold w-36 shrink-0 mt-0.5">Operations:</strong>
+          <div class="flex flex-wrap gap-1.5">
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Process Reconciliation</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Depository Operations</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Schemes &amp; ESOS</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">Corporate Actions</span>
+            <span contenteditable="true" class="bg-slate-50 border border-slate-200 text-slate-800 px-2 py-0.5 rounded text-[11px] md:text-xs font-medium">MIS Reporting</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="print-break-inside-avoid">
+      <h3 class="text-sm font-extrabold tracking-[0.15em] text-slate-900 border-b-2 border-slate-900 pb-1 mb-4 uppercase">Education</h3>
+      
+      <div class="mb-4 flex justify-between items-baseline">
+        <div>
+          <h4 contenteditable="true" class="text-xs md:text-sm font-bold text-slate-900 font-serif">ACCA Affiliate</h4>
+          <p contenteditable="true" class="text-xs text-slate-600">Association of Chartered Certified Accountants, UK</p>
+        </div>
+        <span contenteditable="true" class="text-xs font-semibold text-slate-500">Completed</span>
+      </div>
+      
+      <div class="flex justify-between items-baseline">
+        <div>
+          <h4 contenteditable="true" class="text-xs md:text-sm font-bold text-slate-900 font-serif">Bachelor of Commerce (B.Com)</h4>
+          <p contenteditable="true" class="text-xs text-slate-600">University of Karachi, Pakistan</p>
+        </div>
+        <span contenteditable="true" class="text-xs font-semibold text-slate-500">Completed</span>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
