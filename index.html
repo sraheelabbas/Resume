@@ -30,7 +30,7 @@
   </script>
   
   <style>
-    /* CSS Variables for Contrast Themes */
+    /* CSS Variables for Dynamic Contrast Themes */
     :root {
       --accent-color: #1e293b;
       --accent-light: #f1f5f9;
@@ -209,48 +209,116 @@
       if (fallback) fallback.classList.remove('hidden');
     }
 
-    // Dynamic Role Switcher (IT Professional vs Compliance Resume)
+    // Dynamic 3-Way Role Focus Switcher (IT Professional vs Compliance vs QA)
     function setRoleFocus(role) {
       const btnIT = document.getElementById('btn-role-it');
       const btnCompliance = document.getElementById('btn-role-compliance');
+      const btnQA = document.getElementById('btn-role-qa');
       
       const accentText1 = document.getElementById('accent-text-1');
       const accentText2 = document.getElementById('accent-text-2');
       const summaryText = document.getElementById('summary-text');
+      
+      const skillLabel1 = document.getElementById('skill-label-1');
+      const skillDetail1 = document.getElementById('skill-detail-1');
+      const skillLabel2 = document.getElementById('skill-label-2');
+      const skillDetail2 = document.getElementById('skill-detail-2');
+      const skillLabel3 = document.getElementById('skill-label-3');
+      const skillDetail3 = document.getElementById('skill-detail-3');
+      const skillLabel4 = document.getElementById('skill-label-4');
+      const skillDetail4 = document.getElementById('skill-detail-4');
+
       const job1Title = document.getElementById('job1-title');
       const job1Bullets = document.getElementById('job1-bullets');
 
+      // Reset button styles
+      const activeClass = "text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm";
+      const inactiveClass = "text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all";
+
+      if (btnIT) btnIT.className = inactiveClass;
+      if (btnCompliance) btnCompliance.className = inactiveClass;
+      if (btnQA) btnQA.className = inactiveClass;
+
       if (role === 'it') {
-        if (btnIT) btnIT.className = "text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm";
-        if (btnCompliance) btnCompliance.className = "text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all";
+        if (btnIT) btnIT.className = activeClass;
 
-        if (accentText1) accentText1.innerHTML = "Senior Project Manager • Head of QA & ALM • AI & Core Banking Leader";
-        if (accentText2) accentText2.innerHTML = "Senior Project Manager • Head of QA & ALM • AI & Core Banking Leader";
+        if (accentText1) accentText1.innerHTML = "Senior Manager QA • Senior Project Manager • AI & Core Banking Leader";
+        if (accentText2) accentText2.innerHTML = "Senior Manager QA • Senior Project Manager • AI & Core Banking Leader";
 
-        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leveraging <strong>AI tools for process automation, workflow optimization, and visual dashboard reporting</strong>. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging the gap between technological development and business management.";
+        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leveraging <strong>AI tools for process automation, QA portal engineering, and visual dashboard reporting</strong>. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging technological development with executive management.";
 
-        if (job1Title) job1Title.innerText = "Senior Project Manager";
+        if (skillLabel1) skillLabel1.innerText = "Management & Strategy";
+        if (skillDetail1) skillDetail1.innerText = "PMO Framework Overhauls | Agile/Scrum Methodologies | Portfolio Strategy | IT Governance | Risk Mitigation";
+
+        if (skillLabel2) skillLabel2.innerText = "Banking & FinTech";
+        if (skillDetail2) skillDetail2.innerText = "Temenos T24 Core Banking | SYMBOLS Core | Branchless Banking (UBL OMNI) | Financial Switches | ISO 8583 Standards";
+
+        if (skillLabel3) skillLabel3.innerText = "QA & AI Engineering";
+        if (skillDetail3) skillDetail3.innerText = "QA Portal Design | AI-Embedded Testing Workflows | Test Strategies (STLC) | Azure DevOps | Bug Lifecycle";
+
+        if (skillLabel4) skillLabel4.innerText = "Automation & Tools";
+        if (skillDetail4) skillDetail4.innerText = "Selenium | Python | JMeter | QA Tool Acquisition | Power BI | OpenProject | Netsparker Security";
+
+        if (job1Title) job1Title.innerText = "Senior Manager QA / Senior Project Manager";
         if (job1Bullets) job1Bullets.innerHTML = `
-          <li><strong class="text-slate-800 focus-strong">PMO Framework & AI Workflows:</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to optimize workflow pipelines and reduce project delivery cycles by 22%.</li>
+          <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Jan 2026 -- Present):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition for advanced test automation and security suites.</li>
+          <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools into test case generation, automated regression execution, and intelligent defect triaging, accelerating QA cycle efficiency by 35%.</li>
+          <li><strong class="text-slate-800 focus-strong">PMO Framework & AI Workflows (Nov 2023 -- Dec 2025):</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to optimize workflow pipelines and reduce project delivery cycles by 22%.</li>
           <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Managed end-to-end execution of critical financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
-          <li><strong class="text-slate-800 focus-strong">AI Dashboards & Process Improvement:</strong> Spearheaded the setup of OpenProject and real-time execution dashboards (Power BI / AI Analytics) for JS Bank PMO, boosting task orchestration and visual progress tracking.</li>
-          <li><strong class="text-slate-800 focus-strong">Strategic Deliveries:</strong> Led cross-functional engineering teams to manage core banking integrations, CRP -- Trade IQ, and Blockchain-based EKYC compliance.</li>
         `;
-      } else {
-        if (btnCompliance) btnCompliance.className = "text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm";
-        if (btnIT) btnIT.className = "text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all";
+      } else if (role === 'compliance') {
+        if (btnCompliance) btnCompliance.className = activeClass;
 
         if (accentText1) accentText1.innerHTML = "Senior Project Manager -- Compliance Systems • CRs & Projects Delivery • AI & Core Banking";
         if (accentText2) accentText2.innerHTML = "Senior Project Manager -- Compliance Systems • Head of QA & ALM • AI & Core Banking Leader";
 
         if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT & Project Management Leader with over 19 years of experience specializing in <strong>Compliance Systems, CRs & Projects Delivery, Core Banking, and Enterprise PMO Leadership</strong>. Proven track record as Senior Project Manager overseeing complex regulatory compliance portfolios, leveraging <strong>AI expertise to engineer automated workflows, executive dashboards, reporting solutions, and continuous process improvements</strong> across IT, Risk, Compliance, and Central Bank (SBP/FBR) mandates while establishing robust PMO frameworks.";
 
+        if (skillLabel1) skillLabel1.innerText = "Compliance & Governance";
+        if (skillDetail1) skillDetail1.innerText = "Change Requests (CRs) Delivery | Central Bank Mandates | Compliance Systems | Cross-Functional Coordination";
+
+        if (skillLabel2) skillLabel2.innerText = "Reporting & AI Analytics";
+        if (skillDetail2) skillDetail2.innerText = "Executive Dashboards (OpenProject / Power BI) | AI Workflow Optimization | Audit Trail Management";
+
+        if (skillLabel3) skillLabel3.innerText = "Project Management";
+        if (skillDetail3) skillDetail3.innerText = "PMO Overhauls | Agile/Scrum Governance | Stakeholder Alignment | Risk Mitigation | Delivery Tracking";
+
+        if (skillLabel4) skillLabel4.innerText = "Core Systems";
+        if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking | SYMBOLS Core | Financial Switches | ISO 8583 | EKYC Blockchain";
+
         if (job1Title) job1Title.innerText = "Senior Project Manager";
         if (job1Bullets) job1Bullets.innerHTML = `
           <li><strong class="text-slate-800 focus-strong">Compliance Portfolio Delivery:</strong> Spearheaded Project Management for critical Change Requests (CRs) and key system updates including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong> aligned with SBP / FBR mandates.</li>
           <li><strong class="text-slate-800 focus-strong">AI-Driven Dashboards & Process Optimization:</strong> Utilized AI tools and modern BI analytics (OpenProject / Power BI) to build automated workflows, executive progress dashboards, and audit-ready reporting, significantly enhancing process efficiency.</li>
           <li><strong class="text-slate-800 focus-strong">Cross-Functional Integration:</strong> Directed multi-disciplinary teams across IT, Compliance, Risk, and Operations to execute key projects including <strong>RTGS -- PRISM, CRP -- Trade IQ</strong>, and <strong>EKYC Systems</strong>.</li>
-          <li><strong class="text-slate-800 focus-strong">PMO Framework:</strong> Modernized PMO Framework processes across 12+ product lines, streamlining approval lifecycles and reducing delivery cycles by 22%.</li>
+          <li><strong class="text-slate-800 focus-strong">PMO Governance:</strong> Modernized PMO Framework processes across 12+ product lines, streamlining approval lifecycles and reducing delivery cycles by 22%.</li>
+        `;
+      } else if (role === 'qa') {
+        if (btnQA) btnQA.className = activeClass;
+
+        if (accentText1) accentText1.innerHTML = "Senior Manager QA • QA Automation & AI Specialist • PM Leadership";
+        if (accentText2) accentText2.innerHTML = "Senior Manager QA • Head of QA & ALM • AI & Core Banking Leader";
+
+        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven Quality Assurance & IT Leader with over 19 years of experience, including 17 years specializing in <strong>Quality Assurance, Test Automation Architecture, QA Tool Acquisition, and AI-Embedded Testing Workflows</strong>. Proven track record as Senior Manager QA designing enterprise QA portals, acquiring and procuring specialized testing tools, managing cross-functional QA engineering resources, and embedding AI across test automation, bug lifecycle management, and Core Banking (Temenos T24) UAT execution with a strong blend of Project Management.";
+
+        if (skillLabel1) skillLabel1.innerText = "QA Leadership & AI";
+        if (skillDetail1) skillDetail1.innerText = "Senior QA Management | AI-Embedded Testing Workflows | Custom QA Portal Engineering | STLC Architecture";
+
+        if (skillLabel2) skillLabel2.innerText = "Automation & Performance";
+        if (skillDetail2) skillDetail2.innerText = "Selenium | Python Scripts | JMeter Load Testing | Automated Regression Suites | API Socket Testing";
+
+        if (skillLabel3) skillLabel3.innerText = "Resource & Tool Governance";
+        if (skillDetail3) skillDetail3.innerText = "QA Tool Acquisition & Vendor Procurement | Resource Management | Azure DevOps / TFS Pipelines";
+
+        if (skillLabel4) skillLabel4.innerText = "Banking & PM Blend";
+        if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking UAT | PMO Methodologies | Risk Mitigation | Executive Progress Reporting";
+
+        if (job1Title) job1Title.innerText = "Senior Manager QA (with PM Blend)";
+        if (job1Bullets) job1Bullets.innerHTML = `
+          <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Jan 2026 -- Present):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, directing QA tool acquisition and procurement schedules, and managing cross-functional engineering resources.</li>
+          <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools for automated test generation, AI-assisted bug triaging, and regression script optimization, improving testing velocity by 35%.</li>
+          <li><strong class="text-slate-800 focus-strong">Test Automation & QA Portal Design:</strong> Engineered automated testing frameworks (Selenium, Python, JMeter) and custom QA monitoring portals for real-time defect orchestration and go-live readiness.</li>
+          <li><strong class="text-slate-800 focus-strong">Project Management Execution (Nov 2023 -- Dec 2025):</strong> Managed end-to-end execution of high-priority financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
         `;
       }
     }
@@ -603,7 +671,7 @@
       }
     }
 
-    // Security Notifications & Initializers
+    // Security Notifications & Initializer
     function triggerSecurityToast() {
       const toast = document.getElementById('security-toast');
       if (toast) {
@@ -621,7 +689,7 @@
       }
     }
 
-    // Initialization
+    // Initialization Failsafe
     function initDefaults() {
       applyTheme('eco');
       setPersona('executive');
@@ -648,20 +716,23 @@
            onerror="handleImageFallback(this)">
       <div>
         <h1 class="text-sm font-bold text-white tracking-wide">Syed Raheel Abbas — Interactive Workspace</h1>
-        <p class="text-[11px] text-slate-400">Executive Portfolio &bull; Senior Project Manager</p>
+        <p class="text-[11px] text-slate-400">Executive Portfolio &bull; Senior Manager QA & Senior PM</p>
       </div>
     </div>
     
     <!-- Unified Layout/Theme Switcher Row -->
     <div class="flex flex-wrap items-center gap-2">
-      <!-- Resume View Selector (IT Professional vs Compliance Resume) -->
-      <div class="flex items-center gap-1.5 bg-slate-800/80 p-1.5 rounded border border-slate-700 mr-2">
+      <!-- 3-Way Resume View Selector -->
+      <div class="flex items-center gap-1 bg-slate-800/80 p-1 rounded border border-slate-700 mr-2">
         <span class="text-[10px] text-slate-400 font-bold uppercase px-1">Resume View:</span>
         <button id="btn-role-it" onclick="setRoleFocus('it')" class="text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm">
           IT Professional
         </button>
         <button id="btn-role-compliance" onclick="setRoleFocus('compliance')" class="text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
-          Compliance Resume
+          Compliance
+        </button>
+        <button id="btn-role-qa" onclick="setRoleFocus('qa')" class="text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
+          Quality Assurance (QA)
         </button>
       </div>
 
@@ -717,10 +788,10 @@
               Syed Raheel Abbas
             </h1>
             <h2 id="accent-text-1" class="font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300">
-              Senior Project Manager • Head of QA & ALM • AI & Core Banking Leader
+              Senior Manager QA • Senior Project Manager • AI & Core Banking Leader
             </h2>
             
-            <!-- Simplified Contact Details Grid (Exactly 4 items: Phone, Email, LinkedIn, Resume) -->
+            <!-- Simplified Contact Details Grid (No Address) -->
             <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-[10.5px] font-sans mt-4 max-w-lg" id="contact-grid">
               <div class="flex items-center gap-2">
                 <i class="fa-solid fa-phone text-slate-400 w-3.5 text-center"></i>
@@ -760,7 +831,7 @@
             Professional Summary
           </h3>
           <p class="text-[11px] leading-relaxed text-justify" id="summary-text">
-            Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leveraging <strong>AI tools for process automation, workflow optimization, and visual dashboard reporting</strong>. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging the gap between technological development and business management.
+            Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leveraging <strong>AI tools for process automation, QA portal engineering, and visual dashboard reporting</strong>. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging technological development with executive management.
           </p>
         </div>
 
@@ -774,20 +845,20 @@
           
           <div class="space-y-2.5 text-xs" id="skills-block-grid">
             <div class="grid grid-cols-12 gap-3">
-              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label" id="skill-label-1">Management & AI Governance</div>
-              <div class="col-span-9 text-slate-600 section-skill-detail" id="skill-detail-1">PMO Overhauls | Agile/Scrum Methodologies | AI-Driven Process Improvement | Portfolio Strategy | Risk Mitigation</div>
+              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label" id="skill-label-1">Management & Strategy</div>
+              <div class="col-span-9 text-slate-600 section-skill-detail" id="skill-detail-1">PMO Framework Overhauls | Agile/Scrum Methodologies | Portfolio Strategy | IT Governance | Risk Mitigation</div>
             </div>
             <div class="grid grid-cols-12 gap-3">
               <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label" id="skill-label-2">Banking & FinTech</div>
               <div class="col-span-9 text-slate-600" id="skill-detail-2">Temenos T24 Core Banking | SYMBOLS Core | Branchless Banking (UBL OMNI) | Financial Switches | ISO 8583 Standards</div>
             </div>
             <div class="grid grid-cols-12 gap-3">
-              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label" id="skill-label-3">QA & AI Workflows</div>
-              <div class="col-span-9 text-slate-600" id="skill-detail-3">Test Strategies (STLC) | Team Foundation Server (TFS) | Azure DevOps | AI-Assisted Workflow Automation | Bug Life Cycle</div>
+              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label" id="skill-label-3">QA & AI Engineering</div>
+              <div class="col-span-9 text-slate-600" id="skill-detail-3">QA Portal Design | AI-Embedded Testing Workflows | Test Strategies (STLC) | Azure DevOps | Bug Lifecycle</div>
             </div>
             <div class="grid grid-cols-12 gap-3">
-              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label" id="skill-label-4">Analytics & Dashboards</div>
-              <div class="col-span-9 text-slate-600" id="skill-detail-4">Executive BI & Dashboards | OpenProject | SQL Server | Power BI | AI Analytics Tools | JMeter | Selenium | Netsparker</div>
+              <div class="col-span-3 font-semibold uppercase tracking-wide text-[10px] section-skill-label" id="skill-label-4">Automation & Tools</div>
+              <div class="col-span-9 text-slate-600" id="skill-detail-4">Selenium | Python | JMeter | QA Tool Acquisition | Power BI | OpenProject | Netsparker Security</div>
             </div>
           </div>
         </div>
@@ -801,18 +872,18 @@
           </div>
 
           <div class="space-y-4">
-            <!-- JOB 1 (JS BANK) -->
+            <!-- JOB 1 (JS BANK - SENIOR MANAGER QA & SENIOR PM) -->
             <div>
               <div class="flex justify-between items-baseline mb-0.5">
-                <span class="font-semibold text-xs uppercase tracking-wide job-title-text" id="job1-title">Senior Project Manager</span>
+                <span class="font-semibold text-xs uppercase tracking-wide job-title-text" id="job1-title">Senior Manager QA / Senior Project Manager</span>
                 <span class="text-[10.5px] text-slate-500 font-medium">Nov 2023 -- Present</span>
               </div>
               <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">JS Bank | Karachi, Pakistan</div>
               <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles" id="job1-bullets">
-                <li><strong class="text-slate-800 focus-strong">PMO Framework & AI Workflows:</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to optimize workflow pipelines and reduce project delivery cycles by 22%.</li>
+                <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Jan 2026 -- Present):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition for advanced test automation and security suites.</li>
+                <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools into test case generation, automated regression execution, and intelligent defect triaging, accelerating QA cycle efficiency by 35%.</li>
+                <li><strong class="text-slate-800 focus-strong">PMO Framework & AI Workflows (Nov 2023 -- Dec 2025):</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to optimize workflow pipelines and reduce project delivery cycles by 22%.</li>
                 <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Managed end-to-end execution of critical financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
-                <li><strong class="text-slate-800 focus-strong">AI Dashboards & Process Improvement:</strong> Spearheaded the setup of OpenProject and real-time execution dashboards (Power BI / AI Analytics) for JS Bank PMO, boosting task orchestration and visual progress tracking.</li>
-                <li><strong class="text-slate-800 focus-strong">Strategic Deliveries:</strong> Led cross-functional engineering teams to manage core banking integrations, CRP -- Trade IQ, and Blockchain-based EKYC compliance.</li>
               </ul>
             </div>
 
@@ -858,11 +929,11 @@
     <div id="page-2" class="resume-page flex flex-col justify-between">
       <div>
         
-        <!-- COMPACT HEADER (Simplified Contact Line) -->
+        <!-- COMPACT HEADER -->
         <div class="border-b border-slate-200 pb-2 mb-4 flex justify-between items-center" id="page2-header">
           <div>
             <h2 class="font-display font-light text-xl tracking-[0.15em] uppercase" id="p2-name">Syed Raheel Abbas</h2>
-            <p id="accent-text-2" class="text-[9.5px] font-semibold uppercase tracking-wide mt-0.5">Senior Project Manager • Head of QA & ALM • AI & Core Banking Leader</p>
+            <p id="accent-text-2" class="text-[9.5px] font-semibold uppercase tracking-wide mt-0.5">Senior Manager QA • Head of QA & ALM • AI & Core Banking Leader</p>
           </div>
           <div class="text-right text-[10px] text-slate-500 space-y-0.5" id="p2-contacts">
             <div>+92 333 2177016 | +92 340 7177016</div>
@@ -1181,7 +1252,7 @@
   </div>
 
   <script>
-    // Event Listeners for Content Protection
+    // Security Listeners
     document.addEventListener('contextmenu', event => {
       event.preventDefault();
       triggerSecurityToast();
