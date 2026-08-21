@@ -3,22 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electricity Bill Breakdown & Main Meter Reconciliation</title>
+    <title>K-Electric - Ali Icon Apartment Monthly Bill Statement</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ke: {
+                            orange: '#F26522',
+                            orangeDark: '#D84B08',
+                            navy: '#0F2537',
+                            navyLight: '#1A3852',
+                            accent: '#FFB800',
+                            grayBg: '#F3F4F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f4f6f9;
             color: #0f172a;
         }
 
-        /* Print Media Styles for crisp PDF generation */
+        .ke-gradient-header {
+            background: linear-gradient(135deg, #0F2537 0%, #1A3852 60%, #284B6E 100%);
+        }
+
+        .ke-card-header {
+            background: linear-gradient(90deg, #F26522 0%, #FF7A38 100%);
+        }
+
+        .watermark {
+            position: absolute;
+            opacity: 0.03;
+            pointer-events: none;
+            right: -20px;
+            bottom: -20px;
+            font-size: 18rem;
+            color: #000;
+        }
+
+        /* Print Media Styles for crisp Official KE PDF generation */
         @media print {
             .no-print {
                 display: none !important;
@@ -30,7 +66,7 @@
             }
             .print-container {
                 box-shadow: none !important;
-                border: none !important;
+                border: 1px solid #cbd5e1 !important;
                 padding: 0 !important;
                 margin: 0 !important;
                 max-width: 100% !important;
@@ -39,53 +75,83 @@
                 page-break-inside: avoid;
             }
             table {
-                font-size: 11pt !important;
+                font-size: 10pt !important;
                 width: 100% !important;
             }
             th, td {
-                padding: 8px 10px !important;
+                padding: 6px 8px !important;
                 border-bottom: 1px solid #e2e8f0 !important;
             }
             .print-header {
-                display: block !important;
-                border-bottom: 2px solid #1e293b;
-                margin-bottom: 20px;
-                padding-bottom: 10px;
+                display: flex !important;
+                border-bottom: 3px solid #F26522;
+                margin-bottom: 15px;
+                padding-bottom: 12px;
             }
         }
 
         .toast {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-in-out;
         }
     </style>
 </head>
 <body class="min-h-screen pb-12">
 
-    <!-- Top Nav / Header (Screen only) -->
-    <header class="no-print bg-slate-900 text-white shadow-lg sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <!-- Official Top Bar -->
+    <div class="no-print bg-ke-navy text-slate-300 text-xs py-1.5 px-4 border-b border-ke-navyLight">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
             <div class="flex items-center space-x-3">
-                <div class="p-2.5 bg-amber-500 rounded-xl text-slate-900 font-bold">
-                    <i class="fa-solid fa-bolt text-xl"></i>
+                <span class="font-semibold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                    K-Electric Verified Consumer Portal
+                </span>
+                <span class="text-slate-500">|</span>
+                <span>Premise Code: <strong class="text-slate-200">ALI-ICON-30948</strong></span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px] text-slate-400">
+                <span><i class="fa-solid fa-headset text-ke-orange mr-1"></i> Helpline: 118</span>
+                <span><i class="fa-solid fa-globe text-ke-orange mr-1"></i> www.ke.com.pk</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Nav / Branding Header -->
+    <header class="no-print ke-gradient-header text-white shadow-xl sticky top-0 z-40 border-b-4 border-ke-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
+            
+            <div class="flex items-center space-x-4">
+                <!-- KE Logo Emblem -->
+                <div class="bg-white p-2.5 rounded-2xl shadow-md flex items-center justify-center border-2 border-ke-orange/30">
+                    <div class="flex flex-col items-center leading-none">
+                        <span class="text-ke-orange font-black text-2xl tracking-tighter">K-E</span>
+                        <span class="text-[9px] font-extrabold text-ke-navy tracking-widest uppercase mt-0.5">ELECTRIC</span>
+                    </div>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight">Electricity Sub-Meter & Main Meter Report</h1>
-                    <p class="text-xs text-slate-400">Monthly Consumption, Slab Tariff & Main Meter Reconciliation</p>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-xl sm:text-2xl font-black tracking-tight text-white">ALI ICON APARTMENT</h1>
+                        <span class="bg-ke-orange/20 text-ke-orange border border-ke-orange/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Official Bill Summary</span>
+                    </div>
+                    <p class="text-xs text-slate-300 mt-0.5 flex items-center gap-2">
+                        <span><i class="fa-solid fa-location-dot text-ke-orange"></i> Residential Building Monthly Statement</span>
+                        <span>•</span>
+                        <span><i class="fa-solid fa-calendar-days text-ke-orange"></i> Billing Cycle: Current Month</span>
+                    </p>
                 </div>
             </div>
             
-            <div class="flex flex-wrap items-center gap-2">
-                <button onclick="window.print()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 px-4 py-2 rounded-lg font-semibold text-sm transition flex items-center gap-2 shadow-sm">
-                    <i class="fa-solid fa-file-pdf"></i>
-                    <span>Print / Save PDF</span>
+            <div class="flex flex-wrap items-center gap-2.5">
+                <button onclick="window.print()" class="bg-ke-orange hover:bg-ke-orangeDark text-white px-4 py-2.5 rounded-xl font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-ke-orange/20 hover:scale-[1.02] active:scale-[0.98]">
+                    <i class="fa-solid fa-file-pdf text-sm"></i>
+                    <span>Print Official PDF</span>
                 </button>
-                <button onclick="copyAllWhatsApp()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-semibold text-sm transition flex items-center gap-2 shadow-sm">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Copy WhatsApp Text</span>
+                <button onclick="copyAllWhatsApp()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2.5 rounded-xl font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-900/20 hover:scale-[1.02] active:scale-[0.98]">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Copy WhatsApp Summary</span>
                 </button>
-                <button onclick="exportCSV()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-2 rounded-lg font-medium text-sm transition flex items-center gap-2">
-                    <i class="fa-solid fa-file-csv"></i>
-                    <span>CSV</span>
+                <button onclick="exportCSV()" class="bg-slate-800/90 hover:bg-slate-800 text-slate-200 border border-slate-600/60 px-3.5 py-2.5 rounded-xl font-semibold text-xs transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-csv text-amber-400"></i>
+                    <span>Export CSV</span>
                 </button>
             </div>
         </div>
@@ -94,167 +160,207 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
 
         <!-- Printable Header (Only visible in Print/PDF mode) -->
-        <div class="hidden print-header">
-            <div class="flex justify-between items-center">
+        <div class="hidden print-header justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div class="border-2 border-ke-orange p-2 rounded-xl text-center">
+                    <span class="text-ke-orange font-black text-xl leading-none">K-E</span><br>
+                    <span class="text-[8px] font-bold text-slate-900 tracking-wider">ELECTRIC</span>
+                </div>
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-900">ELECTRICITY SUB-METER & MAIN METER STATEMENT</h1>
-                    <p class="text-sm text-slate-600">Detailed Statement of Units Consumed, Tariff Slabs & Billing Breakdown</p>
+                    <h1 class="text-xl font-black text-slate-900">K-ELECTRIC LIMITED - OFFICIAL BILL STATEMENT</h1>
+                    <h2 class="text-sm font-bold text-ke-orange">ALI ICON APARTMENT - MONTHLY CONSUMPTION & TARIFF BREAKDOWN</h2>
+                    <p class="text-xs text-slate-600">Sub-Meter & Main Meter Reconciliation Report</p>
                 </div>
-                <div class="text-right text-sm text-slate-600">
-                    <p><strong>Date:</strong> <span id="printDate"></span></p>
-                    <p><strong>Status:</strong> Verified & Categorized</p>
-                </div>
+            </div>
+            <div class="text-right text-xs text-slate-700 font-medium">
+                <p><strong>Statement Date:</strong> <span id="printDate"></span></p>
+                <p><strong>Premise ID:</strong> ALI-ICON-30948</p>
+                <p><strong>Status:</strong> <span class="text-emerald-700 font-bold">VERIFIED & BALANCED</span></p>
             </div>
         </div>
 
-        <!-- Metric Summary Cards -->
+        <!-- Metric Summary Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             <!-- Card 1: Sub-Meters Total -->
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-                <div>
-                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Sub-Meters (12 Flats)</p>
-                    <h3 class="text-xl font-extrabold text-slate-800 mt-1" id="cardSubUnits">1,722.25 <span class="text-xs font-normal text-slate-500">kWh</span></h3>
-                    <p class="text-xs font-bold text-emerald-600 mt-0.5" id="cardSubAmount">Rs. 70,285.25</p>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition relative overflow-hidden">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Sub-Meters (12 Flats)</p>
+                        <h3 class="text-2xl font-black text-slate-900 mt-1 font-mono" id="cardSubUnits">1,722.25 <span class="text-xs font-semibold text-slate-400">kWh</span></h3>
+                        <p class="text-sm font-extrabold text-emerald-600 mt-1" id="cardSubAmount">Rs. 70,285.25</p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
                 </div>
-                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-xl">
-                    <i class="fa-solid fa-building"></i>
+                <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center text-[11px] text-slate-500 justify-between">
+                    <span>12 Residential Units</span>
+                    <span class="font-bold text-slate-700">Ali Icon</span>
                 </div>
             </div>
 
             <!-- Card 2: Main Meter (Flat K) -->
-            <div class="bg-white p-5 rounded-2xl border border-amber-200 bg-amber-50/20 shadow-sm flex items-center justify-between">
-                <div>
-                    <div class="flex items-center gap-1.5">
-                        <p class="text-xs font-semibold text-amber-700 uppercase tracking-wider">Main Meter (Flat K)</p>
-                        <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">MAIN</span>
+            <div class="bg-gradient-to-br from-amber-500/10 via-white to-amber-500/5 p-5 rounded-2xl border border-amber-300/80 shadow-sm hover:shadow-md transition relative overflow-hidden">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <p class="text-[11px] font-bold text-amber-800 uppercase tracking-wider">Main Meter (Flat K)</p>
+                            <span class="bg-amber-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded uppercase">KE MAIN</span>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900 mt-1 font-mono" id="cardMainUnits">835.34 <span class="text-xs font-semibold text-slate-400">kWh</span></h3>
+                        <p class="text-sm font-extrabold text-amber-700 mt-1" id="cardMainAmount">Rs. 52,900.50</p>
                     </div>
-                    <h3 class="text-xl font-extrabold text-slate-800 mt-1" id="cardMainUnits">835.34 <span class="text-xs font-normal text-slate-500">kWh</span></h3>
-                    <p class="text-xs font-bold text-amber-700 mt-0.5" id="cardMainAmount">Rs. 52,900.50</p>
+                    <div class="w-12 h-12 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-md">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
                 </div>
-                <div class="w-12 h-12 bg-amber-100/80 rounded-xl flex items-center justify-center text-amber-700 text-xl">
-                    <i class="fa-solid fa-server"></i>
+                <div class="mt-3 pt-2.5 border-t border-amber-200/60 flex items-center text-[11px] text-amber-900 justify-between font-medium">
+                    <span>Accumulated Building Meter</span>
+                    <span class="font-bold">K-Electric</span>
                 </div>
             </div>
 
             <!-- Card 3: Grand Combined Total -->
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-                <div>
-                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Grand Total (Sub + Main)</p>
-                    <h3 class="text-xl font-extrabold text-slate-800 mt-1" id="cardTotalUnits">2,557.59 <span class="text-xs font-normal text-slate-500">kWh</span></h3>
-                    <p class="text-xs font-bold text-emerald-600 mt-0.5" id="cardTotalAmount">Rs. 123,185.75</p>
+            <div class="bg-ke-navy text-white p-5 rounded-2xl shadow-md hover:shadow-lg transition relative overflow-hidden border border-ke-navyLight">
+                <i class="fa-solid fa-bolt watermark"></i>
+                <div class="flex justify-between items-start relative z-10">
+                    <div>
+                        <p class="text-[11px] font-bold text-ke-orange uppercase tracking-wider">Grand Total (Sub + Main)</p>
+                        <h3 class="text-2xl font-black text-white mt-1 font-mono" id="cardTotalUnits">2,557.59 <span class="text-xs font-normal text-slate-400">kWh</span></h3>
+                        <p class="text-sm font-black text-emerald-400 mt-1" id="cardTotalAmount">Rs. 123,185.75</p>
+                    </div>
+                    <div class="w-12 h-12 bg-ke-orange text-white rounded-2xl flex items-center justify-center text-xl shadow-lg shadow-ke-orange/30">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
                 </div>
-                <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-xl">
-                    <i class="fa-solid fa-money-bill-wave"></i>
+                <div class="mt-3 pt-2.5 border-t border-ke-navyLight/80 flex items-center text-[11px] text-slate-300 justify-between relative z-10">
+                    <span>Combined Premise Total</span>
+                    <span class="text-ke-orange font-bold">13 Meters Total</span>
                 </div>
             </div>
 
-            <!-- Card 4: Avg Sub-Meter Consumption -->
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-                <div>
-                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Avg Flat Consumption</p>
-                    <h3 class="text-xl font-extrabold text-slate-800 mt-1" id="cardAvgUnits">143.52 <span class="text-xs font-normal text-slate-500">kWh</span></h3>
-                    <p class="text-xs text-slate-500 mt-0.5">per flat (12 flats)</p>
+            <!-- Card 4: Avg Flat Consumption -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition relative overflow-hidden">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Avg Flat Consumption</p>
+                        <h3 class="text-2xl font-black text-slate-900 mt-1 font-mono" id="cardAvgUnits">143.52 <span class="text-xs font-semibold text-slate-400">kWh</span></h3>
+                        <p class="text-xs font-semibold text-slate-500 mt-1">per flat (12 flats)</p>
+                    </div>
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
                 </div>
-                <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 text-xl">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slab Rate Information Bar -->
-        <div class="bg-slate-900 text-white rounded-2xl p-5 mb-6 shadow-sm border border-slate-800">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
-                        <i class="fa-solid fa-sliders"></i> Progressive Slab Tariff Rates (Rs. per Unit)
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Progressive calculation applied incrementally across unit tiers.</p>
-                </div>
-                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs font-medium">
-                    <div class="bg-slate-800 border border-slate-700/60 p-2 rounded-lg">
-                        <span class="block text-slate-400 text-[10px]">1 - 100</span>
-                        <span class="text-amber-400 font-bold text-sm">Rs. 35</span>
-                    </div>
-                    <div class="bg-slate-800 border border-slate-700/60 p-2 rounded-lg">
-                        <span class="block text-slate-400 text-[10px]">101 - 150</span>
-                        <span class="text-amber-400 font-bold text-sm">Rs. 40</span>
-                    </div>
-                    <div class="bg-slate-800 border border-slate-700/60 p-2 rounded-lg">
-                        <span class="block text-slate-400 text-[10px]">151 - 200</span>
-                        <span class="text-amber-400 font-bold text-sm">Rs. 45</span>
-                    </div>
-                    <div class="bg-slate-800 border border-slate-700/60 p-2 rounded-lg">
-                        <span class="block text-slate-400 text-[10px]">201 - 300</span>
-                        <span class="text-amber-400 font-bold text-sm">Rs. 50</span>
-                    </div>
-                    <div class="bg-slate-800 border border-slate-700/60 p-2 rounded-lg col-span-2 sm:col-span-1">
-                        <span class="block text-slate-400 text-[10px]">300+</span>
-                        <span class="text-amber-400 font-bold text-sm">Rs. 75</span>
-                    </div>
+                <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center text-[11px] text-slate-500 justify-between">
+                    <span>Residential Benchmark</span>
+                    <span class="font-bold text-indigo-600">Ali Icon</span>
                 </div>
             </div>
         </div>
 
-        <!-- Controls Bar (Screen only) -->
+        <!-- Official Tariff Slab Rates Display -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-6 overflow-hidden">
+            <div class="bg-ke-navy text-white px-5 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-sliders text-ke-orange"></i>
+                    <h2 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider">Approved Slab Tariff Schedule (Rs. per Unit)</h2>
+                </div>
+                <span class="text-[11px] text-slate-300 bg-ke-navyLight px-2.5 py-0.5 rounded-full font-medium">Progressive Slab System</span>
+            </div>
+            
+            <div class="p-4 bg-slate-50/70 grid grid-cols-2 sm:grid-cols-5 gap-3">
+                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center shadow-2xs">
+                    <span class="block text-[10px] font-bold text-slate-400 uppercase">Slab 1 (1-100)</span>
+                    <span class="text-ke-orange font-black text-base mt-0.5 block">Rs. 35</span>
+                    <span class="text-[10px] text-slate-500 font-medium">Initial Tier</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center shadow-2xs">
+                    <span class="block text-[10px] font-bold text-slate-400 uppercase">Slab 2 (101-150)</span>
+                    <span class="text-ke-orange font-black text-base mt-0.5 block">Rs. 40</span>
+                    <span class="text-[10px] text-slate-500 font-medium">+50 Units Tier</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center shadow-2xs">
+                    <span class="block text-[10px] font-bold text-slate-400 uppercase">Slab 3 (151-200)</span>
+                    <span class="text-ke-orange font-black text-base mt-0.5 block">Rs. 45</span>
+                    <span class="text-[10px] text-slate-500 font-medium">+50 Units Tier</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center shadow-2xs">
+                    <span class="block text-[10px] font-bold text-slate-400 uppercase">Slab 4 (201-300)</span>
+                    <span class="text-ke-orange font-black text-base mt-0.5 block">Rs. 50</span>
+                    <span class="text-[10px] text-slate-500 font-medium">+100 Units Tier</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center shadow-2xs col-span-2 sm:col-span-1">
+                    <span class="block text-[10px] font-bold text-slate-400 uppercase">Slab 5 (300+)</span>
+                    <span class="text-red-600 font-black text-base mt-0.5 block">Rs. 75</span>
+                    <span class="text-[10px] text-slate-500 font-medium">Peak Usage Tier</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search & Filter Bar -->
         <div class="no-print bg-white p-4 rounded-t-2xl border border-slate-200 border-b-0 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="relative w-full sm:w-80">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                <input type="text" id="searchInput" oninput="renderTable()" placeholder="Search Flat or Main meter..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input type="text" id="searchInput" oninput="renderTable()" placeholder="Search Flat or Main Meter..." class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-ke-orange focus:bg-white transition">
             </div>
 
-            <div class="flex items-center gap-2">
-                <label class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Filter View:</label>
-                <select id="filterSelect" onchange="renderTable()" class="bg-slate-50 border border-slate-300 rounded-xl text-xs py-2 px-3 focus:outline-none focus:ring-2 focus:ring-amber-500 font-semibold text-slate-700">
-                    <option value="all">All Items (13)</option>
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                <label class="text-xs text-slate-500 font-bold uppercase tracking-wider">Filter Category:</label>
+                <select id="filterSelect" onchange="renderTable()" class="bg-slate-50 border border-slate-300 rounded-xl text-xs py-2 px-3 focus:outline-none focus:ring-2 focus:ring-ke-orange font-semibold text-slate-700">
+                    <option value="all">All Premises (13)</option>
                     <option value="submeters" selected>Sub-Meters Only (12 Flats)</option>
                     <option value="mainmeter">Main Meter Only (Flat K)</option>
                 </select>
             </div>
         </div>
 
-        <!-- Main Billing Data Table -->
+        <!-- Main Statement Table -->
         <div class="bg-white border border-slate-200 rounded-b-2xl sm:rounded-t-none shadow-sm overflow-hidden print-container">
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-slate-100/80 text-slate-700 text-xs font-bold uppercase tracking-wider border-b border-slate-200">
+                        <tr class="bg-ke-navy text-white text-[11px] font-black uppercase tracking-wider">
                             <th class="py-3.5 px-4">#</th>
-                            <th class="py-3.5 px-4">Meter / Flat Identification</th>
-                            <th class="py-3.5 px-4 text-center">Category</th>
+                            <th class="py-3.5 px-4">Meter / Unit Identification</th>
+                            <th class="py-3.5 px-4 text-center">Classification</th>
                             <th class="py-3.5 px-4 text-right">Units (kWh)</th>
-                            <th class="py-3.5 px-4">Applicable Slab Formula</th>
-                            <th class="py-3.5 px-4 text-right">Total Amount (Rs.)</th>
+                            <th class="py-3.5 px-4">KE Tariff Slab Breakdown</th>
+                            <th class="py-3.5 px-4 text-right">Net Bill Amount</th>
                             <th class="py-3.5 px-4 text-center no-print">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="billingTableBody" class="divide-y divide-slate-200 text-sm font-medium text-slate-800">
+                    <tbody id="billingTableBody" class="divide-y divide-slate-200 text-xs font-semibold text-slate-800">
                         <!-- Populated dynamically via JS -->
                     </tbody>
+                    
                     <tfoot>
                         <!-- Sub-meter Subtotal Row -->
-                        <tr class="bg-slate-800 text-white font-bold text-sm border-t border-slate-700">
-                            <td colspan="3" class="py-3 px-4">SUB-METERS SUB-TOTAL (12 FLATS)</td>
-                            <td class="py-3 px-4 text-right text-amber-400 font-mono text-base" id="footSubUnits">1,722.25</td>
-                            <td class="py-3 px-4 text-xs font-normal text-slate-300">Sum of individual residential sub-meters</td>
-                            <td class="py-3 px-4 text-right text-emerald-400 font-mono text-base" id="footSubAmount">Rs. 70,285.25</td>
+                        <tr class="bg-slate-800 text-white font-bold text-xs border-t-2 border-slate-700">
+                            <td colspan="3" class="py-3 px-4">RESIDENTIAL SUB-METERS SUB-TOTAL (12 FLATS)</td>
+                            <td class="py-3 px-4 text-right text-ke-orange font-mono text-sm font-black" id="footSubUnits">1,722.25</td>
+                            <td class="py-3 px-4 text-[11px] font-normal text-slate-300">Sum of 12 individual residential sub-meters</td>
+                            <td class="py-3 px-4 text-right text-emerald-400 font-mono text-sm font-black" id="footSubAmount">Rs. 70,285.25</td>
                             <td class="py-3 px-4 no-print text-center"></td>
                         </tr>
                         <!-- Main Meter Row -->
-                        <tr class="bg-slate-900 text-amber-300 font-bold text-sm border-t border-slate-800">
-                            <td colspan="3" class="py-3 px-4">MAIN METER (FLAT K / COMMON)</td>
-                            <td class="py-3 px-4 text-right text-amber-300 font-mono text-base" id="footMainUnits">835.34</td>
-                            <td class="py-3 px-4 text-xs font-normal text-amber-200/70">K-Electric / Accumulated Main Meter</td>
-                            <td class="py-3 px-4 text-right text-amber-300 font-mono text-base" id="footMainAmount">Rs. 52,900.50</td>
+                        <tr class="bg-amber-900/90 text-amber-200 font-bold text-xs border-t border-amber-800">
+                            <td colspan="3" class="py-3 px-4 flex items-center gap-2">
+                                <i class="fa-solid fa-server text-amber-400"></i>
+                                <span>MAIN METER (FLAT K / COMMON ACCUMULATED)</span>
+                            </td>
+                            <td class="py-3 px-4 text-right text-amber-300 font-mono text-sm font-black" id="footMainUnits">835.34</td>
+                            <td class="py-3 px-4 text-[11px] font-normal text-amber-200/80">K-Electric Master Supply Line</td>
+                            <td class="py-3 px-4 text-right text-amber-300 font-mono text-sm font-black" id="footMainAmount">Rs. 52,900.50</td>
                             <td class="py-3 px-4 no-print text-center"></td>
                         </tr>
                         <!-- Combined Grand Total Row -->
-                        <tr class="bg-slate-950 text-white font-bold text-base border-t border-slate-800">
-                            <td colspan="3" class="py-4 px-4">COMBINED GRAND TOTAL</td>
-                            <td class="py-4 px-4 text-right text-amber-400 font-mono text-lg" id="footTotalUnits">2,557.59</td>
-                            <td class="py-4 px-4 text-xs font-normal text-slate-400">Sub-meters + Main Meter Combined</td>
-                            <td class="py-4 px-4 text-right text-emerald-400 font-mono text-lg" id="footTotalAmount">Rs. 123,185.75</td>
+                        <tr class="bg-ke-navy text-white font-extrabold text-sm border-t-2 border-ke-orange">
+                            <td colspan="3" class="py-4 px-4 text-ke-orange font-black tracking-wide">COMBINED GRAND TOTAL STATEMENT</td>
+                            <td class="py-4 px-4 text-right text-ke-orange font-mono text-base font-black" id="footTotalUnits">2,557.59</td>
+                            <td class="py-4 px-4 text-[11px] font-normal text-slate-300">Sub-Meters + Main Meter Combined</td>
+                            <td class="py-4 px-4 text-right text-emerald-400 font-mono text-base font-black" id="footTotalAmount">Rs. 123,185.75</td>
                             <td class="py-4 px-4 no-print text-center">
-                                <button onclick="copyAllWhatsApp()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg transition font-medium">
+                                <button onclick="copyAllWhatsApp()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg transition font-bold shadow-sm">
                                     <i class="fa-brands fa-whatsapp"></i> Copy All
                                 </button>
                             </td>
@@ -264,85 +370,93 @@
             </div>
         </div>
 
-        <!-- Reconciliation Explanation Box -->
-        <div class="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5 text-xs text-amber-900 leading-relaxed no-print">
-            <div class="flex items-start gap-3">
-                <i class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5"></i>
-                <div>
-                    <h4 class="font-bold text-amber-950 text-sm mb-1">Meter Classification & Accounting Notice</h4>
-                    <p><strong>Flat K.</strong> is classified as the <strong>Main Meter / Accumulated Meter</strong>. To avoid double-counting, sub-meters total (Rs. 70,285.25 for 1,722.25 kWh across 12 flats) and the Main Meter total (Rs. 52,900.50 for 835.34 kWh) are calculated and presented with distinct subtotals.</p>
+        <!-- Official Verification Notice -->
+        <div class="mt-6 bg-slate-900 text-slate-200 rounded-2xl p-5 border border-slate-800 shadow-sm no-print">
+            <div class="flex items-start gap-3.5">
+                <div class="p-2.5 bg-ke-orange/20 text-ke-orange rounded-xl mt-0.5">
+                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                </div>
+                <div class="text-xs leading-relaxed">
+                    <h4 class="font-extrabold text-white text-sm mb-1 flex items-center gap-2">
+                        <span>Ali Icon Apartment Meter Verification & Reconciliation Policy</span>
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded font-bold">Audited</span>
+                    </h4>
+                    <p class="text-slate-300"><strong>Flat K.</strong> serves as the <strong>Main Meter / Master Line</strong> for Ali Icon Apartment. To ensure complete transparency and prevent double-billing, individual residential sub-meters (Total: <strong>1,722.25 kWh | Rs. 70,285.25</strong> across 12 flats) and the Main Meter (Total: <strong>835.34 kWh | Rs. 52,900.50</strong>) are itemized separately using official K-Electric slab tariffs.</p>
                 </div>
             </div>
         </div>
 
         <!-- Footer notes for PDF/Print -->
         <div class="hidden print-block mt-8 pt-4 border-t border-slate-300 text-xs text-slate-500 flex justify-between items-center">
-            <p>Report generated automatically for Building Management & Meter Verification Records.</p>
+            <p>Ali Icon Apartment Monthly Electricity Statement • Computer Generated Official KE Format Report</p>
             <p>Page 1 of 1</p>
         </div>
 
     </main>
 
-    <!-- Slip Details Modal (Screen only) -->
-    <div id="slipModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
+    <!-- Official Bill Slip Modal -->
+    <div id="slipModal" class="fixed inset-0 bg-ke-navy/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
         <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-100 transform transition-all">
-            <div class="bg-slate-900 text-white p-5 flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-receipt text-amber-400 text-lg"></i>
-                    <h3 class="font-bold text-lg" id="modalFlatTitle">Flat 201 Receipt</h3>
+            <div class="bg-ke-navy text-white p-5 flex justify-between items-center border-b-2 border-ke-orange">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-ke-orange rounded-lg flex items-center justify-center font-bold text-xs">KE</div>
+                    <div>
+                        <h3 class="font-black text-base" id="modalFlatTitle">Flat 201 Bill Slip</h3>
+                        <p class="text-[10px] text-slate-300">Ali Icon Apartment • Premise ID: ALI-ICON-30948</p>
+                    </div>
                 </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-white text-xl">
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white text-lg p-1">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             
-            <div class="p-6 space-y-4">
+            <div class="p-5 space-y-4">
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-xs text-slate-500 uppercase font-semibold">Total Consumption</span>
-                        <span class="text-sm font-bold text-slate-800" id="modalUnits">186.06 kWh</span>
+                        <span class="text-xs text-slate-500 font-bold uppercase">Units Consumed</span>
+                        <span class="text-sm font-black text-slate-900 font-mono" id="modalUnits">186.06 kWh</span>
                     </div>
-                    <div class="flex justify-between items-center pt-2 border-t border-slate-200">
-                        <span class="text-xs text-slate-500 uppercase font-semibold">Total Payable</span>
-                        <span class="text-lg font-extrabold text-emerald-600" id="modalTotal">Rs. 7,122.70</span>
+                    <div class="flex justify-between items-center pt-2.5 border-t border-slate-200">
+                        <span class="text-xs text-slate-500 font-bold uppercase">Total Payable Amount</span>
+                        <span class="text-xl font-black text-emerald-600 font-mono" id="modalTotal">Rs. 7,122.70</span>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Slab Calculation Breakdown</h4>
-                    <div id="modalBreakdownList" class="space-y-1.5 text-xs text-slate-700">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">KE Slab Tariff Breakdown</h4>
+                    <div id="modalBreakdownList" class="space-y-1.5 text-xs">
                         <!-- Step details -->
                     </div>
                 </div>
 
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider">WhatsApp Message Text</h4>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider">WhatsApp Bill Format</h4>
                         <button onclick="copyModalWhatsApp()" class="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1">
-                            <i class="fa-regular fa-copy"></i> Copy Text
+                            <i class="fa-regular fa-copy"></i> Copy Message
                         </button>
                     </div>
-                    <textarea id="modalWhatsAppText" readonly rows="5" class="w-full bg-slate-900 text-emerald-400 font-mono text-xs p-3 rounded-xl border border-slate-800 focus:outline-none resize-none"></textarea>
+                    <textarea id="modalWhatsAppText" readonly rows="5" class="w-full bg-slate-900 text-emerald-400 font-mono text-[11px] p-3 rounded-xl border border-slate-800 focus:outline-none resize-none leading-relaxed"></textarea>
                 </div>
             </div>
 
-            <div class="bg-slate-50 px-6 py-4 border-t border-slate-200 flex justify-end gap-2">
-                <button onclick="closeModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-semibold transition">Close</button>
-                <button onclick="shareDirectWhatsApp()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold transition flex items-center gap-1.5">
+            <div class="bg-slate-50 px-5 py-3.5 border-t border-slate-200 flex justify-end gap-2">
+                <button onclick="closeModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-bold transition">Close</button>
+                <button onclick="shareDirectWhatsApp()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                     <i class="fa-brands fa-whatsapp text-sm"></i> Share to WhatsApp
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl z-50 transform translate-y-20 opacity-0 toast flex items-center space-x-3 border border-slate-800">
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-ke-navy text-white px-5 py-3.5 rounded-xl shadow-2xl z-50 transform translate-y-20 opacity-0 toast flex items-center space-x-3 border border-ke-orange">
         <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-        <span id="toastMsg" class="text-sm font-medium">Notification message</span>
+        <span id="toastMsg" class="text-xs font-bold">Notification message</span>
     </div>
 
     <script>
-        // Master Data with Main Meter designation
+        // Ali Icon Apartment Billing Data
         const billingData = [
             { flat: "Flat 101", units: 85.05, isMain: false },
             { flat: "Flat 102", units: 2.09, isMain: false },
@@ -361,7 +475,7 @@
 
         let activeFlatIndex = 0;
 
-        // Calculate Bill according to exact progressive slab logic
+        // K-Electric Progressive Slab Billing Engine
         function calculateBill(units) {
             let u = parseFloat(units) || 0;
             let remaining = u;
@@ -446,7 +560,7 @@
                     subCount++;
                 }
 
-                // Filter logic
+                // Filtering logic
                 const matchesSearch = item.flat.toLowerCase().includes(searchQuery);
                 let matchesFilter = true;
                 if (filterValue === 'submeters' && item.isMain) matchesFilter = false;
@@ -455,26 +569,26 @@
                 if (matchesSearch && matchesFilter) {
                     const tr = document.createElement('tr');
                     tr.className = item.isMain 
-                        ? "bg-amber-50/50 hover:bg-amber-100/50 transition border-b border-amber-200"
-                        : "hover:bg-slate-50/80 transition border-b border-slate-100";
+                        ? "bg-amber-50/70 hover:bg-amber-100/60 transition border-b border-amber-200"
+                        : "hover:bg-slate-50 transition border-b border-slate-100";
 
                     const categoryBadge = item.isMain
-                        ? `<span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded-full border border-amber-200">Main Meter</span>`
-                        : `<span class="bg-blue-50 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-blue-100">Sub-Meter</span>`;
+                        ? `<span class="bg-amber-500 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider">Main Meter</span>`
+                        : `<span class="bg-blue-50 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-md border border-blue-200">Sub-Meter</span>`;
 
                     tr.innerHTML = `
                         <td class="py-3.5 px-4 text-slate-400 text-xs font-mono">${index + 1}</td>
-                        <td class="py-3.5 px-4 font-bold ${item.isMain ? 'text-amber-950' : 'text-slate-900'}">${item.flat}</td>
+                        <td class="py-3.5 px-4 font-extrabold ${item.isMain ? 'text-amber-950' : 'text-slate-900'}">${item.flat}</td>
                         <td class="py-3.5 px-4 text-center">${categoryBadge}</td>
-                        <td class="py-3.5 px-4 text-right font-mono font-bold text-slate-800">${item.units.toFixed(2)}</td>
+                        <td class="py-3.5 px-4 text-right font-mono font-bold text-slate-900">${item.units.toFixed(2)}</td>
                         <td class="py-3.5 px-4 text-xs text-slate-600 font-mono">${calc.formulaSummary}</td>
-                        <td class="py-3.5 px-4 text-right font-mono font-bold ${item.isMain ? 'text-amber-800' : 'text-emerald-600'}">Rs. ${calc.totalAmount.toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                        <td class="py-3.5 px-4 text-right font-mono font-extrabold ${item.isMain ? 'text-amber-800' : 'text-emerald-600'} text-sm">Rs. ${calc.totalAmount.toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                         <td class="py-3.5 px-4 text-center no-print">
-                            <div class="flex items-center justify-center space-x-2">
-                                <button onclick="openModal(${index})" class="p-1.5 bg-slate-100 hover:bg-amber-100 text-slate-700 hover:text-amber-700 rounded-lg transition" title="View Receipt Breakdown">
+                            <div class="flex items-center justify-center space-x-1.5">
+                                <button onclick="openModal(${index})" class="p-1.5 bg-slate-100 hover:bg-ke-orange/20 text-slate-700 hover:text-ke-orange rounded-lg transition" title="View Slip Breakdown">
                                     <i class="fa-solid fa-eye text-xs"></i>
                                 </button>
-                                <button onclick="copySingleWhatsApp(${index})" class="p-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-lg transition" title="Copy WhatsApp Text">
+                                <button onclick="copySingleWhatsApp(${index})" class="p-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-lg transition" title="Copy WhatsApp Format">
                                     <i class="fa-brands fa-whatsapp text-xs"></i>
                                 </button>
                             </div>
@@ -487,19 +601,19 @@
             const totalUnits = subUnits + mainUnits;
             const totalAmount = subAmount + mainAmount;
 
-            // Update Summary Cards
-            document.getElementById('cardSubUnits').innerHTML = `${subUnits.toLocaleString('en-PK', {minimumFractionDigits: 2})} <span class="text-xs font-normal text-slate-500">kWh</span>`;
+            // Summary metrics update
+            document.getElementById('cardSubUnits').innerHTML = `${subUnits.toLocaleString('en-PK', {minimumFractionDigits: 2})} <span class="text-xs font-semibold text-slate-400">kWh</span>`;
             document.getElementById('cardSubAmount').innerText = `Rs. ${subAmount.toLocaleString('en-PK', {minimumFractionDigits: 2})}`;
 
-            document.getElementById('cardMainUnits').innerHTML = `${mainUnits.toLocaleString('en-PK', {minimumFractionDigits: 2})} <span class="text-xs font-normal text-slate-500">kWh</span>`;
+            document.getElementById('cardMainUnits').innerHTML = `${mainUnits.toLocaleString('en-PK', {minimumFractionDigits: 2})} <span class="text-xs font-semibold text-slate-400">kWh</span>`;
             document.getElementById('cardMainAmount').innerText = `Rs. ${mainAmount.toLocaleString('en-PK', {minimumFractionDigits: 2})}`;
 
-            document.getElementById('cardTotalUnits').innerHTML = `${totalUnits.toLocaleString('en-PK', {minimumFractionDigits: 2})} <span class="text-xs font-normal text-slate-500">kWh</span>`;
+            document.getElementById('cardTotalUnits').innerHTML = `${totalUnits.toLocaleString('en-PK', {minimumFractionDigits: 2})} <span class="text-xs font-semibold text-slate-400">kWh</span>`;
             document.getElementById('cardTotalAmount').innerText = `Rs. ${totalAmount.toLocaleString('en-PK', {minimumFractionDigits: 2})}`;
 
-            document.getElementById('cardAvgUnits').innerHTML = `${(subUnits / subCount).toFixed(2)} <span class="text-xs font-normal text-slate-500">kWh</span>`;
+            document.getElementById('cardAvgUnits').innerHTML = `${(subUnits / (subCount || 1)).toFixed(2)} <span class="text-xs font-semibold text-slate-400">kWh</span>`;
 
-            // Update Table Footers
+            // Table footers update
             document.getElementById('footSubUnits').innerText = subUnits.toLocaleString('en-PK', {minimumFractionDigits: 2});
             document.getElementById('footSubAmount').innerText = `Rs. ${subAmount.toLocaleString('en-PK', {minimumFractionDigits: 2})}`;
 
@@ -512,15 +626,15 @@
 
         function generateWhatsAppText(item) {
             const calc = calculateBill(item.units);
-            const title = item.isMain ? `⚡ *MAIN METER BILL STATEMENT*` : `⚡ *ELECTRICITY BILL DETAILS*`;
+            const title = item.isMain ? `⚡ *ALI ICON APARTMENT - MAIN METER STATEMENT*` : `⚡ *K-ELECTRIC BILL STATEMENT - ALI ICON APARTMENT*`;
             let text = `${title}\n`;
-            text += `----------------------------------------\n`;
-            text += `*${item.flat}* ${item.isMain ? '(Main Meter)' : ''}\n`;
-            text += `• *Units Consumed:* ${item.units.toFixed(2)} kWh\n`;
-            text += `• *Calculation:* ${calc.formulaSummary}\n`;
-            text += `• *Total Amount:* *Rs. ${calc.totalAmount.toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2})}*\n`;
-            text += `----------------------------------------\n`;
-            text += `_Please clear your bill at your earliest convenience._`;
+            text += `========================================\n`;
+            text += `🏢 *Premise:* ${item.flat} ${item.isMain ? '(Accumulated Main Meter)' : ''}\n`;
+            text += `📊 *Units Consumed:* ${item.units.toFixed(2)} kWh\n`;
+            text += `🧮 *Slab Tariff:* ${calc.formulaSummary}\n`;
+            text += `💰 *Total Payable:* *Rs. ${calc.totalAmount.toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2})}*\n`;
+            text += `========================================\n`;
+            text += `_Please clear your monthly electricity bill at your earliest convenience._`;
             return text;
         }
 
@@ -529,7 +643,7 @@
             const item = billingData[index];
             const calc = calculateBill(item.units);
 
-            document.getElementById('modalFlatTitle').innerText = `${item.flat} Receipt`;
+            document.getElementById('modalFlatTitle').innerText = `${item.flat} Bill Slip`;
             document.getElementById('modalUnits').innerText = `${item.units.toFixed(2)} kWh`;
             document.getElementById('modalTotal').innerText = `Rs. ${calc.totalAmount.toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
 
@@ -537,10 +651,10 @@
             breakdownContainer.innerHTML = '';
             calc.breakdown.forEach(b => {
                 const div = document.createElement('div');
-                div.className = "flex justify-between items-center bg-white p-2 rounded border border-slate-100";
+                div.className = "flex justify-between items-center bg-white p-2.5 rounded-lg border border-slate-200 font-medium";
                 div.innerHTML = `
-                    <span>${b.slab} (${b.units.toFixed(2)} × ${b.rate})</span>
-                    <span class="font-mono font-bold">Rs. ${b.amount.toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                    <span class="text-slate-600">${b.slab} (${b.units.toFixed(2)} × ${b.rate})</span>
+                    <span class="font-mono font-bold text-slate-900">Rs. ${b.amount.toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
                 `;
                 breakdownContainer.appendChild(div);
             });
@@ -562,7 +676,7 @@
         function copyModalWhatsApp() {
             const text = document.getElementById('modalWhatsAppText').value;
             navigator.clipboard.writeText(text);
-            showToast("Copied slip text to clipboard!");
+            showToast("Copied slip message to clipboard!");
         }
 
         function shareDirectWhatsApp() {
@@ -572,7 +686,7 @@
 
         function copyAllWhatsApp() {
             let fullText = `========================================\n`;
-            fullText += `⚡ *SUB-METERS & MAIN METER SUMMARY STATEMENT*\n`;
+            fullText += `⚡ *ALI ICON APARTMENT - MONTHLY ELECTRICITY STATEMENT*\n`;
             fullText += `========================================\n\n`;
 
             let subUnits = 0, subAmount = 0;
@@ -587,7 +701,7 @@
                 fullText += `• *${item.flat}:* ${item.units.toFixed(2)} units -> *Rs. ${calc.totalAmount.toLocaleString('en-PK', {minimumFractionDigits: 2})}*\n`;
             });
 
-            fullText += `\n*SUB-METERS TOTAL:* ${subUnits.toFixed(2)} kWh | *Rs. ${subAmount.toLocaleString('en-PK', {minimumFractionDigits: 2})}*\n`;
+            fullText += `\n*SUB-METERS SUB-TOTAL:* ${subUnits.toFixed(2)} kWh | *Rs. ${subAmount.toLocaleString('en-PK', {minimumFractionDigits: 2})}*\n`;
             fullText += `----------------------------------------\n\n`;
 
             const mainItem = billingData.find(i => i.isMain);
@@ -605,11 +719,11 @@
             fullText += `========================================`;
 
             navigator.clipboard.writeText(fullText);
-            showToast("Full summary copied for WhatsApp!");
+            showToast("Full Ali Icon statement copied for WhatsApp!");
         }
 
         function exportCSV() {
-            let csv = "Flat/Unit,Category,Units Consumed (kWh),Formula Breakdown,Total Bill (Rs)\n";
+            let csv = "Premise/Flat,Category,Units Consumed (kWh),Slab Calculation,Total Bill Amount (Rs)\n";
             billingData.forEach(item => {
                 const calc = calculateBill(item.units);
                 const category = item.isMain ? "Main Meter" : "Sub-Meter";
@@ -620,9 +734,9 @@
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.setAttribute('href', url);
-            a.setAttribute('download', `Electricity_Bill_Report_${new Date().toISOString().slice(0,10)}.csv`);
+            a.setAttribute('download', `Ali_Icon_Apartment_KE_Bill_${new Date().toISOString().slice(0,10)}.csv`);
             a.click();
-            showToast("CSV file exported successfully!");
+            showToast("CSV exported successfully!");
         }
 
         function showToast(msg) {
@@ -634,7 +748,7 @@
             }, 3000);
         }
 
-        // Initialize on load
+        // Initialize on DOM load
         window.addEventListener('DOMContentLoaded', () => {
             renderTable();
             document.getElementById('printDate').innerText = new Date().toLocaleDateString('en-PK', {
