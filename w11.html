@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>W11 Kit Selection Portal by DreRus | The Organic Foundry</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;600;800;900&family=Orbitron:wght@600;900&family=Outfit:wght@300;400;600;700;900&family=Pacifico&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            script1: ['"Pacifico"', 'cursive'],
+            script2: ['"Dancing Script"', 'cursive'],
+            script3: ['"Great Vibes"', 'cursive'],
+            varsity: ['"Bebas Neue"', 'sans-serif'],
+            tech: ['"Orbitron"', 'sans-serif'],
+            boldHeader: ['"Anton"', 'sans-serif'],
+            teko: ['"Teko"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    /* Print / PDF Specific Styling */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      header, .no-print, #orderModal, #techSpecsModal, #toast, .action-sidebar {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .main-workspace {
+        display: block !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      #svgContainer {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        gap: 15px !important;
+        page-break-inside: avoid;
+      }
+      #svgContainer > div {
+        display: flex !important;
+        max-width: 32% !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-600 selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT & QUICK SHARE BAR -->
+  <div class="bg-slate-950 text-slate-200 text-xs py-2 px-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2 no-print">
+    <div class="flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      <span><strong>THE ORGANIC FOUNDRY:</strong> W11 Official Team Kit Selection Portal • Pure White Red-Ball Edition</span>
+    </div>
+    
+    <!-- Quick Top Sharing Actions -->
+    <div class="flex items-center space-x-2">
+      <button id="topCopyClipboardBtn" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-300 hover:text-white rounded-lg transition text-[11px] font-bold flex items-center space-x-1 border border-slate-700">
+        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+        <span>Copy for WhatsApp</span>
+      </button>
+
+      <button id="topPrintPdfBtn" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-sky-300 hover:text-white rounded-lg transition text-[11px] font-bold flex items-center space-x-1 border border-slate-700">
+        <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+        <span>Print as PDF</span>
+      </button>
+
+      <button id="topDirectWhatsAppBtn" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg transition text-[11px] font-bold flex items-center space-x-1 shadow-sm">
+        <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+        <span>WhatsApp Share</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER / NAVBAR -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 via-sky-500 to-slate-900 flex items-center justify-center text-white font-black shadow-md text-lg tracking-wider">
+          OF
+        </div>
+        <div>
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-widest block leading-none">The Organic Foundry</span>
+          <h1 class="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-tight">
+            W11 Kit Selection Portal <span class="text-cyan-600 font-bold">by DreRus</span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button id="resetDefaultsBtn" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition flex items-center space-x-1">
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Reset Defaults</span>
+        </button>
+
+        <button onclick="document.getElementById('techSpecsModal').classList.remove('hidden')" class="px-3 py-1.5 text-xs font-semibold text-cyan-800 bg-cyan-50 hover:bg-cyan-100 rounded-lg border border-cyan-200 transition flex items-center space-x-1">
+          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+          <span>Fabric Tech</span>
+        </button>
+
+        <button id="openOrderModalBtn" class="px-4 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-slate-900 via-cyan-900 to-blue-900 hover:from-black hover:to-slate-900 rounded-lg shadow-md hover:shadow-lg transition flex items-center space-x-1.5">
+          <i data-lucide="check-square" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span>Finalize Selection</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRINT ONLY HEADER SUMMARY (Visible when generating PDF / Printing) -->
+  <div class="hidden print-only p-6 border-b-2 border-slate-900 mb-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-black text-slate-900">THE ORGANIC FOUNDRY</h1>
+        <h2 class="text-base font-bold text-cyan-800">W11 Official Cricket Kit Technical Specification Sheet</h2>
+        <p class="text-xs text-slate-500">Pure White Red-Ball DRE-KOOL™ Thermo-Regulation Series</p>
+      </div>
+      <div class="text-right text-xs">
+        <div id="printDate" class="font-bold text-slate-700"></div>
+        <div id="printConfigSummary" class="text-slate-600 mt-1">Theme: Sky Blue (#0284c7) | Full Sleeve</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="main-workspace flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- LEFT COLUMN: LIVE FULL 3-PIECE KIT VIEWER (lg:col-span-7) -->
+    <section class="lg:col-span-7 flex flex-col items-center">
+      
+      <!-- VIEW TOGGLE TABS -->
+      <div class="w-full flex flex-wrap items-center justify-between gap-2 mb-4 bg-white p-1.5 rounded-2xl shadow-sm border border-slate-200 no-print">
+        <div class="flex flex-wrap gap-1">
+          <button id="viewAllBtn" class="view-tab-btn active px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all flex items-center space-x-1.5 bg-slate-900 text-white shadow-sm">
+            <i data-lucide="layout-grid" class="w-4 h-4"></i>
+            <span>Full 3-Piece Kit (Front + Back + Lower)</span>
+          </button>
+          <button id="viewFrontBtn" class="view-tab-btn px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all flex items-center space-x-1.5">
+            <i data-lucide="user" class="w-4 h-4"></i>
+            <span>Front</span>
+          </button>
+          <button id="viewBackBtn" class="view-tab-btn px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all flex items-center space-x-1.5">
+            <i data-lucide="shield" class="w-4 h-4"></i>
+            <span>Back</span>
+          </button>
+          <button id="viewLowerBtn" class="view-tab-btn px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all flex items-center space-x-1.5">
+            <i data-lucide="layers" class="w-4 h-4"></i>
+            <span>Lower</span>
+          </button>
+        </div>
+
+        <div class="flex items-center space-x-2 text-xs font-semibold">
+          <span id="sleeveIndicator" class="px-2.5 py-1 bg-sky-50 text-sky-700 rounded-full border border-sky-200">
+            Full Sleeve
+          </span>
+          <button id="downloadKitPreviewBtn" title="Download Configuration" class="p-2 text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE PREVIEW DISPLAY CANVAS -->
+      <div class="w-full relative bg-gradient-to-b from-slate-200/80 via-slate-100 to-slate-200 rounded-3xl p-4 sm:p-6 border border-slate-300 shadow-inner flex flex-col items-center justify-center min-h-[580px] overflow-hidden">
+        
+        <!-- Background Scientific Tech Grid -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none no-print" style="background-image: linear-gradient(to right, #94a3b8 1px, transparent 1px), linear-gradient(to bottom, #94a3b8 1px, transparent 1px); background-size: 28px 28px;"></div>
+
+        <!-- Floating Badges -->
+        <div class="absolute top-4 left-4 z-20 flex flex-col space-y-1.5 pointer-events-none no-print">
+          <div class="bg-white/95 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-300 shadow-sm text-[11px] font-bold text-slate-800 flex items-center space-x-1.5">
+            <span class="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
+            <span>SCIENTIFICALLY COOL: DRE-KOOL™</span>
+          </div>
+          <div class="bg-white/90 backdrop-blur px-2 py-0.5 rounded border border-slate-200 text-[10px] text-slate-600 hidden sm:block">
+            Front: 99.9 + Bus (Left) | Custom Logo (Right)
+          </div>
+        </div>
+
+        <div class="absolute top-4 right-4 z-20 pointer-events-none hidden sm:block text-right no-print">
+          <div class="bg-white/95 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-300 shadow-sm text-[11px] font-bold text-cyan-800">
+            Back: Bus Above Name + Sponsor Below Number
+          </div>
+          <div class="text-[10px] text-slate-500 mt-0.5">High-Flow Nano-Aero Mesh Integration</div>
+        </div>
+
+        <!-- SVG 3-PIECE SHOWCASE CONTAINER -->
+        <div id="svgContainer" class="w-full grid grid-cols-1 md:grid-cols-3 gap-3 items-center justify-center transition-all duration-300">
+          
+          <!-- ============================================== -->
+          <!-- 1. SHIRT FRONT VIEW                            -->
+          <!-- ============================================== -->
+          <div id="frontWrapper" class="w-full transition-all duration-300 flex flex-col items-center">
+            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mb-1 bg-white/90 px-2.5 py-0.5 rounded-full border border-slate-200 shadow-xs">
+              1. Shirt Front
+            </div>
+            <svg id="shirtFrontSvg" viewBox="0 0 500 620" class="w-full max-w-[280px] h-auto drop-shadow-xl">
+              <defs>
+                <pattern id="meshPattern" width="6" height="6" patternUnits="userSpaceOnUse">
+                  <circle cx="3" cy="3" r="1.1" fill="#475569" opacity="0.45" />
+                </pattern>
+                
+                <filter id="shadowDepth" x="-10%" y="-10%" width="130%" height="130%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.16" />
+                </filter>
+
+                <!-- Clip path for custom uploaded logo on right chest -->
+                <clipPath id="customLogoClip">
+                  <rect x="300" y="138" width="58" height="58" rx="8" />
+                </clipPath>
+
+                <!-- Clip path for back sponsor logo under number -->
+                <clipPath id="customBackSponsorClip">
+                  <rect x="160" y="325" width="180" height="65" rx="8" />
+                </clipPath>
+              </defs>
+
+              <g id="frontBodyGroup" filter="url(#shadowDepth)">
+                <!-- Full Sleeves -->
+                <path id="frontLeftFullSleeve" d="M 115 155 L 45 390 L 95 405 L 145 230 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                <path id="frontRightFullSleeve" d="M 385 155 L 455 390 L 405 405 L 355 230 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                
+                <!-- Full Sleeve Cuffs -->
+                <path id="frontLeftFullCuff" d="M 45 390 L 38 415 L 88 430 L 95 405 Z" fill="#0284c7" class="accent-fill" />
+                <path id="frontRightFullCuff" d="M 455 390 L 462 415 L 412 430 L 405 405 Z" fill="#0284c7" class="accent-fill" />
+
+                <!-- Half Sleeves -->
+                <path id="frontLeftHalfSleeve" d="M 140 100 L 70 210 L 130 240 L 165 170 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                <path id="frontRightHalfSleeve" d="M 360 100 L 430 210 L 370 240 L 335 170 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                
+                <!-- Half Sleeve Cuffs -->
+                <path id="frontLeftHalfCuff" d="M 70 210 L 62 225 L 122 255 L 130 240 Z" fill="#0284c7" class="accent-fill" />
+                <path id="frontRightHalfCuff" d="M 430 210 L 438 225 L 378 255 L 370 240 Z" fill="#0284c7" class="accent-fill" />
+
+                <!-- Main Torso Front -->
+                <path id="frontTorso" d="M 160 90 L 205 90 L 250 115 L 295 90 L 340 90 L 370 200 L 350 510 L 150 510 L 130 200 Z" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+
+                <!-- SIDE SEAM NANO-AERO JALI (MESH PANELS) -->
+                <path id="frontLeftMesh" d="M 130 200 L 155 205 L 165 490 L 150 510 Z" fill="#e0f2fe" class="mesh-fill" />
+                <path d="M 130 200 L 155 205 L 165 490 L 150 510 Z" fill="url(#meshPattern)" opacity="0.6" />
+
+                <path id="frontRightMesh" d="M 370 200 L 345 205 L 335 490 L 350 510 Z" fill="#e0f2fe" class="mesh-fill" />
+                <path d="M 370 200 L 345 205 L 335 490 L 350 510 Z" fill="url(#meshPattern)" opacity="0.6" />
+
+                <!-- RAGLAN PIPING -->
+                <path id="frontLeftPipe" d="M 205 90 Q 170 140 130 200" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" class="piping-stroke" />
+                <path id="frontRightPipe" d="M 295 90 Q 330 140 370 200" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" class="piping-stroke" />
+                
+                <path id="frontLeftContour" d="M 155 205 L 165 490" fill="none" stroke="#0284c7" stroke-width="1.8" class="piping-stroke" />
+                <path id="frontRightContour" d="M 345 205 L 335 490" fill="none" stroke="#0284c7" stroke-width="1.8" class="piping-stroke" />
+
+                <!-- DRE-KOOL MATRIX CONDUCTIVE GRID OVERLAY -->
+                <g id="frontMatrixGroup" class="matrix-stroke text-sky-500" opacity="0.35">
+                  <path d="M 175 490 L 175 390 L 210 350 L 210 300 M 190 490 L 190 410 L 225 370 L 225 320" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="210" cy="300" r="3" fill="currentColor" />
+                  <circle cx="225" cy="320" r="3" fill="currentColor" />
+
+                  <path d="M 325 490 L 325 390 L 290 350 L 290 300 M 310 490 L 310 410 L 275 370 L 275 320" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="290" cy="300" r="3" fill="currentColor" />
+                  <circle cx="275" cy="320" r="3" fill="currentColor" />
+
+                  <polygon points="250,330 260,336 260,348 250,354 240,348 240,336" fill="none" stroke="currentColor" stroke-width="1.2" />
+                  <polygon points="250,370 260,376 260,388 250,394 240,388 240,376" fill="none" stroke="currentColor" stroke-width="1.2" />
+                  <polygon points="225,410 235,416 235,428 225,434 215,428 215,416" fill="none" stroke="currentColor" stroke-width="1.2" />
+                  <polygon points="275,410 285,416 285,428 275,434 265,428 265,416" fill="none" stroke="currentColor" stroke-width="1.2" />
+                </g>
+
+                <!-- AERODYNAMIC COLLAR & PLACKET -->
+                <path id="frontCollar" d="M 195 90 C 215 70 285 70 305 90 L 290 102 C 275 88 225 88 210 102 Z" fill="#f8fafc" stroke="#0284c7" stroke-width="2.5" class="collar-stroke" />
+                <rect id="frontPlacket" x="241" y="94" width="18" height="95" rx="3" fill="#f1f5f9" stroke="#0284c7" stroke-width="1.5" class="collar-stroke" />
+                <circle cx="250" cy="118" r="2.5" fill="#475569" />
+                <circle cx="250" cy="148" r="2.5" fill="#475569" />
+                <circle cx="250" cy="176" r="2.5" fill="#475569" />
+              </g>
+
+              <!-- CHEST GRAPHICS: SHIRT LEFT (99.9 + BUS) & SHIRT RIGHT (CUSTOM LOGO) -->
+              <g id="frontGraphicsGroup">
+                
+                <!-- 1. SHIRT LEFT CHEST: NUMBER 99.9 ON TOP + W11 MINI BUS UNDERNEATH -->
+                <g id="frontLeftGroup" transform="translate(172, 138)">
+                  <text id="frontNumberText" x="18" y="22" font-size="28" font-weight="900" fill="#0369a1" font-family="'Bebas Neue', sans-serif" text-anchor="middle" class="front-number-fill tracking-wider">99.9</text>
+                  
+                  <!-- W11 Mini-Bus Icon -->
+                  <g id="frontMiniBusIcon" transform="translate(0, 30) scale(0.8)">
+                    <rect x="0" y="0" width="36" height="26" rx="5" fill="#0284c7" class="accent-fill" stroke="#0f172a" stroke-width="1.5" />
+                    <path d="M 4 0 C 8 -6 14 -3 18 -7 C 22 -3 28 -6 32 0 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="1" />
+                    <rect x="4" y="5" width="28" height="9" rx="2" fill="#e0f2fe" stroke="#0f172a" stroke-width="1" />
+                    <rect x="11" y="16" width="14" height="6" rx="1.5" fill="#ffffff" />
+                    <text x="18" y="21" font-size="5.5" font-family="'Orbitron', sans-serif" font-weight="900" fill="#0f172a" text-anchor="middle">W-11</text>
+                    <circle cx="6" cy="20" r="2" fill="#fbbf24" stroke="#0f172a" stroke-width="0.8" />
+                    <circle cx="30" cy="20" r="2" fill="#fbbf24" stroke="#0f172a" stroke-width="0.8" />
+                    <rect x="4" y="24" width="6" height="5" rx="1" fill="#1e293b" />
+                    <rect x="26" y="24" width="6" height="5" rx="1" fill="#1e293b" />
+                  </g>
+                </g>
+
+                <!-- 2. SHIRT RIGHT CHEST: DYNAMIC CUSTOM LOGO SLOT -->
+                <g id="frontRightCustomLogoGroup">
+                  <image id="svgCustomLogoImage" x="300" y="138" width="58" height="58" preserveAspectRatio="xMidYMid meet" clip-path="url(#customLogoClip)" class="hidden" />
+
+                  <g id="svgDefaultRightLogo">
+                    <rect x="298" y="138" width="62" height="58" rx="8" fill="#f8fafc" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="3,2" class="collar-stroke" opacity="0.85" />
+                    <text id="frontChestBrandText" x="329" y="166" font-size="20" font-weight="bold" fill="#0369a1" font-family="'Pacifico', cursive" text-anchor="middle" class="front-brand-fill tracking-wide">DreRus</text>
+                    <text x="329" y="184" font-size="7.5" font-family="'Orbitron', sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle" letter-spacing="0.5">TEAM LOGO</text>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- 2. SHIRT BACK VIEW (BUS ABOVE NAME + SPONSOR)   -->
+          <!-- ============================================== -->
+          <div id="backWrapper" class="w-full transition-all duration-300 flex flex-col items-center">
+            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mb-1 bg-white/90 px-2.5 py-0.5 rounded-full border border-slate-200 shadow-xs">
+              2. Shirt Back (Bus + Name + Sponsor)
+            </div>
+            <svg id="shirtBackSvg" viewBox="0 0 500 620" class="w-full max-w-[280px] h-auto drop-shadow-xl">
+              <g id="backBodyGroup" filter="url(#shadowDepth)">
+                
+                <!-- Full Sleeves Back -->
+                <path id="backLeftFullSleeve" d="M 115 155 L 45 390 L 95 405 L 145 230 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                <path id="backRightFullSleeve" d="M 385 155 L 455 390 L 405 405 L 355 230 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                
+                <path id="backLeftFullCuff" d="M 45 390 L 38 415 L 88 430 L 95 405 Z" fill="#0284c7" class="accent-fill" />
+                <path id="backRightFullCuff" d="M 455 390 L 462 415 L 412 430 L 405 405 Z" fill="#0284c7" class="accent-fill" />
+
+                <!-- Half Sleeves Back -->
+                <path id="backLeftHalfSleeve" d="M 140 100 L 70 210 L 130 240 L 165 170 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                <path id="backRightHalfSleeve" d="M 360 100 L 430 210 L 370 240 L 335 170 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                
+                <path id="backLeftHalfCuff" d="M 70 210 L 62 225 L 122 255 L 130 240 Z" fill="#0284c7" class="accent-fill" />
+                <path id="backRightHalfCuff" d="M 430 210 L 438 225 L 378 255 L 370 240 Z" fill="#0284c7" class="accent-fill" />
+
+                <!-- Main Torso Back -->
+                <path id="backTorso" d="M 160 90 L 340 90 L 370 200 L 350 510 L 150 510 L 130 200 Z" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+
+                <!-- SIGNATURE CONTRAST UPPER BACK ARCH PANEL -->
+                <path id="backArchPanel" d="M 160 90 L 340 90 L 362 170 C 310 270 190 270 138 170 Z" fill="#e0f2fe" class="back-arch-fill" stroke="#0284c7" stroke-width="1.5" />
+                <path d="M 160 90 L 340 90 L 362 170 C 310 270 190 270 138 170 Z" fill="url(#meshPattern)" opacity="0.45" />
+
+                <!-- SIDE SEAM MESH (BACK) -->
+                <path id="backLeftMesh" d="M 130 200 L 155 205 L 165 490 L 150 510 Z" fill="#e0f2fe" class="mesh-fill" />
+                <path d="M 130 200 L 155 205 L 165 490 L 150 510 Z" fill="url(#meshPattern)" opacity="0.6" />
+
+                <path id="backRightMesh" d="M 370 200 L 345 205 L 335 490 L 350 510 Z" fill="#e0f2fe" class="mesh-fill" />
+                <path d="M 370 200 L 345 205 L 335 490 L 350 510 Z" fill="url(#meshPattern)" opacity="0.6" />
+
+                <!-- Piping Lines Back -->
+                <path id="backLeftPipe" d="M 205 90 Q 170 140 130 200" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" class="piping-stroke" />
+                <path id="backRightPipe" d="M 295 90 Q 330 140 370 200" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" class="piping-stroke" />
+
+                <!-- Lower Back Matrix Circuit Pattern -->
+                <g id="backMatrixGroup" class="matrix-stroke text-sky-500" opacity="0.35">
+                  <path d="M 170 490 L 250 430 L 330 490" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M 190 490 L 250 445 L 310 490" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <polygon points="250,470 265,482 250,494 235,482" fill="none" stroke="currentColor" stroke-width="1.2" />
+                </g>
+
+                <!-- Collar Back -->
+                <path id="backCollar" d="M 195 90 C 220 100 280 100 305 90 L 295 78 C 270 70 230 70 205 78 Z" fill="#f8fafc" stroke="#0284c7" stroke-width="2.5" class="collar-stroke" />
+              </g>
+
+              <!-- BACK GRAPHICS: TOP BUS + NAME + NUMBER + BIGGER SPONSOR -->
+              <g id="backGraphicsGroup">
+                
+                <!-- 1. W11 MINI BUS DIRECTLY ABOVE PLAYER NAME (CENTERED) -->
+                <g id="backCenterBusIcon" transform="translate(233, 98) scale(0.9)">
+                  <rect x="0" y="0" width="36" height="26" rx="5" fill="#0284c7" class="accent-fill" stroke="#0f172a" stroke-width="1.5" />
+                  <path d="M 4 0 C 8 -6 14 -3 18 -7 C 22 -3 28 -6 32 0 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="1" />
+                  <rect x="4" y="5" width="28" height="9" rx="2" fill="#e0f2fe" stroke="#0f172a" stroke-width="1" />
+                  <rect x="11" y="16" width="14" height="6" rx="1.5" fill="#ffffff" />
+                  <text x="18" y="21" font-size="5.5" font-family="'Orbitron', sans-serif" font-weight="900" fill="#0f172a" text-anchor="middle">W-11</text>
+                  <circle cx="6" cy="20" r="2" fill="#fbbf24" stroke="#0f172a" stroke-width="0.8" />
+                  <circle cx="30" cy="20" r="2" fill="#fbbf24" stroke="#0f172a" stroke-width="0.8" />
+                  <rect x="4" y="24" width="6" height="5" rx="1" fill="#1e293b" />
+                  <rect x="26" y="24" width="6" height="5" rx="1" fill="#1e293b" />
+                </g>
+
+                <!-- 2. PLAYER NAME (DRERUS) -->
+                <text id="backPlayerName" x="250" y="162" font-size="40" font-weight="bold" fill="#0284c7" font-family="'Pacifico', cursive" text-anchor="middle" class="back-text-fill tracking-wide">DreRus</text>
+                
+                <!-- 3. BIG NUMBER (99.9) -->
+                <text id="backPlayerNumberOutline" x="250" y="260" font-size="105" font-weight="900" fill="none" stroke="#0f172a" stroke-width="4" font-family="'Bebas Neue', sans-serif" text-anchor="middle" opacity="0.85" class="tracking-wider">99.9</text>
+                <text id="backPlayerNumber" x="250" y="260" font-size="105" font-weight="900" fill="#0284c7" font-family="'Bebas Neue', sans-serif" text-anchor="middle" class="back-number-fill tracking-wider">99.9</text>
+
+                <!-- 4. BIGGER SPONSOR IMAGE / BANNER SLOT UNDER NUMBER -->
+                <g id="backSponsorGroup" transform="translate(0, 310)">
+                  
+                  <!-- Live Uploaded Back Sponsor Image -->
+                  <image id="svgBackSponsorImage" x="150" y="0" width="200" height="75" preserveAspectRatio="xMidYMid meet" class="hidden" />
+
+                  <!-- Default Stylized Sponsor Badge Placeholder -->
+                  <g id="svgDefaultBackSponsor">
+                    <rect x="155" y="5" width="190" height="65" rx="10" fill="#f8fafc" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4,2" class="collar-stroke" opacity="0.9" />
+                    <!-- Sponsor Text Display -->
+                    <text id="svgBackSponsorText" x="250" y="38" font-size="19" font-family="'Orbitron', sans-serif" font-weight="900" fill="#0369a1" text-anchor="middle" class="front-brand-fill tracking-widest uppercase">THE ORGANIC FOUNDRY</text>
+                    <text x="250" y="54" font-size="8.5" font-family="'Outfit', sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle" letter-spacing="1">OFFICIAL KIT SPONSOR</text>
+                  </g>
+                </g>
+
+              </g>
+            </svg>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- 3. LOWER / TROUSER VIEW                        -->
+          <!-- ============================================== -->
+          <div id="trouserWrapper" class="w-full transition-all duration-300 flex flex-col items-center">
+            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mb-1 bg-white/90 px-2.5 py-0.5 rounded-full border border-slate-200 shadow-xs">
+              3. Bell Bottom Lower
+            </div>
+            <svg id="trouserSvg" viewBox="0 0 500 620" class="w-full max-w-[280px] h-auto drop-shadow-xl">
+              <g id="trouserGroup" filter="url(#shadowDepth)">
+                <rect id="trouserWaist" x="170" y="60" width="160" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+                <path d="M 245 92 L 240 120 M 255 92 L 260 120" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" class="piping-stroke" />
+
+                <!-- Flare / Bell Bottom Cut -->
+                <path id="trouserMainLegs" d="M 170 92 L 140 450 L 130 550 L 220 550 L 245 220 L 255 220 L 280 550 L 370 550 L 360 450 L 330 92 Z" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+
+                <!-- Inner Thigh Mesh Wedge -->
+                <path id="trouserInnerCrotch" d="M 235 220 L 250 200 L 265 220 L 250 290 Z" fill="#e0f2fe" class="mesh-fill" />
+                <path d="M 235 220 L 250 200 L 265 220 L 250 290 Z" fill="url(#meshPattern)" opacity="0.5" />
+
+                <!-- Side Seam Stripes & Ventilation -->
+                <path id="trouserLeftStripe" d="M 170 92 L 140 450 L 148 450 L 176 92 Z" fill="#0284c7" class="accent-fill" />
+                <path id="trouserLeftVentMesh" d="M 140 450 L 130 550 L 165 550 L 175 450 Z" fill="#e0f2fe" class="mesh-fill" />
+                <path d="M 140 450 L 130 550 L 165 550 L 175 450 Z" fill="url(#meshPattern)" opacity="0.6" />
+
+                <path id="trouserRightStripe" d="M 330 92 L 360 450 L 352 450 L 324 92 Z" fill="#0284c7" class="accent-fill" />
+                <path id="trouserRightVentMesh" d="M 360 450 L 370 550 L 335 550 L 325 450 Z" fill="#e0f2fe" class="mesh-fill" />
+                <path d="M 360 450 L 370 550 L 335 550 L 325 450 Z" fill="url(#meshPattern)" opacity="0.6" />
+
+                <!-- Bottom Hem -->
+                <rect id="trouserLeftCuff" x="130" y="540" width="90" height="12" rx="2" fill="#0284c7" class="accent-fill" />
+                <rect id="trouserRightCuff" x="280" y="540" width="90" height="12" rx="2" fill="#0284c7" class="accent-fill" />
+
+                <!-- Mini Bus on Trouser -->
+                <g transform="translate(195, 180) scale(0.6)">
+                  <rect x="0" y="0" width="28" height="20" rx="4" fill="#0284c7" class="accent-fill" stroke="#0f172a" stroke-width="1.5" />
+                  <rect x="3" y="4" width="22" height="7" rx="1.5" fill="#e0f2fe" />
+                  <circle cx="5" cy="15" r="1.5" fill="#fbbf24" />
+                  <circle cx="23" cy="15" r="1.5" fill="#fbbf24" />
+                </g>
+
+                <!-- Number 99.9 on Right Thigh -->
+                <text id="trouserNumberText" x="295" y="195" font-size="22" font-weight="900" fill="#0284c7" font-family="'Bebas Neue', sans-serif" class="accent-fill">99.9</text>
+              </g>
+            </svg>
+          </div>
+
+        </div>
+
+        <!-- Realtime Color & Tech Badges Bar -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-2 z-20 no-print">
+          <div class="flex items-center space-x-1.5 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-700 border border-slate-200 shadow-xs">
+            <span class="w-3 h-3 rounded-full border border-slate-300 shadow-inner inline-block" id="activeColorDot" style="background-color: #0284c7;"></span>
+            <span id="activeColorName">Sky Blue Accent</span>
+          </div>
+          <div class="bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-700 border border-slate-200 shadow-xs flex items-center space-x-1">
+            <i data-lucide="wind" class="w-3.5 h-3.5 text-cyan-600"></i>
+            <span>Red Ball White Edition</span>
+          </div>
+          <div class="bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-700 border border-slate-200 shadow-xs flex items-center space-x-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+            <span>Back: Bus Above Name + Sponsor Below Number</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN: DYNAMIC CONTROLS & SELECTION SETTINGS (lg:col-span-5) -->
+    <section class="action-sidebar lg:col-span-5 space-y-5 no-print">
+
+      <!-- 1. SPONSOR & CUSTOM LOGO UPLOAD MANAGER -->
+      <div class="glass-card rounded-2xl p-5 shadow-sm border-2 border-cyan-500/50 bg-gradient-to-br from-white via-cyan-50/30 to-sky-50/20 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-extrabold uppercase tracking-wider text-slate-900 flex items-center space-x-2">
+            <i data-lucide="image" class="w-4 h-4 text-cyan-600"></i>
+            <span>Logos & Sponsor Artwork</span>
+          </h3>
+          <span class="text-[10px] bg-cyan-100 text-cyan-800 font-bold px-2 py-0.5 rounded-full">Front & Back Slots</span>
+        </div>
+
+        <!-- Front Right Chest Logo -->
+        <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-700">1. Front Right Chest Logo:</span>
+            <span id="frontLogoBadge" class="text-[10px] text-slate-500 font-semibold">Default Emblem</span>
+          </div>
+          <input type="file" id="logoUploadInput" accept="image/*" class="hidden" />
+          <div class="flex items-center gap-2">
+            <button type="button" id="triggerUploadBtn" class="flex-1 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold shadow transition flex items-center justify-center space-x-1.5">
+              <i data-lucide="upload-cloud" class="w-3.5 h-3.5 text-cyan-400"></i>
+              <span id="uploadBtnText">Upload Chest Logo</span>
+            </button>
+            <button type="button" id="clearLogoBtn" class="px-2.5 py-2 bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 rounded-xl text-xs font-semibold transition hidden" title="Remove Logo">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Back Sponsor Image / Text (Under Number) -->
+        <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-700">2. Back Sponsor (Under Number):</span>
+            <span id="backSponsorBadge" class="text-[10px] text-cyan-800 font-bold">The Organic Foundry</span>
+          </div>
+          <input type="file" id="backSponsorUploadInput" accept="image/*" class="hidden" />
+          
+          <div class="flex items-center gap-2">
+            <button type="button" id="triggerBackSponsorUploadBtn" class="flex-1 px-3 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-xl text-xs font-bold shadow transition flex items-center justify-center space-x-1.5">
+              <i data-lucide="upload" class="w-3.5 h-3.5 text-cyan-200"></i>
+              <span id="backSponsorUploadBtnText">Upload Sponsor Image</span>
+            </button>
+            <button type="button" id="clearBackSponsorBtn" class="px-2.5 py-2 bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 rounded-xl text-xs font-semibold transition hidden" title="Remove Sponsor Image">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Sponsor Name Text Input -->
+          <div class="pt-1">
+            <input type="text" id="backSponsorTextInput" value="THE ORGANIC FOUNDRY" maxlength="24" class="w-full px-2.5 py-1.5 text-xs font-bold uppercase rounded-lg border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none" placeholder="Or type Sponsor Name..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. COLOR COMBINATION PRESETS -->
+      <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-sm font-extrabold uppercase tracking-wider text-slate-900 flex items-center space-x-2">
+            <i data-lucide="palette" class="w-4 h-4 text-cyan-600"></i>
+            <span>Contrast Color Themes</span>
+          </h3>
+          <span class="text-[11px] text-slate-500 font-medium">5 Signature Combos</span>
+        </div>
+
+        <!-- Preset Palettes Grid -->
+        <div class="grid grid-cols-5 gap-2" id="presetButtonsContainer">
+          <!-- Sky Blue -->
+          <button data-color="#0284c7" data-mesh="#e0f2fe" data-arch="#bae6fd" data-text="#0369a1" data-name="Sky Blue" class="preset-btn ring-2 ring-cyan-500 ring-offset-2 p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex flex-col items-center text-center transition">
+            <div class="w-6 h-6 rounded-full shadow-md" style="background-color: #0284c7;"></div>
+            <span class="text-[10px] font-bold mt-1 text-slate-800">Sky Blue</span>
+          </button>
+
+          <!-- Sea Green -->
+          <button data-color="#059669" data-mesh="#d1fae5" data-arch="#a7f3d0" data-text="#065f46" data-name="Sea Green" class="preset-btn p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex flex-col items-center text-center transition">
+            <div class="w-6 h-6 rounded-full shadow-md" style="background-color: #059669;"></div>
+            <span class="text-[10px] font-bold mt-1 text-slate-800">Sea Green</span>
+          </button>
+
+          <!-- Ruby Red -->
+          <button data-color="#991b1b" data-mesh="#fee2e2" data-arch="#fecaca" data-text="#7f1d1d" data-name="Ruby Maroon" class="preset-btn p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex flex-col items-center text-center transition">
+            <div class="w-6 h-6 rounded-full shadow-md" style="background-color: #991b1b;"></div>
+            <span class="text-[10px] font-bold mt-1 text-slate-800">Ruby Red</span>
+          </button>
+
+          <!-- Charcoal -->
+          <button data-color="#334155" data-mesh="#f1f5f9" data-arch="#cbd5e1" data-text="#0f172a" data-name="Gunmetal Slate" class="preset-btn p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex flex-col items-center text-center transition">
+            <div class="w-6 h-6 rounded-full shadow-md" style="background-color: #334155;"></div>
+            <span class="text-[10px] font-bold mt-1 text-slate-800">Charcoal</span>
+          </button>
+
+          <!-- Bronze Gold -->
+          <button data-color="#d97706" data-mesh="#fef3c7" data-arch="#fde68a" data-text="#92400e" data-name="Bronze Gold" class="preset-btn p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex flex-col items-center text-center transition">
+            <div class="w-6 h-6 rounded-full shadow-md" style="background-color: #d97706;"></div>
+            <span class="text-[10px] font-bold mt-1 text-slate-800">Bronze</span>
+          </button>
+        </div>
+
+        <!-- Custom Color Picker -->
+        <div class="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
+          <label class="text-xs font-semibold text-slate-700">Custom RGB Color Pick:</label>
+          <div class="flex items-center space-x-2">
+            <input type="color" id="customColorInput" value="#0284c7" class="w-8 h-8 rounded-lg cursor-pointer border-0 bg-transparent" />
+            <span id="customHexCode" class="text-xs font-mono font-bold text-slate-600 uppercase">#0284c7</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. NAME, NUMBER & STYLISH FONT CUSTOMIZATION -->
+      <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-slate-900 flex items-center space-x-2">
+          <i data-lucide="type" class="w-4 h-4 text-cyan-600"></i>
+          <span>Player Identification & Typography</span>
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">Back Name</label>
+            <input type="text" id="playerNameInput" value="DreRus" maxlength="14" class="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none bg-white" placeholder="e.g. DreRus" />
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">Front & Back Number</label>
+            <input type="text" id="playerNumberInput" value="99.9" maxlength="6" class="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none bg-white" placeholder="e.g. 99.9" />
+          </div>
+        </div>
+
+        <!-- Typography / Font Style Picker -->
+        <div>
+          <label class="text-xs font-bold text-slate-700 block mb-1.5">Stylish Font for 'DreRus' Back Name</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button data-font="'Pacifico', cursive" class="font-style-btn active px-3 py-2 rounded-xl border-2 border-cyan-500 bg-cyan-50 text-slate-900 text-xs text-center transition font-script1">
+              Pacifico (Script)
+            </button>
+            <button data-font="'Dancing Script', cursive" class="font-style-btn px-3 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-900 text-xs text-center transition font-script2">
+              Dancing Script
+            </button>
+            <button data-font="'Bebas Neue', sans-serif" class="font-style-btn px-3 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-900 text-xs text-center transition font-varsity tracking-wider">
+              Varsity Bold
+            </button>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+          <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
+            <input type="checkbox" id="toggleFrontBrand" checked class="w-4 h-4 text-cyan-600 rounded" />
+            <span>Show Left Chest (99.9 + Bus)</span>
+          </label>
+          <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
+            <input type="checkbox" id="toggleBackBus" checked class="w-4 h-4 text-cyan-600 rounded" />
+            <span>Show Back Bus Above Name</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 4. SLEEVE & TROUSER CUT OPTIONS -->
+      <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-slate-900 flex items-center space-x-2">
+          <i data-lucide="scissors" class="w-4 h-4 text-cyan-600"></i>
+          <span>Fit, Sleeves & Trouser Cut</span>
+        </h3>
+
+        <!-- Sleeve Selection -->
+        <div>
+          <label class="text-xs font-bold text-slate-700 block mb-1.5">Sleeve Specification</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button id="sleeveFullBtn" class="sleeve-toggle-btn active p-2.5 rounded-xl border-2 border-cyan-500 bg-cyan-50 text-cyan-900 text-xs font-bold flex items-center justify-center space-x-2 transition">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+              <span>Full Sleeve (UV Flame Cuffs)</span>
+            </button>
+            <button id="sleeveHalfBtn" class="sleeve-toggle-btn p-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center space-x-2 transition">
+              <i data-lucide="sun" class="w-4 h-4"></i>
+              <span>Half Sleeve (Athletic Rib)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Lower Cut Style -->
+        <div>
+          <label class="text-xs font-bold text-slate-700 block mb-1.5">Trouser Cut Specification</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button id="pantBellBtn" class="pant-style-btn active p-2.5 rounded-xl border-2 border-cyan-500 bg-cyan-50 text-cyan-900 text-xs font-bold flex items-center justify-center space-x-2 transition">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span>Classic Flare / Bell Bottom</span>
+            </button>
+            <button id="pantTaperedBtn" class="pant-style-btn p-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center space-x-2 transition">
+              <i data-lucide="minimize-2" class="w-4 h-4"></i>
+              <span>Athletic Tapered + Zip</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. ACTION & SUBMISSION -->
+      <div class="glass-card rounded-2xl p-5 shadow-lg border-2 border-cyan-500/40 bg-gradient-to-br from-white via-cyan-50/40 to-blue-50/40">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Kit Verification</span>
+            <div class="text-base font-black text-slate-900">Custom Team Selection Ready</div>
+          </div>
+          <span class="px-2.5 py-1 text-[11px] font-extrabold text-cyan-800 bg-cyan-100 rounded-full border border-cyan-200">
+            The Organic Foundry Official
+          </span>
+        </div>
+
+        <button id="primaryOrderBtn" class="w-full py-3.5 bg-gradient-to-r from-slate-900 via-cyan-900 to-blue-900 hover:from-black hover:to-slate-900 text-white font-black text-sm tracking-wide rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center space-x-2">
+          <i data-lucide="send" class="w-4 h-4 text-cyan-400"></i>
+          <span>PROCEED & SUBMIT TEAM KIT DETAILS</span>
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- SELECTION / ROSTER SUBMISSION MODAL -->
+  <div id="orderModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto no-print">
+    <div class="bg-white max-w-2xl w-full rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-8">
+      
+      <!-- Modal Header -->
+      <div class="bg-slate-900 text-white p-6 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-lg bg-cyan-600 flex items-center justify-center font-black">OF</div>
+          <div>
+            <h3 class="text-lg font-black tracking-tight">W11 Kit Selection Submission</h3>
+            <p class="text-xs text-slate-400">The Organic Foundry • Team Roster & Sizing Specification</p>
+          </div>
+        </div>
+        <button id="closeOrderModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg transition">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <form id="orderForm" class="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <div>
+            <span class="text-slate-400 block font-semibold">Theme Color:</span>
+            <span id="summaryColor" class="font-bold text-slate-800">Sky Blue (#0284c7)</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block font-semibold">Sleeve:</span>
+            <span id="summarySleeve" class="font-bold text-slate-800">Full Sleeve</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block font-semibold">Trouser Cut:</span>
+            <span id="summaryPant" class="font-bold text-slate-800">Bell Bottom Flare</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block font-semibold">Back Sponsor:</span>
+            <span id="summaryCustomLogo" class="font-bold text-slate-800">The Organic Foundry</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">Your Full Name *</label>
+            <input type="text" id="custName" required placeholder="e.g. Captain Farhan" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none" />
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">WhatsApp / Contact Number *</label>
+            <input type="tel" id="custPhone" required placeholder="e.g. 0300 1234567" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">Club / Team Name</label>
+            <input type="text" id="custTeam" placeholder="e.g. Karachi Strikers CC" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none" />
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">City / Delivery Location *</label>
+            <input type="text" id="custCity" required placeholder="e.g. Karachi / Lahore / Islamabad" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none" />
+          </div>
+        </div>
+
+        <!-- Roster Table -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold text-slate-700">Team Player Roster (Size, Name & Number)</label>
+            <button type="button" id="addPlayerRowBtn" class="text-xs font-bold text-cyan-700 hover:text-cyan-900 flex items-center space-x-1">
+              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+              <span>+ Add Player</span>
+            </button>
+          </div>
+
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-100 text-slate-600 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-2.5">#</th>
+                  <th class="p-2.5">Jersey Name</th>
+                  <th class="p-2.5">Number</th>
+                  <th class="p-2.5">Shirt Size</th>
+                  <th class="p-2.5">Trouser Size</th>
+                  <th class="p-2.5 text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody id="rosterTableBody" class="divide-y divide-slate-200 font-medium">
+                <tr>
+                  <td class="p-2.5 text-slate-400 font-bold">1</td>
+                  <td class="p-2.5"><input type="text" value="DreRus" class="w-full px-2 py-1 border rounded font-semibold text-slate-800" /></td>
+                  <td class="p-2.5"><input type="text" value="99.9" class="w-16 px-2 py-1 border rounded font-semibold text-slate-800" /></td>
+                  <td class="p-2.5">
+                    <select class="border rounded px-2 py-1 font-semibold text-slate-700">
+                      <option>Medium (38-40)</option>
+                      <option>Small (36)</option>
+                      <option>Large (42)</option>
+                      <option>XL (44)</option>
+                      <option>XXL (46)</option>
+                    </select>
+                  </td>
+                  <td class="p-2.5">
+                    <select class="border rounded px-2 py-1 font-semibold text-slate-700">
+                      <option>32-34 (M)</option>
+                      <option>28-30 (S)</option>
+                      <option>36-38 (L)</option>
+                      <option>40-42 (XL)</option>
+                    </select>
+                  </td>
+                  <td class="p-2.5 text-center">
+                    <span class="text-slate-300 font-bold">-</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-slate-700 block mb-1">Custom Notes / Sizing Instructions</label>
+          <textarea id="custNotes" rows="2" placeholder="e.g. Deep trouser pockets for cricket balls, match date requirement" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-cyan-500 outline-none"></textarea>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-end gap-3">
+          <button type="button" id="copyOrderJsonBtn" class="w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center justify-center space-x-1.5">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copy Specification Sheet</span>
+          </button>
+          <button type="submit" class="w-full sm:w-auto px-6 py-2.5 text-xs font-black text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-lg transition flex items-center justify-center space-x-1.5">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <span>Submit via WhatsApp</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FABRIC TECH MODAL -->
+  <div id="techSpecsModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto no-print">
+    <div class="bg-white max-w-xl w-full rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-8">
+      <div class="bg-slate-900 text-white p-6 flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-cyan-600 flex items-center justify-center font-bold text-sm">OF</div>
+          <h3 class="text-base font-black">Fabric & Ventilation Technologies</h3>
+        </div>
+        <button onclick="document.getElementById('techSpecsModal').classList.add('hidden')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <div class="p-6 space-y-4 text-xs text-slate-600 leading-relaxed">
+        <div class="flex items-start space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <div class="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-800 flex items-center justify-center flex-shrink-0 font-bold">1</div>
+          <div>
+            <h4 class="font-bold text-slate-900">DRE-KOOL™ Matrix Weave (Torso)</h4>
+            <p>140 GSM lightweight poly-matrix that accelerates sweat evaporation and pulls heat outward during extreme Pakistani summer days.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center flex-shrink-0 font-bold">2</div>
+          <div>
+            <h4 class="font-bold text-slate-900">Nano-Aero Mesh (Jali Placement Zones)</h4>
+            <p>Dual-zone high-flow hexagonal jali under armpits, along side-seams, and covering the entire upper back arch panel under player name.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-800 flex items-center justify-center flex-shrink-0 font-bold">3</div>
+          <div>
+            <h4 class="font-bold text-slate-900">Bell-Bottom Flare Lower with Inseam Mesh</h4>
+            <p>4-way stretch woven fabric with inner crotch cooling gusset, deep dual ball pockets, and flared bell-bottom hem cut.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 flex items-center space-x-2 no-print">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMessage">Action completed!</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC ENGINE -->
+  <script>
+    const kitState = {
+      view: 'all', // 'all', 'front', 'back', 'lower'
+      themeColor: '#0284c7',
+      meshColor: '#e0f2fe',
+      archColor: '#bae6fd',
+      textColor: '#0369a1',
+      themeName: 'Sky Blue',
+      playerName: 'DreRus',
+      playerNumber: '99.9',
+      fontFamily: "'Pacifico', cursive",
+      sleeveStyle: 'full',
+      pantStyle: 'bell',
+      showLeftChest: true,
+      showBackBus: true,
+      hasCustomLogo: false,
+      customLogoUrl: '',
+      hasBackSponsorImage: false,
+      backSponsorImageUrl: '',
+      backSponsorText: 'THE ORGANIC FOUNDRY'
+    };
+
+    // DOM Elements
+    const svgContainer = document.getElementById('svgContainer');
+    const frontWrapper = document.getElementById('frontWrapper');
+    const backWrapper = document.getElementById('backWrapper');
+    const trouserWrapper = document.getElementById('trouserWrapper');
+
+    const playerNameInput = document.getElementById('playerNameInput');
+    const playerNumberInput = document.getElementById('playerNumberInput');
+    const customColorInput = document.getElementById('customColorInput');
+    const customHexCode = document.getElementById('customHexCode');
+    const activeColorDot = document.getElementById('activeColorDot');
+    const activeColorName = document.getElementById('activeColorName');
+    const toggleFrontBrand = document.getElementById('toggleFrontBrand');
+    const toggleBackBus = document.getElementById('toggleBackBus');
+
+    // Front Logo Upload Elements
+    const logoUploadInput = document.getElementById('logoUploadInput');
+    const triggerUploadBtn = document.getElementById('triggerUploadBtn');
+    const clearLogoBtn = document.getElementById('clearLogoBtn');
+    const frontLogoBadge = document.getElementById('frontLogoBadge');
+    const uploadBtnText = document.getElementById('uploadBtnText');
+    const svgCustomLogoImage = document.getElementById('svgCustomLogoImage');
+    const svgDefaultRightLogo = document.getElementById('svgDefaultRightLogo');
+
+    // Back Sponsor Elements
+    const backSponsorUploadInput = document.getElementById('backSponsorUploadInput');
+    const triggerBackSponsorUploadBtn = document.getElementById('triggerBackSponsorUploadBtn');
+    const clearBackSponsorBtn = document.getElementById('clearBackSponsorBtn');
+    const backSponsorBadge = document.getElementById('backSponsorBadge');
+    const backSponsorUploadBtnText = document.getElementById('backSponsorUploadBtnText');
+    const backSponsorTextInput = document.getElementById('backSponsorTextInput');
+    const svgBackSponsorImage = document.getElementById('svgBackSponsorImage');
+    const svgDefaultBackSponsor = document.getElementById('svgDefaultBackSponsor');
+    const svgBackSponsorText = document.getElementById('svgBackSponsorText');
+
+    function applyColorsToKit() {
+      const { themeColor, meshColor, archColor, textColor } = kitState;
+
+      document.querySelectorAll('.accent-fill').forEach(el => el.setAttribute('fill', themeColor));
+      document.querySelectorAll('.piping-stroke').forEach(el => el.setAttribute('stroke', themeColor));
+      document.querySelectorAll('.collar-stroke').forEach(el => el.setAttribute('stroke', themeColor));
+      document.querySelectorAll('.mesh-fill').forEach(el => el.setAttribute('fill', meshColor));
+
+      const backArch = document.getElementById('backArchPanel');
+      if (backArch) {
+        backArch.setAttribute('fill', archColor);
+        backArch.setAttribute('stroke', themeColor);
+      }
+
+      document.querySelectorAll('.front-brand-fill').forEach(el => el.setAttribute('fill', textColor));
+      document.querySelectorAll('.front-number-fill').forEach(el => el.setAttribute('fill', textColor));
+      document.querySelectorAll('.back-text-fill').forEach(el => el.setAttribute('fill', textColor));
+      document.querySelectorAll('.back-number-fill').forEach(el => el.setAttribute('fill', themeColor));
+
+      document.querySelectorAll('.matrix-stroke').forEach(el => el.style.color = themeColor);
+
+      activeColorDot.style.backgroundColor = themeColor;
+      activeColorName.innerText = kitState.themeName;
+      customHexCode.innerText = themeColor;
+      customColorInput.value = themeColor;
+    }
+
+    function updateTypography() {
+      const backNameEl = document.getElementById('backPlayerName');
+      const frontBrandEl = document.getElementById('frontChestBrandText');
+      const backNumOutline = document.getElementById('backPlayerNumberOutline');
+      const backNumEl = document.getElementById('backPlayerNumber');
+      const frontNumEl = document.getElementById('frontNumberText');
+      const trouserNumEl = document.getElementById('trouserNumberText');
+
+      if (backNameEl) {
+        backNameEl.textContent = kitState.playerName;
+        backNameEl.setAttribute('font-family', kitState.fontFamily);
+      }
+      if (frontBrandEl) {
+        frontBrandEl.textContent = kitState.playerName;
+        frontBrandEl.setAttribute('font-family', kitState.fontFamily);
+      }
+
+      if (backNumEl) backNumEl.textContent = kitState.playerNumber;
+      if (backNumOutline) backNumOutline.textContent = kitState.playerNumber;
+      if (frontNumEl) frontNumEl.textContent = kitState.playerNumber;
+      if (trouserNumEl) trouserNumEl.textContent = kitState.playerNumber;
+
+      // Back Sponsor Text
+      if (svgBackSponsorText) {
+        svgBackSponsorText.textContent = kitState.backSponsorText || 'OFFICIAL SPONSOR';
+      }
+
+      // Visibility Toggles
+      document.getElementById('frontLeftGroup').style.display = kitState.showLeftChest ? 'block' : 'none';
+      document.getElementById('backCenterBusIcon').style.display = kitState.showBackBus ? 'block' : 'none';
+    }
+
+    function updateSleeveView() {
+      const isFull = kitState.sleeveStyle === 'full';
+      
+      document.getElementById('frontLeftFullSleeve').style.display = isFull ? 'block' : 'none';
+      document.getElementById('frontRightFullSleeve').style.display = isFull ? 'block' : 'none';
+      document.getElementById('frontLeftFullCuff').style.display = isFull ? 'block' : 'none';
+      document.getElementById('frontRightFullCuff').style.display = isFull ? 'block' : 'none';
+
+      document.getElementById('frontLeftHalfSleeve').style.display = !isFull ? 'block' : 'none';
+      document.getElementById('frontRightHalfSleeve').style.display = !isFull ? 'block' : 'none';
+      document.getElementById('frontLeftHalfCuff').style.display = !isFull ? 'block' : 'none';
+      document.getElementById('frontRightHalfCuff').style.display = !isFull ? 'block' : 'none';
+
+      document.getElementById('backLeftFullSleeve').style.display = isFull ? 'block' : 'none';
+      document.getElementById('backRightFullSleeve').style.display = isFull ? 'block' : 'none';
+      document.getElementById('backLeftFullCuff').style.display = isFull ? 'block' : 'none';
+      document.getElementById('backRightFullCuff').style.display = isFull ? 'block' : 'none';
+
+      document.getElementById('backLeftHalfSleeve').style.display = !isFull ? 'block' : 'none';
+      document.getElementById('backRightHalfSleeve').style.display = !isFull ? 'block' : 'none';
+      document.getElementById('backLeftHalfCuff').style.display = !isFull ? 'block' : 'none';
+      document.getElementById('backRightHalfCuff').style.display = !isFull ? 'block' : 'none';
+
+      document.getElementById('sleeveIndicator').innerText = isFull ? 'Full Sleeve' : 'Half Sleeve';
+    }
+
+    function setView(viewName) {
+      kitState.view = viewName;
+      document.querySelectorAll('.view-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white', 'active');
+        btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+      });
+
+      frontWrapper.classList.add('hidden');
+      backWrapper.classList.add('hidden');
+      trouserWrapper.classList.add('hidden');
+      svgContainer.className = 'w-full grid gap-3 items-center justify-center transition-all duration-300';
+
+      if (viewName === 'all') {
+        document.getElementById('viewAllBtn').classList.add('bg-slate-900', 'text-white', 'active');
+        document.getElementById('viewAllBtn').classList.remove('text-slate-600', 'hover:bg-slate-100');
+        frontWrapper.classList.remove('hidden');
+        backWrapper.classList.remove('hidden');
+        trouserWrapper.classList.remove('hidden');
+        svgContainer.classList.add('grid-cols-1', 'md:grid-cols-3');
+      } else if (viewName === 'front') {
+        document.getElementById('viewFrontBtn').classList.add('bg-slate-900', 'text-white', 'active');
+        document.getElementById('viewFrontBtn').classList.remove('text-slate-600', 'hover:bg-slate-100');
+        frontWrapper.classList.remove('hidden');
+        svgContainer.classList.add('grid-cols-1', 'max-w-[400px]');
+      } else if (viewName === 'back') {
+        document.getElementById('viewBackBtn').classList.add('bg-slate-900', 'text-white', 'active');
+        document.getElementById('viewBackBtn').classList.remove('text-slate-600', 'hover:bg-slate-100');
+        backWrapper.classList.remove('hidden');
+        svgContainer.classList.add('grid-cols-1', 'max-w-[400px]');
+      } else if (viewName === 'lower') {
+        document.getElementById('viewLowerBtn').classList.add('bg-slate-900', 'text-white', 'active');
+        document.getElementById('viewLowerBtn').classList.remove('text-slate-600', 'hover:bg-slate-100');
+        trouserWrapper.classList.remove('hidden');
+        svgContainer.classList.add('grid-cols-1', 'max-w-[400px]');
+      }
+    }
+
+    // Handle Front Custom Logo Upload
+    function handleCustomLogo(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        kitState.hasCustomLogo = true;
+        kitState.customLogoUrl = dataUrl;
+
+        svgCustomLogoImage.setAttribute('href', dataUrl);
+        svgCustomLogoImage.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', dataUrl);
+        svgCustomLogoImage.classList.remove('hidden');
+        svgDefaultRightLogo.classList.add('hidden');
+
+        uploadBtnText.innerText = 'Change Logo';
+        clearLogoBtn.classList.remove('hidden');
+        frontLogoBadge.innerText = 'Custom Logo';
+        frontLogoBadge.className = 'text-[10px] text-emerald-600 font-bold';
+        
+        confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } });
+        showToast('Front chest logo updated!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearCustomLogo() {
+      kitState.hasCustomLogo = false;
+      kitState.customLogoUrl = '';
+      logoUploadInput.value = '';
+
+      svgCustomLogoImage.classList.add('hidden');
+      svgCustomLogoImage.removeAttribute('href');
+      svgDefaultRightLogo.classList.remove('hidden');
+
+      uploadBtnText.innerText = 'Upload Chest Logo';
+      clearLogoBtn.classList.add('hidden');
+      frontLogoBadge.innerText = 'Default Emblem';
+      frontLogoBadge.className = 'text-[10px] text-slate-500 font-semibold';
+      showToast('Front custom logo removed.');
+    }
+
+    // Handle Back Sponsor Image Upload (Bigger Slot Under Number)
+    function handleBackSponsorImage(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        kitState.hasBackSponsorImage = true;
+        kitState.backSponsorImageUrl = dataUrl;
+
+        svgBackSponsorImage.setAttribute('href', dataUrl);
+        svgBackSponsorImage.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', dataUrl);
+        svgBackSponsorImage.classList.remove('hidden');
+        svgDefaultBackSponsor.classList.add('hidden');
+
+        backSponsorUploadBtnText.innerText = 'Change Sponsor Artwork';
+        clearBackSponsorBtn.classList.remove('hidden');
+        backSponsorBadge.innerText = 'Custom Image Active';
+        backSponsorBadge.className = 'text-[10px] text-emerald-600 font-bold';
+
+        confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+        showToast('Back sponsor banner updated under number!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearBackSponsorImage() {
+      kitState.hasBackSponsorImage = false;
+      kitState.backSponsorImageUrl = '';
+      backSponsorUploadInput.value = '';
+
+      svgBackSponsorImage.classList.add('hidden');
+      svgBackSponsorImage.removeAttribute('href');
+      svgDefaultBackSponsor.classList.remove('hidden');
+
+      backSponsorUploadBtnText.innerText = 'Upload Sponsor Image';
+      clearBackSponsorBtn.classList.add('hidden');
+      backSponsorBadge.innerText = kitState.backSponsorText || 'Default Sponsor';
+      backSponsorBadge.className = 'text-[10px] text-cyan-800 font-bold';
+      showToast('Back sponsor image cleared. Text restored.');
+    }
+
+    function adjustColor(hex, lum) {
+      hex = String(hex).replace(/[^0-9a-f]/gi, '');
+      if (hex.length < 6) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+      lum = lum || 0;
+      let rgb = "#", c, i;
+      for (i = 0; i < 3; i++) {
+        c = parseInt(hex.substr(i*2,2), 16);
+        c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+        rgb += ("00"+c).substr(c.length);
+      }
+      return rgb;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMessage').innerText = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    // Helper: Build WhatsApp / Clipboard Text Summary
+    function generateSpecificationText() {
+      const custName = document.getElementById('custName')?.value || 'Team Representative';
+      const team = document.getElementById('custTeam')?.value || 'Cricket Club';
+      const city = document.getElementById('custCity')?.value || 'Pakistan';
+      const notes = document.getElementById('custNotes')?.value || 'Standard red-ball requirements';
+
+      return `*THE ORGANIC FOUNDRY - W11 CRICKET KIT SELECTION*\n` +
+        `-----------------------------------------\n` +
+        `*Client/Captain:* ${custName}\n` +
+        `*Team Name:* ${team}\n` +
+        `*City:* ${city}\n\n` +
+        `*KIT DESIGN & TECHNICAL SPECIFICATIONS:*\n` +
+        `• Base Body: Pure White DRE-KOOL™ (Red-Ball Spec)\n` +
+        `• Accent Color: ${kitState.themeName} (${kitState.themeColor})\n` +
+        `• Sleeve Cut: ${kitState.sleeveStyle === 'full' ? 'Full Sleeve with UV/Flame Cuffs' : 'Half Sleeve (Athletic Rib)'}\n` +
+        `• Trouser Cut: ${kitState.pantStyle === 'bell' ? 'Classic Flare / Bell Bottom Lower' : 'Athletic Tapered Lower'}\n` +
+        `• Front Left Chest: Number ${kitState.playerNumber} + W-11 Mini Bus Emblem\n` +
+        `• Front Right Chest: ${kitState.hasCustomLogo ? 'Custom Team/Sponsor Logo Attached' : 'Default DreRus Emblem'}\n` +
+        `• Back Upper Arch: W-11 Bus Emblem + Player Name "${kitState.playerName}"\n` +
+        `• Back Number: Big ${kitState.playerNumber}\n` +
+        `• Back Sponsor (Below Number): ${kitState.hasBackSponsorImage ? 'Custom Sponsor Artwork Attached' : kitState.backSponsorText}\n` +
+        `• Special Notes: ${notes}\n` +
+        `-----------------------------------------\n` +
+        `_Generated via W11 Kit Selection Portal by DreRus | The Organic Foundry_`;
+    }
+
+    // Clipboard Copy Action (Robust execution)
+    function copySpecToClipboard() {
+      const summaryText = generateSpecificationText();
+      const tempTextArea = document.createElement("textarea");
+      tempTextArea.value = summaryText;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      try {
+        document.execCommand('copy');
+        confetti({ particleCount: 60, spread: 70, origin: { y: 0.2 } });
+        showToast('WhatsApp Spec Sheet copied to clipboard!');
+      } catch (err) {
+        showToast('Please manually copy the text from the modal.');
+      }
+      document.body.removeChild(tempTextArea);
+    }
+
+    // Print to PDF Action
+    function printAsPdf() {
+      // Ensure all 3 pieces are active for print
+      setView('all');
+      document.getElementById('printDate').innerText = `Date: ${new Date().toLocaleDateString()}`;
+      document.getElementById('printConfigSummary').innerText = `Accent: ${kitState.themeName} (${kitState.themeColor}) | Sleeve: ${kitState.sleeveStyle.toUpperCase()} | Lower: ${kitState.pantStyle.toUpperCase()}`;
+      
+      showToast('Preparing PDF Print Layout...');
+      setTimeout(() => {
+        window.print();
+      }, 350);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      // Top Sharing Buttons
+      document.getElementById('topCopyClipboardBtn').addEventListener('click', copySpecToClipboard);
+      document.getElementById('topPrintPdfBtn').addEventListener('click', printAsPdf);
+      document.getElementById('topDirectWhatsAppBtn').addEventListener('click', () => {
+        const text = encodeURIComponent(generateSpecificationText());
+        window.open(`https://api.whatsapp.com/send?phone=923000000000&text=${text}`, '_blank');
+      });
+
+      // Front Logo Upload
+      triggerUploadBtn.addEventListener('click', () => logoUploadInput.click());
+      logoUploadInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          handleCustomLogo(e.target.files[0]);
+        }
+      });
+      clearLogoBtn.addEventListener('click', clearCustomLogo);
+
+      // Back Sponsor Upload & Text Handlers
+      triggerBackSponsorUploadBtn.addEventListener('click', () => backSponsorUploadInput.click());
+      backSponsorUploadInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          handleBackSponsorImage(e.target.files[0]);
+        }
+      });
+      clearBackSponsorBtn.addEventListener('click', clearBackSponsorImage);
+      
+      backSponsorTextInput.addEventListener('input', (e) => {
+        kitState.backSponsorText = e.target.value.toUpperCase();
+        backSponsorBadge.innerText = kitState.backSponsorText || 'Custom Sponsor';
+        updateTypography();
+      });
+
+      // View Tab Handlers
+      document.getElementById('viewAllBtn').addEventListener('click', () => setView('all'));
+      document.getElementById('viewFrontBtn').addEventListener('click', () => setView('front'));
+      document.getElementById('viewBackBtn').addEventListener('click', () => setView('back'));
+      document.getElementById('viewLowerBtn').addEventListener('click', () => setView('lower'));
+
+      // Presets
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('ring-2', 'ring-cyan-500', 'ring-offset-2'));
+          btn.classList.add('ring-2', 'ring-cyan-500', 'ring-offset-2');
+
+          kitState.themeColor = btn.getAttribute('data-color');
+          kitState.meshColor = btn.getAttribute('data-mesh');
+          kitState.archColor = btn.getAttribute('data-arch');
+          kitState.textColor = btn.getAttribute('data-text');
+          kitState.themeName = btn.getAttribute('data-name');
+
+          applyColorsToKit();
+          showToast(`Applied ${kitState.themeName} Theme`);
+        });
+      });
+
+      // Custom RGB Color
+      customColorInput.addEventListener('input', (e) => {
+        const val = e.target.value;
+        kitState.themeColor = val;
+        kitState.meshColor = adjustColor(val, 0.75);
+        kitState.archColor = adjustColor(val, 0.60);
+        kitState.textColor = adjustColor(val, -0.35);
+        kitState.themeName = `Custom (${val.toUpperCase()})`;
+        applyColorsToKit();
+      });
+
+      // Player Name & Number Inputs
+      playerNameInput.addEventListener('input', (e) => {
+        kitState.playerName = e.target.value || 'DreRus';
+        updateTypography();
+      });
+
+      playerNumberInput.addEventListener('input', (e) => {
+        kitState.playerNumber = e.target.value || '99.9';
+        updateTypography();
+      });
+
+      // Font Style Selection Buttons
+      document.querySelectorAll('.font-style-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.font-style-btn').forEach(b => {
+            b.classList.remove('border-cyan-500', 'bg-cyan-50', 'active');
+            b.classList.add('border-slate-300', 'bg-white');
+          });
+          btn.classList.add('border-cyan-500', 'bg-cyan-50', 'active');
+          btn.classList.remove('border-slate-300', 'bg-white');
+
+          kitState.fontFamily = btn.getAttribute('data-font');
+          updateTypography();
+        });
+      });
+
+      toggleFrontBrand.addEventListener('change', (e) => {
+        kitState.showLeftChest = e.target.checked;
+        updateTypography();
+      });
+
+      toggleBackBus.addEventListener('change', (e) => {
+        kitState.showBackBus = e.target.checked;
+        updateTypography();
+      });
+
+      // Sleeve Toggle Buttons
+      document.getElementById('sleeveFullBtn').addEventListener('click', function() {
+        this.classList.add('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        document.getElementById('sleeveHalfBtn').classList.remove('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        kitState.sleeveStyle = 'full';
+        updateSleeveView();
+      });
+
+      document.getElementById('sleeveHalfBtn').addEventListener('click', function() {
+        this.classList.add('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        document.getElementById('sleeveFullBtn').classList.remove('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        kitState.sleeveStyle = 'half';
+        updateSleeveView();
+      });
+
+      // Trouser Cut Buttons
+      document.getElementById('pantBellBtn').addEventListener('click', function() {
+        this.classList.add('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        document.getElementById('pantTaperedBtn').classList.remove('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        kitState.pantStyle = 'bell';
+        showToast('Selected: Bell Bottom Flare Lower');
+      });
+
+      document.getElementById('pantTaperedBtn').addEventListener('click', function() {
+        this.classList.add('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        document.getElementById('pantBellBtn').classList.remove('border-2', 'border-cyan-500', 'bg-cyan-50', 'text-cyan-900', 'active');
+        kitState.pantStyle = 'tapered';
+        showToast('Selected: Athletic Tapered Lower');
+      });
+
+      // Reset Defaults
+      document.getElementById('resetDefaultsBtn').addEventListener('click', () => {
+        kitState.themeColor = '#0284c7';
+        kitState.meshColor = '#e0f2fe';
+        kitState.archColor = '#bae6fd';
+        kitState.textColor = '#0369a1';
+        kitState.themeName = 'Sky Blue';
+        kitState.playerName = 'DreRus';
+        kitState.playerNumber = '99.9';
+        kitState.sleeveStyle = 'full';
+        kitState.pantStyle = 'bell';
+        kitState.fontFamily = "'Pacifico', cursive";
+        kitState.backSponsorText = 'THE ORGANIC FOUNDRY';
+
+        playerNameInput.value = 'DreRus';
+        playerNumberInput.value = '99.9';
+        backSponsorTextInput.value = 'THE ORGANIC FOUNDRY';
+        clearCustomLogo();
+        clearBackSponsorImage();
+
+        applyColorsToKit();
+        updateTypography();
+        updateSleeveView();
+        setView('all');
+        showToast('Reset to original DreRus Kit design');
+      });
+
+      // Snapshot Download
+      document.getElementById('downloadKitPreviewBtn').addEventListener('click', () => {
+        confetti({ particleCount: 60, spread: 60, origin: { y: 0.6 } });
+        showToast('Kit Configuration saved!');
+      });
+
+      // Modal
+      const orderModal = document.getElementById('orderModal');
+      const openOrderModal = () => {
+        document.getElementById('summaryColor').innerText = `${kitState.themeName} (${kitState.themeColor})`;
+        document.getElementById('summarySleeve').innerText = kitState.sleeveStyle === 'full' ? 'Full Sleeve' : 'Half Sleeve';
+        document.getElementById('summaryPant').innerText = kitState.pantStyle === 'bell' ? 'Classic Bell Bottom Flare' : 'Athletic Tapered';
+        document.getElementById('summaryCustomLogo').innerText = kitState.hasBackSponsorImage ? 'Custom Sponsor Banner' : kitState.backSponsorText;
+        orderModal.classList.remove('hidden');
+      };
+
+      document.getElementById('openOrderModalBtn').addEventListener('click', openOrderModal);
+      document.getElementById('primaryOrderBtn').addEventListener('click', openOrderModal);
+      document.getElementById('closeOrderModalBtn').addEventListener('click', () => orderModal.classList.add('hidden'));
+
+      // Add Player Row
+      document.getElementById('addPlayerRowBtn').addEventListener('click', () => {
+        const tbody = document.getElementById('rosterTableBody');
+        const rowCount = tbody.children.length + 1;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="p-2.5 text-slate-400 font-bold">${rowCount}</td>
+          <td class="p-2.5"><input type="text" placeholder="Player Name" class="w-full px-2 py-1 border rounded font-semibold text-slate-800" /></td>
+          <td class="p-2.5"><input type="text" placeholder="No." class="w-16 px-2 py-1 border rounded font-semibold text-slate-800" /></td>
+          <td class="p-2.5">
+            <select class="border rounded px-2 py-1 font-semibold text-slate-700">
+              <option>Medium (38-40)</option>
+              <option>Small (36)</option>
+              <option>Large (42)</option>
+              <option>XL (44)</option>
+              <option>XXL (46)</option>
+            </select>
+          </td>
+          <td class="p-2.5">
+            <select class="border rounded px-2 py-1 font-semibold text-slate-700">
+              <option>32-34 (M)</option>
+              <option>28-30 (S)</option>
+              <option>36-38 (L)</option>
+              <option>40-42 (XL)</option>
+            </select>
+          </td>
+          <td class="p-2.5 text-center">
+            <button type="button" onclick="this.closest('tr').remove()" class="text-rose-500 hover:text-rose-700 font-bold">×</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Copy Spec Sheet
+      document.getElementById('copyOrderJsonBtn').addEventListener('click', copySpecToClipboard);
+
+      // WhatsApp Submission
+      document.getElementById('orderForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const waText = encodeURIComponent(generateSpecificationText());
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.5 } });
+        window.open(`https://api.whatsapp.com/send?phone=923000000000&text=${waText}`, '_blank');
+        showToast('Redirecting to WhatsApp...');
+      });
+
+      // Default Setup
+      setView('all');
+      applyColorsToKit();
+      updateTypography();
+      updateSleeveView();
+    });
+  </script>
+</body>
+</html>
