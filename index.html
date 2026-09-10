@@ -8,7 +8,7 @@
   <!-- Google Fonts for Dynamic Layout Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Quicksand:wght=500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS Framework -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons pack -->
@@ -47,8 +47,8 @@
       --text-muted: #475569;
       
       /* Interactive Workspace Rulers */
-      --page-padding: 12mm;
-      --section-gap: 1rem;
+      --page-padding: 11mm;
+      --section-gap: 0.85rem;
       --base-font-size: 10.5px;
     }
 
@@ -157,10 +157,17 @@
     }
 
     @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      a[href]:after {
+        content: "" !important;
+      }
       body {
         background-color: #fff !important;
-        margin: 0;
-        padding: 0;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .no-print {
         display: none !important;
@@ -175,7 +182,7 @@
         width: 210mm !important;
         height: 297mm !important;
         max-height: 297mm !important;
-        padding: 10mm 10mm !important;
+        padding: 8mm 10mm !important;
         page-break-after: always;
         page-break-inside: avoid !important;
         overflow: hidden !important;
@@ -190,7 +197,7 @@
         transform: none !important;
         box-shadow: none !important;
       }
-      p, li, span, div {
+      p, li, span, div, a {
         font-size: 98% !important;
         line-height: 1.35 !important;
       }
@@ -242,8 +249,8 @@
       if (role === 'it') {
         if (btnIT) btnIT.className = activeClass;
 
-        if (accentText1) accentText1.innerHTML = "Senior Manager QA • Senior Project Manager • AI & Core Banking Leader";
-        if (accentText2) accentText2.innerHTML = "Senior Manager QA • Senior Project Manager • AI & Core Banking Leader";
+        if (accentText1) accentText1.innerHTML = "QA • Project Management • Business Analysis • AI • Core Banking";
+        if (accentText2) accentText2.innerHTML = "QA • Project Management • Business Analysis • AI • Core Banking";
 
         if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leveraging <strong>AI tools for process automation, QA portal engineering, and visual dashboard reporting</strong>. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging technological development with executive management.";
 
@@ -259,20 +266,20 @@
         if (skillLabel4) skillLabel4.innerText = "Automation & Tools";
         if (skillDetail4) skillDetail4.innerText = "Selenium | Python | JMeter | QA Tool Acquisition | Power BI | OpenProject | Netsparker Security";
 
-        if (job1Title) job1Title.innerText = "Senior Manager QA / Senior Project Manager";
+        if (job1Title) job1Title.innerText = "Senior Manager QA";
         if (job1Bullets) job1Bullets.innerHTML = `
-          <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Jan 2026 -- Present):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition for advanced test automation and security suites.</li>
+          <li><strong class="text-slate-800 focus-strong">Enterprise QA Operations & Leadership:</strong> Leading enterprise Quality Assurance operations across core banking and digital applications, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition schedules.</li>
           <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools into test case generation, automated regression execution, and intelligent defect triaging, accelerating QA cycle efficiency by 35%.</li>
-          <li><strong class="text-slate-800 focus-strong">PMO Framework & AI Workflows (Nov 2023 -- Dec 2025):</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to optimize workflow pipelines and reduce project delivery cycles by 22%.</li>
-          <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Managed end-to-end execution of critical financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
+          <li><strong class="text-slate-800 focus-strong">PMO Framework & Process Optimization:</strong> Architected and deployed a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to streamline project pipelines and reduce delivery cycles by 22%.</li>
+          <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Governed end-to-end quality validation and deployment for high-impact financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
         `;
       } else if (role === 'compliance') {
         if (btnCompliance) btnCompliance.className = activeClass;
 
-        if (accentText1) accentText1.innerHTML = "Senior Project Manager -- Compliance Systems • CRs & Projects Delivery • AI & Core Banking";
-        if (accentText2) accentText2.innerHTML = "Senior Project Manager -- Compliance Systems • Head of QA & ALM • AI & Core Banking Leader";
+        if (accentText1) accentText1.innerHTML = "Project Management • Compliance Systems • BA • AI • Core Banking";
+        if (accentText2) accentText2.innerHTML = "Project Management • Compliance Systems • BA • AI • Core Banking";
 
-        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT & Project Management Leader with over 19 years of experience specializing in <strong>Compliance Systems, CRs & Projects Delivery, Core Banking, and Enterprise PMO Leadership</strong>. Proven track record as Senior Project Manager overseeing complex regulatory compliance portfolios, leveraging <strong>AI expertise to engineer automated workflows, executive dashboards, reporting solutions, and continuous process improvements</strong> across IT, Risk, Compliance, and Central Bank (SBP/FBR) mandates while establishing robust PMO frameworks.";
+        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT & Project Management Leader with over 19 years of experience specializing in <strong>Compliance Systems, CRs & Projects Delivery, Core Banking, and Enterprise PMO Leadership</strong>. Proven track record as Senior Manager QA & Senior PM overseeing complex regulatory compliance portfolios, leveraging <strong>AI expertise to engineer automated workflows, executive dashboards, reporting solutions, and continuous process improvements</strong> across IT, Risk, Compliance, and Central Bank (SBP/FBR) mandates while establishing robust PMO frameworks.";
 
         if (skillLabel1) skillLabel1.innerText = "Compliance & Governance";
         if (skillDetail1) skillDetail1.innerText = "Change Requests (CRs) Delivery | Central Bank Mandates | Compliance Systems | Cross-Functional Coordination";
@@ -286,9 +293,9 @@
         if (skillLabel4) skillLabel4.innerText = "Core Systems";
         if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking | SYMBOLS Core | Financial Switches | ISO 8583 | EKYC Blockchain";
 
-        if (job1Title) job1Title.innerText = "Senior Project Manager";
+        if (job1Title) job1Title.innerText = "Senior Manager QA";
         if (job1Bullets) job1Bullets.innerHTML = `
-          <li><strong class="text-slate-800 focus-strong">Compliance Portfolio Delivery:</strong> Spearheaded Project Management for critical Change Requests (CRs) and key system updates including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong> aligned with SBP / FBR mandates.</li>
+          <li><strong class="text-slate-800 focus-strong">Compliance Portfolio Delivery:</strong> Spearheaded testing governance and Project Management for critical Change Requests (CRs) and key system updates including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong> aligned with SBP / FBR mandates.</li>
           <li><strong class="text-slate-800 focus-strong">AI-Driven Dashboards & Process Optimization:</strong> Utilized AI tools and modern BI analytics (OpenProject / Power BI) to build automated workflows, executive progress dashboards, and audit-ready reporting, significantly enhancing process efficiency.</li>
           <li><strong class="text-slate-800 focus-strong">Cross-Functional Integration:</strong> Directed multi-disciplinary teams across IT, Compliance, Risk, and Operations to execute key projects including <strong>RTGS -- PRISM, CRP -- Trade IQ</strong>, and <strong>EKYC Systems</strong>.</li>
           <li><strong class="text-slate-800 focus-strong">PMO Governance:</strong> Modernized PMO Framework processes across 12+ product lines, streamlining approval lifecycles and reducing delivery cycles by 22%.</li>
@@ -296,8 +303,8 @@
       } else if (role === 'qa') {
         if (btnQA) btnQA.className = activeClass;
 
-        if (accentText1) accentText1.innerHTML = "Senior Manager QA • QA Automation & AI Specialist • PM Leadership";
-        if (accentText2) accentText2.innerHTML = "Senior Manager QA • Head of QA & ALM • AI & Core Banking Leader";
+        if (accentText1) accentText1.innerHTML = "Senior Manager QA • Test Automation • PM & BA • AI • Core Banking";
+        if (accentText2) accentText2.innerHTML = "Senior Manager QA • Test Automation • PM & BA • AI • Core Banking";
 
         if (summaryText) summaryText.innerHTML = "Dynamic, results-driven Quality Assurance & IT Leader with over 19 years of experience, including 17 years specializing in <strong>Quality Assurance, Test Automation Architecture, QA Tool Acquisition, and AI-Embedded Testing Workflows</strong>. Proven track record as Senior Manager QA designing enterprise QA portals, acquiring and procuring specialized testing tools, managing cross-functional QA engineering resources, and embedding AI across test automation, bug lifecycle management, and Core Banking (Temenos T24) UAT execution with a strong blend of Project Management.";
 
@@ -313,12 +320,12 @@
         if (skillLabel4) skillLabel4.innerText = "Banking & PM Blend";
         if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking UAT | PMO Methodologies | Risk Mitigation | Executive Progress Reporting";
 
-        if (job1Title) job1Title.innerText = "Senior Manager QA (with PM Blend)";
+        if (job1Title) job1Title.innerText = "Senior Manager QA";
         if (job1Bullets) job1Bullets.innerHTML = `
-          <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Jan 2026 -- Present):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, directing QA tool acquisition and procurement schedules, and managing cross-functional engineering resources.</li>
+          <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Full Tenure):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, directing QA tool acquisition and procurement schedules, and managing cross-functional engineering resources.</li>
           <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools for automated test generation, AI-assisted bug triaging, and regression script optimization, improving testing velocity by 35%.</li>
           <li><strong class="text-slate-800 focus-strong">Test Automation & QA Portal Design:</strong> Engineered automated testing frameworks (Selenium, Python, JMeter) and custom QA monitoring portals for real-time defect orchestration and go-live readiness.</li>
-          <li><strong class="text-slate-800 focus-strong">Project Management Execution (Nov 2023 -- Dec 2025):</strong> Managed end-to-end execution of high-priority financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
+          <li><strong class="text-slate-800 focus-strong">Strategic Systems Delivery (PM Blend):</strong> Managed end-to-end quality verification and project execution of high-priority financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
         `;
       }
     }
@@ -440,7 +447,7 @@
         if (summaryText) summaryText.className = "text-[11px] leading-relaxed text-justify text-slate-700";
 
         if (sideBlock) sideBlock.className = "col-span-4 rounded-xl p-3.5 space-y-4 border transition-all duration-300 bg-slate-50 border-slate-200 text-slate-700";
-        if (text1) text1.className = "font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300 text-slate-700";
+        if (text1) text1.className = "font-display font-semibold text-[10px] tracking-wider uppercase mt-2 transition-all duration-300 text-slate-700";
         if (text2) text2.className = "text-[9.5px] font-semibold uppercase tracking-wide mt-0.5 text-slate-700";
 
         if (sideBorder1) sideBorder1.className = "flex items-center gap-2 border-b pb-1 mb-2.5 border-slate-200 text-slate-800";
@@ -497,7 +504,7 @@
         if (summaryText) summaryText.className = "text-[11px] leading-relaxed text-[#5c142b]";
 
         if (sideBlock) sideBlock.className = "col-span-4 rounded-xl p-3.5 space-y-4 border transition-all duration-300 bg-[#fcf5f7] border-[#f4d0d8] text-[#5c142b]";
-        if (text1) text1.className = "font-serif font-bold text-[11px] tracking-wide mt-2 transition-all duration-300 text-[#6b1d3f]";
+        if (text1) text1.className = "font-serif font-bold text-[10.5px] tracking-wide mt-2 transition-all duration-300 text-[#6b1d3f]";
         if (text2) text2.className = "font-serif text-[10px] font-semibold mt-0.5 text-[#6b1d3f]";
 
         if (sideBorder1) sideBorder1.className = "flex items-center gap-2 border-b pb-1 mb-2.5 border-[#f4d0d8] text-[#440c1e]";
@@ -554,7 +561,7 @@
         if (summaryText) summaryText.className = "text-[11px] leading-relaxed text-[#1e1b4b]";
 
         if (sideBlock) sideBlock.className = "col-span-4 rounded-xl p-3.5 space-y-4 border transition-all duration-300 bg-[#f5f7ff] border-[#c7d2fe] text-[#312e81]";
-        if (text1) text1.className = "font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300 text-[#1e1b4b]";
+        if (text1) text1.className = "font-display font-semibold text-[10px] tracking-wider uppercase mt-2 transition-all duration-300 text-[#1e1b4b]";
         if (text2) text2.className = "text-[9.5px] font-semibold uppercase tracking-wide mt-0.5 text-[#1e1b4b]";
 
         if (sideBorder1) sideBorder1.className = "flex items-center gap-2 border-b pb-1 mb-2.5 border-[#c7d2fe] text-[#1e1b4b]";
@@ -612,7 +619,7 @@
         if (summaryText) summaryText.className = "text-[11px] leading-relaxed text-slate-300";
 
         if (sideBlock) sideBlock.className = "col-span-4 rounded-xl p-3.5 space-y-4 border transition-all duration-300 bg-slate-900 border-[#1e293b] border-t-4 border-t-amber-500 text-white";
-        if (text1) text1.className = "font-display font-bold text-[11px] tracking-widest uppercase mt-2 transition-all duration-300 text-amber-500";
+        if (text1) text1.className = "font-display font-bold text-[10.5px] tracking-widest uppercase mt-2 transition-all duration-300 text-amber-500";
         if (text2) text2.className = "text-[10px] font-bold uppercase tracking-widest mt-0.5 text-amber-500";
 
         if (sideBorder1) sideBorder1.className = "flex items-center gap-2 border-b pb-1 mb-2.5 border-amber-500/30 text-amber-500";
@@ -716,7 +723,7 @@
            onerror="handleImageFallback(this)">
       <div>
         <h1 class="text-sm font-bold text-white tracking-wide">Syed Raheel Abbas — Interactive Workspace</h1>
-        <p class="text-[11px] text-slate-400">Executive Portfolio &bull; Senior Manager QA & Senior PM</p>
+        <p class="text-[11px] text-slate-400">Executive Portfolio &bull; Senior Manager QA &bull; FinTech & Banking Leader</p>
       </div>
     </div>
     
@@ -728,10 +735,10 @@
         <button id="btn-role-it" onclick="setRoleFocus('it')" class="text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm">
           IT Professional
         </button>
-        <button id="btn-role-compliance" onclick="setRoleFocus('compliance')" class="text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
+        <button id="btn-role-compliance" onclick="setRoleFocus('compliance')" class="text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
           Compliance
         </button>
-        <button id="btn-role-qa" onclick="setRoleFocus('qa')" class="text-[10px] font-bold px-2.5 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
+        <button id="btn-role-qa" onclick="setRoleFocus('qa')" class="text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
           Quality Assurance (QA)
         </button>
       </div>
@@ -787,11 +794,11 @@
             <h1 id="main-name-title" class="font-display font-light text-3xl tracking-[0.2em] uppercase transition-all duration-300">
               Syed Raheel Abbas
             </h1>
-            <h2 id="accent-text-1" class="font-display font-semibold text-[10.5px] tracking-wider uppercase mt-2 transition-all duration-300">
-              Senior Manager QA • Senior Project Manager • AI & Core Banking Leader
+            <h2 id="accent-text-1" class="font-display font-semibold text-[10px] tracking-wider uppercase mt-2 transition-all duration-300">
+              QA • Project Management • Business Analysis • AI • Core Banking
             </h2>
             
-            <!-- Simplified Contact Details Grid (No Address) -->
+            <!-- Pure Icon Contact Grid (Zero Text Labels) -->
             <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-[10.5px] font-sans mt-4 max-w-lg" id="contact-grid">
               <div class="flex items-center gap-2">
                 <i class="fa-solid fa-phone text-slate-400 w-3.5 text-center"></i>
@@ -835,7 +842,7 @@
           </p>
         </div>
 
-        <!-- SKILLS MATRIX WITH AI EXPERTISE -->
+        <!-- SKILLS MATRIX -->
         <div class="section-gap-element">
           <div class="border-b pb-1 mb-2.5" id="skills-border-bottom">
             <h3 class="font-display font-medium text-xs tracking-[0.25em] uppercase" id="skills-section-header">
@@ -872,18 +879,18 @@
           </div>
 
           <div class="space-y-4">
-            <!-- JOB 1 (JS BANK - SENIOR MANAGER QA & SENIOR PM) -->
+            <!-- JOB 1 (JS BANK - SENIOR MANAGER QA) -->
             <div>
               <div class="flex justify-between items-baseline mb-0.5">
-                <span class="font-semibold text-xs uppercase tracking-wide job-title-text" id="job1-title">Senior Manager QA / Senior Project Manager</span>
+                <span class="font-semibold text-xs uppercase tracking-wide job-title-text" id="job1-title">Senior Manager QA</span>
                 <span class="text-[10.5px] text-slate-500 font-medium">Nov 2023 -- Present</span>
               </div>
               <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">JS Bank | Karachi, Pakistan</div>
               <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles" id="job1-bullets">
-                <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Jan 2026 -- Present):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition for advanced test automation and security suites.</li>
+                <li><strong class="text-slate-800 focus-strong">Enterprise QA Operations & Leadership:</strong> Leading enterprise Quality Assurance operations across core banking and digital applications, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition schedules.</li>
                 <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools into test case generation, automated regression execution, and intelligent defect triaging, accelerating QA cycle efficiency by 35%.</li>
-                <li><strong class="text-slate-800 focus-strong">PMO Framework & AI Workflows (Nov 2023 -- Dec 2025):</strong> Architected and implemented a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to optimize workflow pipelines and reduce project delivery cycles by 22%.</li>
-                <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Managed end-to-end execution of critical financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
+                <li><strong class="text-slate-800 focus-strong">PMO Framework & Process Optimization:</strong> Architected and deployed a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to streamline project pipelines and reduce delivery cycles by 22%.</li>
+                <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Governed end-to-end quality validation and deployment for high-impact financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
               </ul>
             </div>
 
@@ -933,7 +940,7 @@
         <div class="border-b border-slate-200 pb-2 mb-4 flex justify-between items-center" id="page2-header">
           <div>
             <h2 class="font-display font-light text-xl tracking-[0.15em] uppercase" id="p2-name">Syed Raheel Abbas</h2>
-            <p id="accent-text-2" class="text-[9.5px] font-semibold uppercase tracking-wide mt-0.5">Senior Manager QA • Head of QA & ALM • AI & Core Banking Leader</p>
+            <p id="accent-text-2" class="text-[9.5px] font-semibold uppercase tracking-wide mt-0.5">QA • Project Management • Business Analysis • AI • Core Banking</p>
           </div>
           <div class="text-right text-[10px] text-slate-500 space-y-0.5" id="p2-contacts">
             <div>+92 333 2177016 | +92 340 7177016</div>
