@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl" id="htmlRoot">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قانونی درخواست برائے ریکارڈنگِ واردات و کارروائی - سید راحیل عباس</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #1e293b;
+      --accent-red: #991b1b;
+      --paper-width: 210mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #cbd5e1;
+      font-family: 'Noto Sans Arabic', 'Noto Nastaliq Urdu', Tahoma, Arial, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.9;
+      color: #0f172a;
+      direction: rtl;
+      text-align: right;
+      padding: 20px 10px;
+    }
+
+    /* English mode typography overrides */
+    body.lang-en {
+      direction: ltr;
+      text-align: left;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* Floating Toolbar */
+    .toolbar {
+      position: sticky;
+      top: 12px;
+      max-width: var(--paper-width);
+      margin: 0 auto 16px auto;
+      background: #ffffff;
+      border: 1px solid #94a3b8;
+      padding: 10px 18px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      z-index: 1000;
+    }
+
+    .toolbar-info {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--secondary-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-btn {
+      background: #1e3a8a;
+      color: #ffffff;
+      border: none;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 12.5px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .toolbar-btn:hover {
+      background: #172554;
+    }
+
+    .toolbar-btn.edit-mode {
+      background: #0d9488;
+    }
+
+    .toolbar-btn.lang-switch {
+      background: #475569;
+    }
+    .toolbar-btn.lang-switch:hover {
+      background: #334155;
+    }
+
+    /* Paper Page Container */
+    .page-container {
+      width: var(--paper-width);
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 18mm 18mm;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid #94a3b8;
+      position: relative;
+    }
+
+    .bismillah {
+      text-align: center;
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #000;
+      border-bottom: 1.5px solid #000;
+      padding-bottom: 6px;
+    }
+
+    .authority-header {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 2.1;
+      margin-bottom: 15px;
+      color: #000;
+      background: #f8fafc;
+      padding: 12px 16px;
+      border-right: 4px solid #1e3a8a;
+      border-radius: 4px;
+    }
+
+    body.lang-en .authority-header {
+      border-right: none;
+      border-left: 4px solid #1e3a8a;
+    }
+
+    .blank-fill-line {
+      display: inline-block;
+      min-width: 320px;
+      border-bottom: 1.5px dashed #000;
+      margin: 0 6px;
+      height: 1.3em;
+      vertical-align: bottom;
+    }
+
+    .subject-box {
+      border: 2px solid #000;
+      background: #fafafa;
+      padding: 10px 14px;
+      margin: 15px 0 20px 0;
+      border-radius: 4px;
+    }
+
+    .subject-title {
+      font-weight: 700;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: #000;
+      text-decoration: underline;
+      display: inline;
+    }
+
+    .subject-desc {
+      font-size: 13px;
+      line-height: 1.95;
+      font-weight: 600;
+      color: #111;
+      display: inline;
+    }
+
+    /* Parties Section */
+    .parties-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .party-card {
+      border: 1px solid #475569;
+      padding: 10px 14px;
+      border-radius: 4px;
+      background-color: #f8fafc;
+    }
+
+    .party-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--secondary-color);
+    }
+
+    .party-details {
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .badge-victim {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .badge-accused {
+      background-color: #fee2e2;
+      color: #991b1b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .section-intro {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 12px;
+      text-decoration: underline;
+      color: #000;
+    }
+
+    .legal-paragraphs {
+      counter-reset: para-counter;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    .legal-item {
+      position: relative;
+      padding-right: 28px;
+      margin-bottom: 15px;
+      font-size: 13.5px;
+      line-height: 2;
+    }
+
+    body.lang-en .legal-item {
+      padding-right: 0;
+      padding-left: 28px;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .legal-item::before {
+      counter-increment: para-counter;
+      content: counter(para-counter) "۔";
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-weight: 700;
+      font-size: 14px;
+      color: #000;
+    }
+
+    body.lang-en .legal-item::before {
+      content: counter(para-counter) ".";
+      right: auto;
+      left: 0;
+    }
+
+    .legal-item strong {
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Tables */
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px 0;
+      font-size: 12.5px;
+    }
+
+    .custom-table th, .custom-table td {
+      border: 1px solid #334155;
+      padding: 7px 9px;
+      text-align: center;
+    }
+
+    .custom-table th {
+      background-color: #e2e8f0;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .cheque-bounced {
+      color: #991b1b;
+      font-weight: 700;
+    }
+
+    .cheque-bogus {
+      color: #7f1d1d;
+      background: #fef2f2;
+      font-weight: 600;
+    }
+
+    /* Prayers / Istad'a Box */
+    .prayers-box {
+      border: 1.5px solid #000;
+      background-color: #fffbeb;
+      padding: 12px 16px;
+      margin: 18px 0;
+      border-radius: 4px;
+    }
+
+    .prayers-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-decoration: underline;
+      color: #78350f;
+    }
+
+    .prayers-list {
+      padding-right: 18px;
+      margin: 0;
+    }
+
+    body.lang-en .prayers-list {
+      padding-right: 0;
+      padding-left: 18px;
+    }
+
+    .prayers-list li {
+      font-size: 13px;
+      line-height: 1.9;
+      margin-bottom: 6px;
+    }
+
+    body.lang-en .prayers-list li {
+      line-height: 1.7;
+    }
+
+    /* Verification & Signatures */
+    .verification-block {
+      border-top: 1.5px solid #000;
+      padding-top: 10px;
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.85;
+      text-align: justify;
+    }
+
+    .sig-grid {
+      display: block;
+      margin-top: 22px;
+      page-break-inside: avoid;
+    }
+
+    .sig-box {
+      border: 1px solid #475569;
+      padding: 14px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      line-height: 2;
+      background: #f8fafc;
+    }
+
+    /* Evidence Clause Box */
+    .evidence-box {
+      margin-top: 20px;
+      border: 1.5px solid #1e3a8a;
+      background: #f0fdf4;
+      padding: 12px 15px;
+      border-radius: 4px;
+      page-break-inside: avoid;
+    }
+
+    .evidence-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #166534;
+      margin-bottom: 6px;
+      text-decoration: underline;
+    }
+
+    .evidence-list {
+      padding-right: 18px;
+      font-size: 12.5px;
+      line-height: 1.85;
+      color: #14532d;
+    }
+
+    body.lang-en .evidence-list {
+      padding-right: 0;
+      padding-left: 18px;
+      line-height: 1.7;
+    }
+
+    .toast-msg {
+      display: none;
+      background: #16a34a;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    /* Visibility handlers for language toggle */
+    .view-en {
+      display: none;
+    }
+    body.lang-en .view-ur {
+      display: none;
+    }
+    body.lang-en .view-en {
+      display: block;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .page-container {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 12mm 15mm 12mm 15mm;
+      }
+
+      .legal-item, .custom-table, .sig-grid, .evidence-box, .prayers-box {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-info">
+      <span>📄</span>
+      <span class="view-ur">قانونی درخواست برائے ریکارڈنگِ واردات و کارروائی (کراچی)</span>
+      <span class="view-en">Official Legal Complaint & Crime Record Application (Karachi)</span>
+    </div>
+    <div class="btn-group">
+      <span id="toast" class="toast-msg">تدوین کا موڈ آن ہو گیا ہے!</span>
+      
+      <!-- Language Switcher Button -->
+      <button class="toolbar-btn lang-switch" onclick="toggleLanguage()" id="langBtn">
+        🌐 Switch to English
+      </button>
+
+      <!-- Editable Toggle Button -->
+      <button class="toolbar-btn edit-mode" onclick="toggleEditMode()" id="editBtn">
+        ✍️ تفصیلات ایڈٹ کریں (Edit Mode)
+      </button>
+
+      <!-- Print Button -->
+      <button class="toolbar-btn" onclick="window.print()">
+        🖨️ پرنٹ / محفوظ کریں (Print / Save PDF)
+      </button>
+    </div>
+  </div>
+
+  <!-- URDU DOCUMENT CONTAINER -->
+  <div class="page-container view-ur" id="docUrdu">
+    
+    <!-- Bismillah -->
+    <div class="bismillah">
+      بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </div>
+
+    <!-- Legal Header Addressed to Authority with Blank Line for Pen Fill -->
+    <div class="authority-header">
+      <strong>بخدمت جناب:</strong> <span class="blank-fill-line"></span><br>
+      <strong>مقام و دائرہ اختیار:</strong> <span class="blank-fill-line" style="min-width: 280px;"></span>
+    </div>
+
+    <!-- Official Subject / عنوان -->
+    <div class="subject-box">
+      <div class="subject-title">عنوانِ درخواست:</div>
+      <div class="subject-desc">
+        <strong>درخواست برائے قانونی ریکارڈنگِ واردات، سخت قانونی کارروائی، برآمدگیِ مکمل رقم، طلبی و سفری ممانعت بنام مرکزی ملزم عدنان نوری ولد محمد امتیاز و شریکِ جرم حمزہ</strong> بجرم سنگین دھوکہ دہی، جعلی و بوگس دستاویزاتِ فلیٹ، امانت میں خیانت، فرضی رینٹل معاہدہ، بدنیتی پر مبنی بوگس چیکس کا اجراء، باؤنس شدہ چیکس اور منظم مالی فراڈ 
+        <strong>(تحت دفعات 420، 406، 468، 471، 489-F اور 120-B تعزیراتِ پاکستان - PPC)</strong>
+        نیز ملزم عدنان نوری کا نام فوری طور پر <strong>Stop List / PNIL / ECL</strong> میں شامل کر کے بیرونِ ملک فرار روکنے اور مکمل رقم برآمد کروانے کی مؤدبانہ استدعا۔
+      </div>
+    </div>
+
+    <!-- Parties / سائل و ملزمان -->
+    <div class="parties-grid">
+      <div class="party-card">
+        <div class="party-title">
+          <span>سائل / مستغیث (بطورِ براہ راست ضامن و وکیل بالمعاملہ):</span>
+          <span class="badge-victim">سائل فریق</span>
+        </div>
+        <div class="party-details">
+          نام سائل: <strong>سید راحیل عباس</strong> ولد <strong>سید افتخار حسین</strong><br>
+          قومی شناختی کارڈ نمبر: <strong>4220187350159</strong> | موبائل نمبر: <strong>03332177016</strong><br>
+          <strong>متاثرہ فریق / خریدار (اصیل):</strong> 
+          مسمات <strong>ماہ رخ رضا</strong> (سائل کی سالی)، قومی شناختی کارڈ نمبر: <strong dir="ltr">4210107505512</strong>
+        </div>
+      </div>
+
+      <div class="party-card">
+        <div class="party-title">
+          <span>بنامِ ملزمان (مقصود علیہم):</span>
+          <span class="badge-accused">ملزمان فریق</span>
+        </div>
+        <div class="party-details">
+          <strong>1. عدنان نوری (مرکزی ملزم):</strong> ولد <strong>محمد امتیاز</strong><br>
+          قومی شناختی کارڈ نمبر: <strong>4200090047313</strong> | موبائل نمبر: <strong>0316 8622439</strong>، کراچی۔<br>
+          <strong>2. حمزہ:</strong> شریکِ جرم، سہولت کار و بوگس چیکس دہندہ، کراچی۔
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Grounds / واقعاتِ مقدمہ -->
+    <div class="section-intro">مؤدبانہ گزارشات و واقعاتِ واردات درج ذیل ہیں:</div>
+    <div class="legal-paragraphs">
+      
+      <div class="legal-item">
+        <strong>20 سالہ دوستی کا ناجائز فائدہ، اندھا اعتماد اور سائل کا بطورِ ضامن شامل ہونا:</strong><br>
+        یہ کہ مرکزی ملزم عدنان نوری ولد محمد امتیاز سائل کا گزشتہ 20 سال سے قریبی دوست تھا اور سائل نے اس کے دیرینہ تعلق پر اندھا اعتماد کیا۔ ملزم نے انتہائی سوچی سمجھی منصوبہ بندی اور جذباتی مظلومیت کا ڈرامہ رچا کر سائل کو ناظم آباد میں واقع ایک فلیٹ خریدنے کی پرزور ترغیب دی۔ چونکہ مسمات ماہ رخ رضا سائل کی سالی (اہلیہ کی بہن) ہیں، لہٰذا سائل نے ملزم کی 20 سالہ دوستی پر مکمل ذاتی ضمانت دی اور خود باقاعدہ ضامن بن کر سودا طے کروایا۔
+      </div>
+
+      <div class="legal-item">
+        <strong>معاہدہِ بیع، کل 61 لاکھ روپے کی مکمل ادائیگی اور تحریری وصولی:</strong><br>
+        یہ کہ مؤرخہ <strong>21-11-2024</strong> کو ملزم عدنان نوری نے سائل کی سالی مسمات ماہ رخ رضا کے ساتھ فلیٹ واقع <strong>1-J-10/2، تھرڈ فلور (Back Side Portion)، ناظم آباد نمبر 1، کراچی</strong> کا باقاعدہ تحریری معاہدہ کیا۔ معاہدے کی تمام طے شدہ رقم <strong>کل 6,100,000 روپے (اکسٹھ لاکھ روپے)</strong> زُورین مہدی کے ذریعے مختلف ذرائع سے ادا کی گئی، جس میں <strong>ڈائریکٹ بینک ٹرانسفر، ویسٹرن یونین (Western Union)</strong>، اور ملزم عدنان نوری کی واضح ہدایت پر <strong>دبئی میں ملزم کے نامزد کردہ دوست کو دی گئی نقد کیش (Cash Handover in Dubai)</strong> شامل ہے۔ ملزم عدنان نوری نے معاہدے کی پشت پر تمام رقم کی مکمل اور حتمی وصولی تحریری طور پر اپنے دستخطوں سے تسلیم کر رکھی ہے۔
+      </div>
+
+      <div class="legal-item">
+        <strong>سب لیز کا فریب اور جعلی و دو نمبر دستاویزات (Forged Papers) کا انکشاف:</strong><br>
+        یہ کہ پوری رقم ہڑپ کر لینے کے بعد ملزم عدنان نوری نے خریدار کے نام اصل قانونی سب لیز کروانے کے بجائے محض زبانی بہانے بنائے کہ "کے ڈی اے و متعلقہ سرکاری دفاتر میں لیز فی الوقت بند ہے، جلد سب لیز کروا دوں گا"۔ بعد ازاں چھان بین پر ہوشربا انکشاف ہوا کہ ملزم نے فلیٹ کی جو دستاویزات اور کاغذات سائلین کو دکھائے تھے وہ سرے سے <strong>جعلی، من گھڑت اور دو نمبر (Forged & Fraudulent)</strong> تھے اور ملزم کے پاس اس کا کوئی قانونی ملکیتی حق ہی نہ تھا۔
+      </div>
+
+      <div class="legal-item">
+        <strong>سہولت کار حمزہ کا مجرمانہ گٹھ جوڑ، فرضی کرایہ داری اور تیسری خاتون کا داخلہ:</strong><br>
+        یہ کہ فلیٹ کا فزیکل قبضہ دینے کے بجائے ملزم عدنان نوری نے یہ خوف دلایا کہ "ہاؤس بلڈنگ فنانس والے فلیٹ پر چھاپہ مارنے والے ہیں، لہٰذا اسے فوراً کرائے پر چڑھانا پڑے گا"۔ چنانچہ ملزم نے اپنے سہولت کار <strong>حمزہ</strong> کے ساتھ مل کر ایک غیر خاتون (عروج) کو فلیٹ میں بٹھا دیا اور ایک فرضی رینٹل ایگریمنٹ تیار کیا جس میں <strong>حمزہ خود بطورِ گواہ (Witness) شریک ہوا</strong>۔ ابتدا میں صرف ایک ماہ کا کرایہ اور پیشگی رقم دکھائی گئی اور اس کے بعد کرایہ آنا مکمل بند ہو گیا تاکہ سائلین کو الجھایا جا سکے۔
+      </div>
+
+      <div class="legal-item">
+        <strong>جائے وقوعہ پر جانے پر سختی سے ممانعت، دھمکیاں اور فراڈ کا برملہ اقرار:</strong><br>
+        یہ کہ جب کرایہ بند ہونے پر سائل (سید راحیل عباس) نے فلیٹ پر جانے اور قبضہ سنبھالنے کا دو ٹوک کہا تو ملزم عدنان نوری نے سائل کو وہاں جانے سے سختی سے روکا اور یہ دھمکی و اعتراف کیا کہ <em>"اگر تم فلیٹ پر گئے تو وہاں موجود نیا خریدار / فریق پولیس بلا لے گا اور میرے (عدنان نوری کے) خلاف ایف آئی آر درج کروا دے گا کیونکہ میرے دوست نے دھوکہ دے کر وہ فلیٹ کسی اور کو بیچ دیا ہے"</em>۔ یوں ملزم نے خود تسلیم کیا کہ اس نے ایک ہی فلیٹ پر بیک وقت متعدد افراد سے فراڈ کیا ہے۔
+      </div>
+
+      <div class="legal-item">
+        <strong>سہولت کار حمزہ کے پیشگی بوگس چیکس (Bank Alfalah - Noori Builders):</strong><br>
+        یہ کہ اس مجرمانہ سازش کا واضح ثبوت یہ ہے کہ ابتدائی مرحلے میں ہی ملزم کے سہولت کار <strong>حمزہ نے دانستہ طور پر Bank Alfalah (کھاتہ بنام Noori Builders) کے ایسے فرضی، مشکوک اور غلط چیکس دیے جن پر نام کے اسپیلنگ اور دستخط جان بوجھ کر غلط ڈالے گئے تھے</strong> تاکہ سائلین کو الجھا کر وقت گزاری کی جا سکے۔ حمزہ کے جاری کردہ یہ مشکوک چیکس سائل کے پاس بطورِ ثبوت موجود ہیں جن کی تفصیل درج ذیل ہے:
+      </div>
+
+      <!-- Table 1: Hamza Bogus Cheques (Bank Alfalah - Noori Builders) -->
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>نمبر</th>
+            <th>بینک و کھاتہ</th>
+            <th>جاری کنندہ</th>
+            <th>چیک نمبر</th>
+            <th>رقم (روپے)</th>
+            <th>حقیقت و کیفیت</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cheque-bogus">
+            <td>1</td>
+            <td>بینک الفلاح (Noori Builders)</td>
+            <td>حمزہ (شریکِ جرم)</td>
+            <td><strong>48379732</strong></td>
+            <td>1,000,000/-</td>
+            <td>جعلی دستخط اور نام کے غلط اسپیلنگ کے ساتھ دانستہ دیا گیا بے کار چیک</td>
+          </tr>
+          <tr class="cheque-bogus">
+            <td>2</td>
+            <td>بینک الفلاح (Noori Builders)</td>
+            <td>حمزہ (شریکِ جرم)</td>
+            <td><strong>48379733</strong></td>
+            <td>2,000,000/-</td>
+            <td>سوچی سمجھی بدنیتی اور وقت گزاری کا ثبوت</td>
+          </tr>
+          <tr class="cheque-bogus">
+            <td>3</td>
+            <td>بینک الفلاح (Noori Builders)</td>
+            <td>حمزہ (شریکِ جرم)</td>
+            <td><strong>48379733</strong></td>
+            <td>3,100,000/-</td>
+            <td>فراڈ کی نیت سے جاری کردہ ناقص چیک (مشکوک تکرار)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="legal-item">
+        <strong>معزز دوستوں کے روبرو اعترافِ جرم، حلف نامہ اور عدنان کے چیکس (Bank AL Habib):</strong><br>
+        یہ کہ جب سائل نے حمزہ کے دیے گئے جعلی چیکس پر شدید احتجاج کیا تو ملزم عدنان نوری کے دبئی فرار ہونے سے قبل، مشترکہ معزز دوستوں کی موجودگی میں پنچایت بیٹھی جہاں ملزم نے اپنے تمام جرائم کا سرِعام اعتراف کیا۔ ملزم عدنان نوری نے <strong>اسٹامپ پیپر پر قانونی حلف نامہ / اقرار نامہ</strong> تحریر کر کے دیا کہ وہ پوری رقم کا ذاتی ذمہ دار ہے اور <strong>Bank AL Habib (کھاتہ بنام M. Adnan)</strong> کے درج ذیل 3 عدد چیکس جاری کیے، جن میں سے پہلا چیک ہی 3 مرتبہ باؤنس ہو چکا ہے:
+      </div>
+
+      <!-- Table 2: Adnan Noori Cheques (Bank AL Habib - M. Adnan) -->
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>نمبر شمار</th>
+            <th>بینک و کھاتہ</th>
+            <th>چیک نمبر</th>
+            <th>رقم (روپے)</th>
+            <th>درج تاریخ</th>
+            <th>موجودہ قانونی کیفیت و بینک ریکارڈ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>بینک الحبیب (M. Adnan)</td>
+            <td><strong>11051320</strong></td>
+            <td>1,000,000/-</td>
+            <td>مؤرخہ ادائیگی</td>
+            <td class="cheque-bounced">عدم فنڈز کی بنا پر <strong>3 مرتبہ باؤنس (Dishonor)</strong> ہو چکا ہے بمعہ بینک سلپس</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>بینک الحبیب (M. Adnan)</td>
+            <td><strong>11051321</strong></td>
+            <td>2,000,000/-</td>
+            <td>10 ستمبر 2026</td>
+            <td>پوسٹ ڈیٹڈ چیک (اکاؤنٹ میں رقم سرے سے موجود نہیں)</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>بینک الحبیب (M. Adnan)</td>
+            <td><strong>11051322</strong></td>
+            <td>3,100,000/-</td>
+            <td>10 دسمبر 2026</td>
+            <td>پوسٹ ڈیٹڈ چیک (بدنیتی پر مبنی لمبی تاریخیں)</td>
+          </tr>
+          <tr style="background-color: #f1f5f9; font-weight: 700;">
+            <td colspan="3"><strong>میزان (کل واجب الادا رقم):</strong></td>
+            <td><strong>6,100,000/- روپے</strong></td>
+            <td colspan="2"><strong>اکسٹھ لاکھ روپے فقط</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="legal-item">
+        <strong>مالی تباہی، زیورات کی فروخت، شدید ڈپریشن اور ملزم کے فرار کا خدشہ:</strong><br>
+        یہ کہ اس فلیٹ کی رقم جمع کرنے کے لیے دیارِ غیر میں بینک سے بھاری قرض حاصل کیا گیا تھا۔ ملزم عدنان نوری کی طرف سے <strong>ایک روپیہ تک واپس نہ ملنے</strong> اور فلیٹ پر قبضہ نہ ملنے کے باعث زُورین کو سب کچھ ختم کر کے انتہائی کسمپرسی میں واپس کراچی آنا پڑا۔ سائل کی ضمانت کی وجہ سے پورا خاندان شدید تباہی اور انتشار کا شکار ہو چکا ہے۔ قرض خواہوں کے تقاضوں کی وجہ سے گھر کا سونا اور زیورات تک فروخت کرنے پڑے۔ سائل (سید راحیل عباس) اور ان کی سالی مسمات ماہ رخ رضا اس وقت شدید ترین ڈپریشن اور اعصابی کرب میں مبتلا ہیں اور نوبت <strong>شدید ذہنی انتشار اور بربادی</strong> تک جا پہنچی ہے۔ ملزم عدنان نوری مسلسل "ایک ماہ رک جاؤ، چیک جمع مت کرواؤ" کے جھوٹے دلاسے دے کر وقت حاصل کر رہا ہے تاکہ دوبارہ بیرونِ ملک فرار ہو سکے۔
+      </div>
+
+    </div>
+
+    <!-- Official Prayers (استدعا) -->
+    <div class="prayers-box">
+      <div class="prayers-title">استدعا برائے دادرسی و قانونی کارروائی:</div>
+      <ol class="prayers-list">
+        <li><strong>برائے سرکاری اندراجِ واردات و قانونی کارروائی:</strong> واردات کا باقاعدہ سرکاری ریکارڈ مرتب فرما کر ملزمان کے خلاف تعزیراتِ پاکستان کی متعلقہ دفعات کے تحت فوری قانونی کارروائی عمل میں لائی جائے۔</li>
+        <li><strong>برائے فوری طلبی، گرفتاری و برآمدگیِ مکمل رقم:</strong> ملزم عدنان نوری اور اس کے سہولت کار حمزہ کو فوری طلب و گرفتار کر کے سائل اور متاثرہ خاندان کی محنت کی کمائی کے <strong>کل 6,100,000 روپے (اکسٹھ لاکھ روپے)</strong> برآمد کروائے جائیں۔</li>
+        <li><strong>برائے سفری ممانعت (Stop List / PNIL / ECL):</strong> چونکہ ملزم عدنان نوری پہلے بھی دبئی فرار ہو چکا تھا اور اب بھی دوبارہ ملک سے بھاگنے کی طاق میں ہے، لہٰذا اس کا نام فوری طور پر <strong>Stop List / PNIL / ECL</strong> میں شامل کیا جائے تاکہ ملزم کسی بھی راستے سے فرار نہ ہو سکے۔</li>
+      </ol>
+    </div>
+
+    <!-- Verification / بیانِ حلفی -->
+    <div class="verification-block">
+      <strong>بیانِ تصدیق از جانب سائل:</strong><br>
+      میں مسمیٰ سید راحیل عباس ولد سید افتخار حسین تصدیق کرتا ہوں کہ مندرجہ بالا درخواست کے تمام مندرجات و واقعات میرے ذاتی علم، یقین اور دستاویزی شواہد کے مطابق بالکل درست اور مبنی بر حقیقت ہیں۔ میں اس کیس میں خود براہِ راست ضامن اور متاثرہ فریق ہوں اور تمام قانونی کارروائی و پیروی کی ذمہ داری مجھ پر عائد ہوتی ہے۔
+    </div>
+
+    <!-- Signatures Section -->
+    <div class="sig-grid">
+      <div class="sig-box">
+        <strong>دستخط و کوائف سائل (مستغیث و ضامن):</strong><br><br>
+        دستخط سائل: _________________________________________<br>
+        نام سائل: <strong>سید راحیل عباس</strong> ولد <strong>سید افتخار حسین</strong><br>
+        قومی شناختی کارڈ نمبر: <strong>4220187350159</strong><br>
+        موبائل نمبر: <strong>03332177016</strong><br>
+        بتاریخ: _____ / _____ / 2026ء
+      </div>
+    </div>
+
+    <!-- Evidence & Annexures Section -->
+    <div class="evidence-box">
+      <div class="evidence-title">شواہد و دستاویزی ثبوت (تمام ثبوت سائل کے پاس بحفاظت موجود ہیں جو دورانِ تفتیش طلب کیے جانے پر پیش کیے جائیں گے):</div>
+      <ol class="evidence-list">
+        <li><strong>معاہدہِ بیع و ادائیگی کی تحریری تصدیق:</strong> اصل معاہدہ مؤرخہ 21-11-2024 جس کی پشت پر ملزم عدنان نوری کے دستخط سے 61 لاکھ روپے کی مکمل وصولی تحریر ہے۔</li>
+        <li><strong>اسٹامپ پیپر پر حلف نامہ / اقرار نامہ:</strong> ملزم عدنان نوری کا معزز دوستوں کے روبرو تحریر کردہ اسٹامپ اقرار نامہ (Affidavit)۔</li>
+        <li><strong>باؤنس شدہ چیک و بینک میمو سلپس:</strong> چیک نمبر 11051320 (10 لاکھ روپے - Bank AL Habib) اور اس کے 3 مرتبہ باؤنس ہونے کی آفیشل بینک ڈس آنر سلپس۔</li>
+        <li><strong>عدنان کے آئندہ تاریخوں کے چیکس:</strong> چیک نمبر 11051321 (20 لاکھ) اور چیک نمبر 11051322 (31 لاکھ) بنام بینک الحبیب۔</li>
+        <li><strong>سہولت کار حمزہ کے جاری کردہ بوگس چیکس:</strong> حمزہ کے جاری کردہ Bank Alfalah (Noori Builders) کے چیکس نمبر 48379732، 48379733 (10 لاکھ، 20 لاکھ اور 31 لاکھ) کی نقول۔</li>
+        <li><strong>ادائیگیوں کی ٹرانزیکشن رسیدات:</strong> بینک ٹرانسفرز، ویسٹرن یونین اور دبئی میں عدنان کے نامزد دوست کو دیے گئے نقد کیش کی مصدقہ تفصیلات۔</li>
+        <li><strong>حمزہ کے دستخط شدہ فرضی رینٹل معاہدہ:</strong> جس میں حمزہ بطورِ گواہ شریک ہے۔</li>
+        <li><strong>ڈیجیٹل و صوتی ریکارڈ:</strong> واٹس ایپ پیغامات، چیٹس، اور معزز دوستوں کے سامنے ہونے والی میٹنگز کی مکمل آڈیو ریکارڈنگز (Audio Recordings of Meetings & Voice Notes)۔</li>
+        <li><strong>دوستوں کی گواہی:</strong> وہ معزز مشترکہ دوست جن کے روبرو عدنان نوری نے اپنے جرائم تسلیم کیے اور چیکس دیے، بوقتِ طلب گواہی کے لیے پیش ہو سکتے ہیں۔</li>
+      </ol>
+      <div style="font-size: 11.5px; color: #166534; font-weight: 700; margin-top: 6px;">
+        (مندرجہ بالا تمام ثبوت بوقتِ طلب تفتیشی افسر کے روبرو باقاعدہ جانچ پڑتال کے لیے فوری پیش کیے جائیں گے)
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ENGLISH DOCUMENT CONTAINER -->
+  <div class="page-container view-en" id="docEnglish">
+    
+    <!-- Top Reference / Title -->
+    <div style="text-align: center; font-size: 15px; font-weight: 700; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 16px;">
+      IN THE NAME OF ALLAH, THE MOST GRACIOUS, THE MOST MERCIFUL
+    </div>
+
+    <!-- Official Authority Header with Blank Line -->
+    <div class="authority-header">
+      <strong>TO:</strong> <span class="blank-fill-line"></span><br>
+      <strong>JURISDICTION & LOCATION:</strong> <span class="blank-fill-line" style="min-width: 280px;"></span>
+    </div>
+
+    <!-- Official Subject -->
+    <div class="subject-box">
+      <div class="subject-title">SUBJECT:</div>
+      <div class="subject-desc">
+        <strong>APPLICATION FOR OFFICIAL RECORDING OF CRIME, LEGAL ACTION, RECOVERY OF PKR 6,100,000/-, SUMMONS, ARREST & TRAVEL BAN (STOP LIST / PNIL / ECL) AGAINST MAIN ACCUSED ADNAN NOORI S/O MUHAMMAD IMTIAZ AND ACCOMPLICE HAMZA</strong> FOR COMMITTING FRAUD, CHEATING, FORGED PROPERTY PAPERS, CRIMINAL BREACH OF TRUST, FAKE RENTAL AGREEMENT, ISSUING BOGUS & DISHONORED CHEQUES UNDER <strong>SECTIONS 420, 406, 468, 471, 489-F & 120-B OF THE PAKISTAN PENAL CODE (PPC)</strong>.
+      </div>
+    </div>
+
+    <!-- Parties Grid -->
+    <div class="parties-grid">
+      <div class="party-card">
+        <div class="party-title">
+          <span>APPLICANT / COMPLAINANT (Direct Guarantor & Attorney):</span>
+          <span class="badge-victim">COMPLAINANT</span>
+        </div>
+        <div class="party-details">
+          Name: <strong>SYED RAHEEL ABBAS</strong> S/O <strong>SYED IFTIKHAR HUSSAIN</strong><br>
+          CNIC No: <strong>4220187350159</strong> | Mobile No: <strong>03332177016</strong><br>
+          <strong>Victim / Original Purchaser (Sister-in-Law):</strong> 
+          Mst. <strong>Mahrukh Raza</strong>, CNIC No: <strong>4210107505512</strong>
+        </div>
+      </div>
+
+      <div class="party-card">
+        <div class="party-title">
+          <span>ACCUSED PERSONS (Respondents):</span>
+          <span class="badge-accused">ACCUSED</span>
+        </div>
+        <div class="party-details">
+          <strong>1. ADNAN NOORI (Main Accused):</strong> S/O <strong>MUHAMMAD IMTIAZ</strong><br>
+          CNIC No: <strong>4200090047313</strong> | Mobile No: <strong>0316 8622439</strong>, Karachi.<br>
+          <strong>2. HAMZA:</strong> Accomplice, Facilitator & Bogus Cheque Issuer, Karachi.
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Paragraphs -->
+    <div class="section-intro">RESPECTFULLY SHEWETH THE FACTS OF THE CASE AS UNDER:</div>
+    <div class="legal-paragraphs">
+      
+      <div class="legal-item">
+        <strong>Exploitation of 20-Year Friendship & Applicant Standing as Direct Guarantor:</strong><br>
+        The main accused, Adnan Noori S/O Muhammad Imtiaz, was a close friend of the Applicant for over 20 years. Capitalizing on this blind trust, the accused emotionally persuaded the Applicant to arrange the purchase of a residential flat. Since Mst. Mahrukh Raza is the Applicant's sister-in-law (wife's sister), the Applicant stood as personal guarantor for the entire deal.
+      </div>
+
+      <div class="legal-item">
+        <strong>Sale Agreement, Full Payment of PKR 6,100,000/- and Written Acknowledgment:</strong><br>
+        On <strong>21-11-2024</strong>, accused Adnan Noori entered into a formal sale agreement with Mst. Mahrukh Raza for flat premises located at <strong>1-J-10/2, Third Floor (Back Side Portion), Nazimabad No. 1, Karachi</strong>. The total settled consideration of <strong>PKR 6,100,000/- (Sixty-One Lacs)</strong> was paid in full through Zurain Mehdi via <strong>Direct Bank Transfers, Western Union</strong>, and <strong>Cash Handover to Adnan's designated friend in Dubai</strong> on Adnan's explicit instructions. Accused Adnan Noori signed and endorsed full, unequivocal receipt of this entire amount on the back of the agreement.
+      </div>
+
+      <div class="legal-item">
+        <strong>False Promises of Sub-Lease and Discovery of Forged Documents:</strong><br>
+        After pocketing the entire sum, the accused failed to execute the legal sub-lease, falsely citing temporary closure of registry/KDA offices. Subsequent verification revealed that all property papers and title documents presented by the accused were <strong>wholly forged, fraudulent, and fabricated</strong>, and the accused possessed no lawful proprietary authority.
+      </div>
+
+      <div class="legal-item">
+        <strong>Accomplice Hamza's Criminal Collusion & Sham Rental Agreement:</strong><br>
+        To prevent the family from taking physical possession, accused Adnan Noori alleged that House Building Finance authorities were conducting raids and forced a tenancy. He colluded with accomplice <strong>Hamza</strong>, inducted an unrelated lady (Urooj) into the flat, and prepared a bogus tenancy contract in which <strong>Hamza personally signed as a key witness</strong>. After one initial month, rent was abruptly stopped to mislead the victims.
+      </div>
+
+      <div class="legal-item">
+        <strong>Prohibition from Visiting Premises, Intimidation & Confession of Multi-Party Fraud:</strong><br>
+        When the Applicant insisted on taking possession upon cessation of rent, accused Adnan Noori strictly barred him from visiting the site, confessing: <em>"If you go to the flat, the new buyer will call the police and register an FIR against me because my friend deceived me and sold the flat to another party."</em> Thus, the accused admitted to operating a multi-party property scam on the exact same unit.
+      </div>
+
+      <div class="legal-item">
+        <strong>Accomplice Hamza's Deliberate Bogus Cheques (Bank Alfalah - Noori Builders):</strong><br>
+        As concrete proof of premeditated fraud, accomplice <strong>Hamza initially handed over defective cheques drawn on Bank Alfalah (Account: Noori Builders) featuring intentional spelling errors and mismatched signatures</strong> to buy time. These cheques are preserved in evidence as listed below:
+      </div>
+
+      <!-- Table 1: Hamza Bogus Cheques -->
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Bank & Account Name</th>
+            <th>Drawer</th>
+            <th>Cheque No.</th>
+            <th>Amount (PKR)</th>
+            <th>Remarks & Fraudulent Nature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cheque-bogus">
+            <td>1</td>
+            <td>Bank Alfalah (Noori Builders)</td>
+            <td>Hamza (Accomplice)</td>
+            <td><strong>48379732</strong></td>
+            <td>1,000,000/-</td>
+            <td>Bogus cheque with deliberate signature & spelling discrepancies</td>
+          </tr>
+          <tr class="cheque-bogus">
+            <td>2</td>
+            <td>Bank Alfalah (Noori Builders)</td>
+            <td>Hamza (Accomplice)</td>
+            <td><strong>48379733</strong></td>
+            <td>2,000,000/-</td>
+            <td>Fabricated instrument issued with fraudulent intent</td>
+          </tr>
+          <tr class="cheque-bogus">
+            <td>3</td>
+            <td>Bank Alfalah (Noori Builders)</td>
+            <td>Hamza (Accomplice)</td>
+            <td><strong>48379733</strong></td>
+            <td>3,100,000/-</td>
+            <td>Suspicious duplicate serial used to stall and defraud</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="legal-item">
+        <strong>Panchayat Confession, Stamp Paper Affidavit & Adnan's Cheques (Bank AL Habib):</strong><br>
+        Following the Applicant's strong protest over Hamza's bogus instruments, a formal meeting was convened before mutual respected friends prior to Adnan fleeing to Dubai. The accused confessed his guilt, executed a <strong>formal sworn affidavit on legal Stamp Paper</strong> assuming sole financial liability, and issued three cheques from his account at <strong>Bank AL Habib (A/C: M. Adnan)</strong>, out of which the very first cheque has dishonored 3 times:
+      </div>
+
+      <!-- Table 2: Adnan Cheques -->
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Sr.</th>
+            <th>Bank & Title</th>
+            <th>Cheque No.</th>
+            <th>Amount (PKR)</th>
+            <th>Dated</th>
+            <th>Legal Status & Banking Record</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Bank AL Habib (M. Adnan)</td>
+            <td><strong>11051320</strong></td>
+            <td>1,000,000/-</td>
+            <td>Current/Payable</td>
+            <td class="cheque-bounced"><strong>Dishonored / Bounced 3 Times</strong> for Insufficient Funds (Slips on Record)</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Bank AL Habib (M. Adnan)</td>
+            <td><strong>11051321</strong></td>
+            <td>2,000,000/-</td>
+            <td>10-Sep-2026</td>
+            <td>Post-Dated Cheque (Zero balance maintained)</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Bank AL Habib (M. Adnan)</td>
+            <td><strong>11051322</strong></td>
+            <td>3,100,000/-</td>
+            <td>10-Dec-2026</td>
+            <td>Post-Dated Cheque (Calculated evasion tactic)</td>
+          </tr>
+          <tr style="background-color: #f1f5f9; font-weight: 700;">
+            <td colspan="3"><strong>Total Outstanding Consideration:</strong></td>
+            <td><strong>PKR 6,100,000/-</strong></td>
+            <td colspan="2"><strong>Rupees Sixty-One Lacs Only</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="legal-item">
+        <strong>Severe Financial Ruin, Distress, Sale of Gold Jewelry & Flight Risk:</strong><br>
+        The flat consideration was arranged via heavy bank loans taken abroad. With <strong>not a single rupee refunded</strong>, Zurain was forced to liquidate his employment and relocate back to Karachi under destitute circumstances. Due to the Applicant's personal guarantee, the extended family suffered catastrophic emotional breakdown, necessitating the sale of personal gold jewelry to service lenders. The Applicant and Mst. Mahrukh Raza are enduring extreme clinical depression. Accused Adnan Noori is continuously pleading for monthly delays solely to execute his escape out of the country.
+      </div>
+
+    </div>
+
+    <!-- Official Prayers -->
+    <div class="prayers-box">
+      <div class="prayers-title">PRAYER / RELIEF SOUGHT:</div>
+      <ol class="prayers-list">
+        <li><strong>Official Recording of Offence & Legal Proceedings:</strong> To officially enter and record this incident in the relevant crime register and initiate stringent legal proceedings under sections 420, 406, 468, 471, 489-F & 120-B PPC.</li>
+        <li><strong>Summons, Arrest & Complete Financial Recovery:</strong> To summon and arrest accused Adnan Noori and accomplice Hamza, and recover the cheated sum of <strong>PKR 6,100,000/- (Sixty-One Lacs)</strong> in its entirety.</li>
+        <li><strong>Placement on Stop List / PNIL / ECL:</strong> To immediately place accused Adnan Noori on the <strong>Provisional National Identification List (PNIL), Stop List, or Exit Control List (ECL)</strong> to thwart his ongoing attempts to flee Pakistan.</li>
+      </ol>
+    </div>
+
+    <!-- Verification -->
+    <div class="verification-block">
+      <strong>VERIFICATION BY APPLICANT:</strong><br>
+      I, Syed Raheel Abbas S/O Syed Iftikhar Hussain, do hereby verify that the contents of this application are true and correct to the best of my knowledge, documentary records, and belief. Being the direct guarantor and victim's representative, I undertake full responsibility for legal follow-up.
+    </div>
+
+    <!-- Signatures -->
+    <div class="sig-grid">
+      <div class="sig-box">
+        <strong>APPLICANT'S PARTICULARS & SIGNATURE:</strong><br><br>
+        Signature: _________________________________________<br>
+        Name: <strong>SYED RAHEEL ABBAS</strong> S/O <strong>SYED IFTIKHAR HUSSAIN</strong><br>
+        CNIC No: <strong>4220187350159</strong><br>
+        Mobile No: <strong>03332177016</strong><br>
+        Date: _____ / _____ / 2026
+      </div>
+    </div>
+
+    <!-- Evidence Box -->
+    <div class="evidence-box">
+      <div class="evidence-title">DOCUMENTARY EVIDENCE PRESERVED (To Be Produced Immediately Upon Demand During Investigation):</div>
+      <ol class="evidence-list">
+        <li><strong>Sale Agreement with Full Receiving:</strong> Original contract dated 21-11-2024 bearing Adnan Noori's countersigned receipt of PKR 6.1 Million.</li>
+        <li><strong>Affidavit on Legal Stamp Paper:</strong> Executed by Adnan Noori before mutual friends confessing full personal liability.</li>
+        <li><strong>Dishonored Cheque & Bank Memo Slips:</strong> Cheque No. 11051320 (PKR 1M) with 3 official bank dishonor return memos.</li>
+        <li><strong>Post-Dated Instruments:</strong> Cheque Nos. 11051321 (PKR 2M) and 11051322 (PKR 3.1M) drawn on Bank AL Habib.</li>
+        <li><strong>Accomplice Hamza's Bogus Cheques:</strong> Cheque Nos. 48379732 & 48379733 (Bank Alfalah - Noori Builders).</li>
+        <li><strong>Financial Remittance Receipts:</strong> Official records of Direct Bank Transfers, Western Union slips, and Dubai cash delivery logs.</li>
+        <li><strong>Sham Tenancy Agreement:</strong> Executed with witness endorsement by accomplice Hamza.</li>
+        <li><strong>Digital & Audio Evidence:</strong> WhatsApp chats, text exchanges, voice notes, and complete audio recordings of meetings conducted with the accused.</li>
+        <li><strong>Witness Testimony:</strong> Independent mutual friends who witnessed the confessions and cheques handover are available to testify upon summons.</li>
+      </ol>
+      <div style="font-size: 11.5px; color: #166534; font-weight: 700; margin-top: 6px;">
+        (All original documents and digital proofs will be immediately presented before the Investigating Officer upon demand)
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let isEditing = false;
+    let currentLang = 'ur'; // 'ur' or 'en'
+
+    function toggleEditMode() {
+      const activeDoc = currentLang === 'ur' ? document.getElementById('docUrdu') : document.getElementById('docEnglish');
+      const btn = document.getElementById('editBtn');
+      const toast = document.getElementById('toast');
+
+      isEditing = !isEditing;
+      activeDoc.contentEditable = isEditing;
+
+      if (isEditing) {
+        activeDoc.style.outline = '2px dashed #0d9488';
+        btn.textContent = currentLang === 'ur' ? '💾 تبدیلیاں محفوظ کریں' : '💾 Save Changes';
+        btn.style.background = '#e11d48';
+        toast.style.display = 'inline-block';
+        toast.textContent = currentLang === 'ur' ? 'ایڈٹ موڈ آن ہے: آپ کسی بھی خانے پر کلک کر کے لکھ سکتے ہیں۔' : 'Edit Mode ON: Click any text to edit directly.';
+      } else {
+        activeDoc.style.outline = 'none';
+        btn.textContent = currentLang === 'ur' ? '✍️ تفصیلات ایڈٹ کریں (Edit Mode)' : '✍️ Edit Details (Edit Mode)';
+        btn.style.background = '#0d9488';
+        toast.style.display = 'inline-block';
+        toast.textContent = currentLang === 'ur' ? 'تبدیلیاں محفوظ ہو گئیں!' : 'Changes saved successfully!';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    function toggleLanguage() {
+      // Exit edit mode if active
+      if (isEditing) {
+        toggleEditMode();
+      }
+
+      const body = document.body;
+      const html = document.getElementById('htmlRoot');
+      const langBtn = document.getElementById('langBtn');
+      const editBtn = document.getElementById('editBtn');
+
+      if (currentLang === 'ur') {
+        currentLang = 'en';
+        body.classList.add('lang-en');
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'en');
+        langBtn.textContent = '🌐 اردو میں دیکھیں (Urdu)';
+        editBtn.textContent = '✍️ Edit Details (Edit Mode)';
+      } else {
+        currentLang = 'ur';
+        body.classList.remove('lang-en');
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ur');
+        langBtn.textContent = '🌐 Switch to English';
+        editBtn.textContent = '✍️ تفصیلات ایڈٹ کریں (Edit Mode)';
+      }
+    }
+  </script>
+</body>
+</html>
