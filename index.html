@@ -219,8 +219,9 @@
     // Dynamic 3-Way Role Focus Switcher (IT Professional vs Compliance vs QA)
     function setRoleFocus(role) {
       const btnIT = document.getElementById('btn-role-it');
-      const btnCompliance = document.getElementById('btn-role-compliance');
+      const btnDataAI = document.getElementById('btn-role-dataai');
       const btnQA = document.getElementById('btn-role-qa');
+      const btnPM = document.getElementById('btn-role-pm');
       
       const accentText1 = document.getElementById('accent-text-1');
       const accentText2 = document.getElementById('accent-text-2');
@@ -237,14 +238,17 @@
 
       const job1Title = document.getElementById('job1-title');
       const job1Bullets = document.getElementById('job1-bullets');
+      const job2Title = document.getElementById('job2-title');
+      const job2Bullets = document.getElementById('job2-bullets');
 
       // Reset button styles
       const activeClass = "text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm";
       const inactiveClass = "text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all";
 
       if (btnIT) btnIT.className = inactiveClass;
-      if (btnCompliance) btnCompliance.className = inactiveClass;
+      if (btnDataAI) btnDataAI.className = inactiveClass;
       if (btnQA) btnQA.className = inactiveClass;
+      if (btnPM) btnPM.className = inactiveClass;
 
       if (role === 'it') {
         if (btnIT) btnIT.className = activeClass;
@@ -252,7 +256,7 @@
         if (accentText1) accentText1.innerHTML = "QA • Project Management • Business Analysis • AI • Core Banking";
         if (accentText2) accentText2.innerHTML = "QA • Project Management • Business Analysis • AI • Core Banking";
 
-        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, and Application Lifecycle Management (ALM) within the banking and fintech sectors. Proven track record of managing full-scale Temenos T24 Core Banking implementations, setting up robust PMO Frameworks, and leveraging <strong>AI tools for process automation, QA portal engineering, and visual dashboard reporting</strong>. Recognized for championing the first ALM implementation in Pakistan's banking sector and bridging technological development with executive management.";
+        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT Leader with over 19 years of progressive experience, including 17 years pioneering Quality Assurance, Project Management, Application Lifecycle Management (ALM), and FinTech engineering. Certified in <strong>Google AI Essentials & Google Data Analytics (Coursera)</strong>, with a proven track record managing Temenos T24 Core Banking implementations, modernizing PMO Frameworks, and deploying <strong>AI automation, custom QA portals, and advanced BI analytics</strong> across banking and digital financial switches.";
 
         if (skillLabel1) skillLabel1.innerText = "Management & Strategy";
         if (skillDetail1) skillDetail1.innerText = "PMO Framework Overhauls | Agile/Scrum Methodologies | Portfolio Strategy | IT Governance | Risk Mitigation";
@@ -263,50 +267,58 @@
         if (skillLabel3) skillLabel3.innerText = "QA & AI Engineering";
         if (skillDetail3) skillDetail3.innerText = "QA Portal Design | AI-Embedded Testing Workflows | Test Strategies (STLC) | Azure DevOps | Bug Lifecycle";
 
-        if (skillLabel4) skillLabel4.innerText = "Automation & Tools";
-        if (skillDetail4) skillDetail4.innerText = "Selenium | Python | JMeter | QA Tool Acquisition | Power BI | OpenProject | Netsparker Security";
+        if (skillLabel4) skillLabel4.innerText = "Data, AI & Tools";
+        if (skillDetail4) skillDetail4.innerText = "Google AI & Data Certified | Power BI | Python | Selenium | JMeter | OpenProject | Netsparker Security";
 
         if (job1Title) job1Title.innerText = "Senior Manager QA";
         if (job1Bullets) job1Bullets.innerHTML = `
-          <li><strong class="text-slate-800 focus-strong">Enterprise QA Operations & Leadership:</strong> Leading enterprise Quality Assurance operations across core banking and digital applications, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition schedules.</li>
-          <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools into test case generation, automated regression execution, and intelligent defect triaging, accelerating QA cycle efficiency by 35%.</li>
-          <li><strong class="text-slate-800 focus-strong">PMO Framework & Process Optimization:</strong> Architected and deployed a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to streamline project pipelines and reduce delivery cycles by 22%.</li>
-          <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Governed end-to-end quality validation and deployment for high-impact financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
+          <li><strong class="text-slate-800 focus-strong">Enterprise QA Leadership & Portals:</strong> Directing enterprise Quality Assurance across core banking and fintech products, designing centralized QA execution portals, managing engineering resource allocation, and supervising tool acquisition pipelines.</li>
+          <li><strong class="text-slate-800 focus-strong">Embedding AI into Testing:</strong> Integrated generative AI and intelligent triaging into the QA lifecycle, accelerating test case generation, automated regression execution, and defect triaging velocity by 35%.</li>
         `;
-      } else if (role === 'compliance') {
-        if (btnCompliance) btnCompliance.className = activeClass;
 
-        if (accentText1) accentText1.innerHTML = "Project Management • Compliance Systems • BA • AI • Core Banking";
-        if (accentText2) accentText2.innerHTML = "Project Management • Compliance Systems • BA • AI • Core Banking";
+        if (job2Title) job2Title.innerText = "Senior Project Manager";
+        if (job2Bullets) job2Bullets.innerHTML = `
+          <li><strong class="text-slate-800 focus-strong">PMO Framework & Process Optimization:</strong> Architected and deployed a modernized PMO Framework across 12+ product lines, leveraging automation to streamline project pipelines and reduce delivery cycles by 22%.</li>
+          <li><strong class="text-slate-800 focus-strong">Regulatory & Strategic Deliveries:</strong> Governed end-to-end quality validation and project delivery for critical systems including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
+        `;
+      } else if (role === 'dataai') {
+        if (btnDataAI) btnDataAI.className = activeClass;
 
-        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven IT & Project Management Leader with over 19 years of experience specializing in <strong>Compliance Systems, CRs & Projects Delivery, Core Banking, and Enterprise PMO Leadership</strong>. Proven track record as Senior Manager QA & Senior PM overseeing complex regulatory compliance portfolios, leveraging <strong>AI expertise to engineer automated workflows, executive dashboards, reporting solutions, and continuous process improvements</strong> across IT, Risk, Compliance, and Central Bank (SBP/FBR) mandates while establishing robust PMO frameworks.";
+        if (accentText1) accentText1.innerHTML = "Data Analytics • AI Solutions • QA Architecture • Project Management";
+        if (accentText2) accentText2.innerHTML = "Data Analytics • AI Solutions • QA Architecture • Project Management";
 
-        if (skillLabel1) skillLabel1.innerText = "Compliance & Governance";
-        if (skillDetail1) skillDetail1.innerText = "Change Requests (CRs) Delivery | Central Bank Mandates | Compliance Systems | Cross-Functional Coordination";
+        if (summaryText) summaryText.innerHTML = "Innovative IT & Analytics Leader with over 19 years of experience, credentialed with <strong>Google Data Analytics Professional & Google AI Essentials Certifications (Coursera)</strong>. Recognized for fusing deep financial domain acumen (Core Banking T24, Switches, ALM) with <strong>AI prompt workflows, predictive data modeling, automated ETL pipelines, and executive BI dashboards</strong>. Adept at turning high-volume banking telemetry into actionable intelligence and leading tech transformations.";
 
-        if (skillLabel2) skillLabel2.innerText = "Reporting & AI Analytics";
-        if (skillDetail2) skillDetail2.innerText = "Executive Dashboards (OpenProject / Power BI) | AI Workflow Optimization | Audit Trail Management";
+        if (skillLabel1) skillLabel1.innerText = "AI & Machine Learning";
+        if (skillDetail1) skillDetail1.innerText = "Google AI Essentials Certified | Generative AI Workflows | Prompt Engineering | AI Process Automation";
 
-        if (skillLabel3) skillLabel3.innerText = "Project Management";
-        if (skillDetail3) skillDetail3.innerText = "PMO Overhauls | Agile/Scrum Governance | Stakeholder Alignment | Risk Mitigation | Delivery Tracking";
+        if (skillLabel2) skillLabel2.innerText = "Data Analytics & BI";
+        if (skillDetail2) skillDetail2.innerText = "Google Data Analytics Certified | Power BI & OpenProject Dashboards | Python | SQL Server | Data Pipelines";
 
-        if (skillLabel4) skillLabel4.innerText = "Core Systems";
-        if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking | SYMBOLS Core | Financial Switches | ISO 8583 | EKYC Blockchain";
+        if (skillLabel3) skillLabel3.innerText = "Core Systems & QA";
+        if (skillDetail3) skillDetail3.innerText = "Temenos T24 Data Structures | Financial Switch Telemetry | Custom QA Portals | Automated Test Suites";
 
-        if (job1Title) job1Title.innerText = "Senior Manager QA";
+        if (skillLabel4) skillLabel4.innerText = "Leadership & Delivery";
+        if (skillDetail4) skillDetail4.innerText = "Data-Driven PMO | Agile Metrics | Stakeholder Alignment | Predictive Quality Engineering | Governance";
+
+        if (job1Title) job1Title.innerText = "Senior Manager QA (Data & AI Lead)";
         if (job1Bullets) job1Bullets.innerHTML = `
-          <li><strong class="text-slate-800 focus-strong">Compliance Portfolio Delivery:</strong> Spearheaded testing governance and Project Management for critical Change Requests (CRs) and key system updates including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong> aligned with SBP / FBR mandates.</li>
-          <li><strong class="text-slate-800 focus-strong">AI-Driven Dashboards & Process Optimization:</strong> Utilized AI tools and modern BI analytics (OpenProject / Power BI) to build automated workflows, executive progress dashboards, and audit-ready reporting, significantly enhancing process efficiency.</li>
-          <li><strong class="text-slate-800 focus-strong">Cross-Functional Integration:</strong> Directed multi-disciplinary teams across IT, Compliance, Risk, and Operations to execute key projects including <strong>RTGS -- PRISM, CRP -- Trade IQ</strong>, and <strong>EKYC Systems</strong>.</li>
-          <li><strong class="text-slate-800 focus-strong">PMO Governance:</strong> Modernized PMO Framework processes across 12+ product lines, streamlining approval lifecycles and reducing delivery cycles by 22%.</li>
+          <li><strong class="text-slate-800 focus-strong">AI-Embedded Engineering & Analytics:</strong> Deployed AI-assisted test intelligence and analytics frameworks, automating regression suites, defect density predictions, and data validation pipelines across core banking APIs.</li>
+          <li><strong class="text-slate-800 focus-strong">QA Data Portal Architecture:</strong> Designed centralized QA execution portals for end-to-end telemetry capture, tracking 15,000+ data points across financial workflows.</li>
+        `;
+
+        if (job2Title) job2Title.innerText = "Senior Project Manager (Analytics & Delivery)";
+        if (job2Bullets) job2Bullets.innerHTML = `
+          <li><strong class="text-slate-800 focus-strong">Executive BI Dashboards:</strong> Engineered real-time visual executive dashboards using Power BI and OpenProject, transforming complex transactional and compliance datasets into executive KPI analytics.</li>
+          <li><strong class="text-slate-800 focus-strong">Data-Backed Deliveries:</strong> Validated data integrity and orchestrated delivery for mission-critical solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System</strong>, and <strong>RTGS Phase 2</strong>.</li>
         `;
       } else if (role === 'qa') {
         if (btnQA) btnQA.className = activeClass;
 
-        if (accentText1) accentText1.innerHTML = "Senior Manager QA • Test Automation • PM & BA • AI • Core Banking";
-        if (accentText2) accentText2.innerHTML = "Senior Manager QA • Test Automation • PM & BA • AI • Core Banking";
+        if (accentText1) accentText1.innerHTML = "Senior Manager QA • Test Automation • AI-Driven QA • PM Blend";
+        if (accentText2) accentText2.innerHTML = "Senior Manager QA • Test Automation • AI-Driven QA • PM Blend";
 
-        if (summaryText) summaryText.innerHTML = "Dynamic, results-driven Quality Assurance & IT Leader with over 19 years of experience, including 17 years specializing in <strong>Quality Assurance, Test Automation Architecture, QA Tool Acquisition, and AI-Embedded Testing Workflows</strong>. Proven track record as Senior Manager QA designing enterprise QA portals, acquiring and procuring specialized testing tools, managing cross-functional QA engineering resources, and embedding AI across test automation, bug lifecycle management, and Core Banking (Temenos T24) UAT execution with a strong blend of Project Management.";
+        if (summaryText) summaryText.innerHTML = "Results-driven Quality Assurance Executive with over 19 years of hands-on and leadership experience, specializing in <strong>Test Automation Architecture, Custom QA Portals, QA Tool Acquisition, and AI-Embedded Testing Workflows</strong>. Certified in <strong>Google AI Essentials & Google Data Analytics</strong>, blending rigorous STLC governance, Selenium/Python automation, JMeter performance testing, and Temenos T24 UAT with strategic Project Management execution.";
 
         if (skillLabel1) skillLabel1.innerText = "QA Leadership & AI";
         if (skillDetail1) skillDetail1.innerText = "Senior QA Management | AI-Embedded Testing Workflows | Custom QA Portal Engineering | STLC Architecture";
@@ -314,18 +326,54 @@
         if (skillLabel2) skillLabel2.innerText = "Automation & Performance";
         if (skillDetail2) skillDetail2.innerText = "Selenium | Python Scripts | JMeter Load Testing | Automated Regression Suites | API Socket Testing";
 
-        if (skillLabel3) skillLabel3.innerText = "Resource & Tool Governance";
-        if (skillDetail3) skillDetail3.innerText = "QA Tool Acquisition & Vendor Procurement | Resource Management | Azure DevOps / TFS Pipelines";
+        if (skillLabel3) skillLabel3.innerText = "Tool & Vendor Governance";
+        if (skillDetail3) skillDetail3.innerText = "QA Tool Acquisition & Procurement | Resource Capacity Planning | Azure DevOps / TFS Pipelines";
 
-        if (skillLabel4) skillLabel4.innerText = "Banking & PM Blend";
-        if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking UAT | PMO Methodologies | Risk Mitigation | Executive Progress Reporting";
+        if (skillLabel4) skillLabel4.innerText = "Banking & Analytics";
+        if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking UAT | Google Data Certified | Defect Analytics | Executive Quality Reporting";
 
         if (job1Title) job1Title.innerText = "Senior Manager QA";
         if (job1Bullets) job1Bullets.innerHTML = `
-          <li><strong class="text-slate-800 focus-strong">Senior Manager QA (Full Tenure):</strong> Leading enterprise Quality Assurance operations, designing custom QA execution portals, directing QA tool acquisition and procurement schedules, and managing cross-functional engineering resources.</li>
-          <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools for automated test generation, AI-assisted bug triaging, and regression script optimization, improving testing velocity by 35%.</li>
-          <li><strong class="text-slate-800 focus-strong">Test Automation & QA Portal Design:</strong> Engineered automated testing frameworks (Selenium, Python, JMeter) and custom QA monitoring portals for real-time defect orchestration and go-live readiness.</li>
-          <li><strong class="text-slate-800 focus-strong">Strategic Systems Delivery (PM Blend):</strong> Managed end-to-end quality verification and project execution of high-priority financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
+          <li><strong class="text-slate-800 focus-strong">Senior QA Operations & Strategy:</strong> Directing enterprise QA operations across core banking and fintech products, designing custom QA execution portals, allocating engineering resources, and managing tool acquisition pipelines.</li>
+          <li><strong class="text-slate-800 focus-strong">Embedding AI into Testing:</strong> Integrated generative AI and intelligent triaging into the QA lifecycle, accelerating test case generation, API testing, and regression velocity by 35%.</li>
+          <li><strong class="text-slate-800 focus-strong">Automation & Performance Frameworks:</strong> Engineered scalable Selenium, Python, and JMeter test suites, guaranteeing zero critical post-go-live bugs across core releases.</li>
+        `;
+
+        if (job2Title) job2Title.innerText = "Senior Project Manager (QA Lead)";
+        if (job2Bullets) job2Bullets.innerHTML = `
+          <li><strong class="text-slate-800 focus-strong">PMO Quality Frameworks:</strong> Overhauled PMO quality gates and release governance across 12+ product lines, eliminating delivery cycle delays by 22%.</li>
+          <li><strong class="text-slate-800 focus-strong">High-Impact System Releases:</strong> Governed quality assurance and go-live sign-offs for landmark financial systems including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
+        `;
+      } else if (role === 'pm') {
+        if (btnPM) btnPM.className = activeClass;
+
+        if (accentText1) accentText1.innerHTML = "Project Management • Compliance Systems • CRs & Projects Delivery • AI";
+        if (accentText2) accentText2.innerHTML = "Project Management • Compliance Systems • CRs & Projects Delivery • AI";
+
+        if (summaryText) summaryText.innerHTML = "Accomplished Senior Project Manager & PMO Leader with over 19 years of experience delivering <strong>Complex Banking Systems, Regulatory Compliance Portfolios, and Enterprise Change Requests (CRs)</strong>. Certified in <strong>Google AI Essentials & Google Data Analytics</strong>, utilizing AI automation and advanced visual analytics (Power BI / OpenProject) to optimize PMO frameworks, streamline approval lifecycles, and coordinate cross-functional teams across IT, Risk, and SBP/FBR mandates.";
+
+        if (skillLabel1) skillLabel1.innerText = "PMO & Portfolio Strategy";
+        if (skillDetail1) skillDetail1.innerText = "PMO Framework Overhauls | Agile/Scrum Governance | Stakeholder Alignment | Risk Mitigation | Project Tracking";
+
+        if (skillLabel2) skillLabel2.innerText = "Compliance & Governance";
+        if (skillDetail2) skillDetail2.innerText = "Change Requests (CRs) Delivery | Central Bank (SBP/FBR) Mandates | Compliance Systems | Audit Trail Control";
+
+        if (skillLabel3) skillLabel3.innerText = "AI Analytics & Dashboards";
+        if (skillDetail3) skillDetail3.innerText = "Executive Dashboards (Power BI / OpenProject) | Google Data & AI Certified | AI Process Improvement";
+
+        if (skillLabel4) skillLabel4.innerText = "Core Systems Integration";
+        if (skillDetail4) skillDetail4.innerText = "Temenos T24 Core Banking | SYMBOLS Core | Financial Switches | ISO 8583 | EKYC Blockchain";
+
+        if (job1Title) job1Title.innerText = "Senior Manager QA (Delivery Lead)";
+        if (job1Bullets) job1Bullets.innerHTML = `
+          <li><strong class="text-slate-800 focus-strong">Enterprise Quality & Delivery Gates:</strong> Directing QA test cycles, engineering resource planning, and procurement of modern validation tools, ensuring seamless alignment between project timelines and quality gates.</li>
+          <li><strong class="text-slate-800 focus-strong">AI-Driven Process Optimization:</strong> Integrated AI-assisted test automation and triaging to accelerate project release cycles by 35%.</li>
+        `;
+
+        if (job2Title) job2Title.innerText = "Senior Project Manager (Compliance & PMO)";
+        if (job2Bullets) job2Bullets.innerHTML = `
+          <li><strong class="text-slate-800 focus-strong">Compliance & Regulatory Delivery:</strong> Spearheaded testing governance and Project Management for critical Change Requests (CRs) and key system updates including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong> aligned with SBP / FBR mandates.</li>
+          <li><strong class="text-slate-800 focus-strong">PMO Framework Modernization:</strong> Overhauled PMO Framework processes across 12+ product lines, streamlining approval lifecycles and reducing delivery cycles by 22%.</li>
         `;
       }
     }
@@ -423,8 +471,6 @@
       const linkedInWrap = document.getElementById('header-linkedin-wrap');
       const portfolioIcon = document.getElementById('header-portfolio-icon');
       const portfolioWrap = document.getElementById('header-portfolio-wrap');
-      const p2PortfolioWrap = document.getElementById('p2-portfolio-wrap');
-      const p2LinkedInWrap = document.getElementById('p2-linkedin-wrap');
 
       if (themeName === 'eco') {
         body.classList.add('theme-eco');
@@ -480,8 +526,6 @@
         if (linkedInWrap) linkedInWrap.className = "flex items-center gap-2 font-semibold text-slate-700";
         if (portfolioIcon) portfolioIcon.className = "fa-solid fa-globe text-slate-500 w-3.5 text-center";
         if (portfolioWrap) portfolioWrap.className = "flex items-center gap-2 font-semibold text-slate-700";
-        if (p2PortfolioWrap) p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-slate-500";
-        if (p2LinkedInWrap) p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-slate-500";
 
       } else if (themeName === 'burgundy') {
         body.classList.add('theme-burgundy');
@@ -537,8 +581,6 @@
         if (linkedInWrap) linkedInWrap.className = "flex items-center gap-2 font-semibold text-[#6b1d3f]";
         if (portfolioIcon) portfolioIcon.className = "fa-solid fa-globe text-[#6b1d3f] w-3.5 text-center";
         if (portfolioWrap) portfolioWrap.className = "flex items-center gap-2 font-semibold text-[#6b1d3f]";
-        if (p2PortfolioWrap) p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-[#6b1d3f]";
-        if (p2LinkedInWrap) p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-[#6b1d3f]";
 
       } else if (themeName === 'indigo') {
         body.classList.add('theme-indigo');
@@ -594,8 +636,6 @@
         if (linkedInWrap) linkedInWrap.className = "flex items-center gap-2 font-semibold text-[#1e1b4b]";
         if (portfolioIcon) portfolioIcon.className = "fa-solid fa-globe text-[#1e1b4b] w-3.5 text-center";
         if (portfolioWrap) portfolioWrap.className = "flex items-center gap-2 font-semibold text-[#1e1b4b]";
-        if (p2PortfolioWrap) p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-[#1e1b4b]";
-        if (p2LinkedInWrap) p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-[#1e1b4b]";
 
       } else {
         // Media Creative
@@ -652,8 +692,6 @@
         if (linkedInWrap) linkedInWrap.className = "flex items-center gap-2 font-semibold text-amber-500";
         if (portfolioIcon) portfolioIcon.className = "fa-solid fa-globe text-amber-500 w-3.5 text-center";
         if (portfolioWrap) portfolioWrap.className = "flex items-center gap-2 font-semibold text-amber-500";
-        if (p2PortfolioWrap) p2PortfolioWrap.className = "font-semibold whitespace-nowrap text-amber-500";
-        if (p2LinkedInWrap) p2LinkedInWrap.className = "font-semibold whitespace-nowrap text-amber-500";
       }
     }
 
@@ -729,17 +767,20 @@
     
     <!-- Unified Layout/Theme Switcher Row -->
     <div class="flex flex-wrap items-center gap-2">
-      <!-- 3-Way Resume View Selector -->
+      <!-- 4-Way Resume View Selector -->
       <div class="flex items-center gap-1 bg-slate-800/80 p-1 rounded border border-slate-700 mr-2">
         <span class="text-[10px] text-slate-400 font-bold uppercase px-1">Resume View:</span>
         <button id="btn-role-it" onclick="setRoleFocus('it')" class="text-[10px] font-bold px-2.5 py-1 rounded bg-indigo-600 text-white transition-all shadow-sm">
-          IT Professional
+          Generic (All-in-One)
         </button>
-        <button id="btn-role-compliance" onclick="setRoleFocus('compliance')" class="text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
-          Compliance
+        <button id="btn-role-dataai" onclick="setRoleFocus('dataai')" class="text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
+          Data & AI
         </button>
         <button id="btn-role-qa" onclick="setRoleFocus('qa')" class="text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
           Quality Assurance (QA)
+        </button>
+        <button id="btn-role-pm" onclick="setRoleFocus('pm')" class="text-[10px] font-bold px-2 py-1 rounded text-slate-300 hover:bg-slate-700 transition-all">
+          Project Management (PM)
         </button>
       </div>
 
@@ -878,44 +919,55 @@
             </h3>
           </div>
 
-          <div class="space-y-4">
+          <div class="space-y-3.5">
             <!-- JOB 1 (JS BANK - SENIOR MANAGER QA) -->
             <div>
               <div class="flex justify-between items-baseline mb-0.5">
                 <span class="font-semibold text-xs uppercase tracking-wide job-title-text" id="job1-title">Senior Manager QA</span>
-                <span class="text-[10.5px] text-slate-500 font-medium">Nov 2023 -- Present</span>
+                <span class="text-[10px] text-slate-500 font-medium">Jan 2026 -- Present</span>
               </div>
-              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">JS Bank | Karachi, Pakistan</div>
-              <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles" id="job1-bullets">
+              <div class="text-[9.5px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">JS Bank | Karachi, Pakistan</div>
+              <ul class="text-[10px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles" id="job1-bullets">
                 <li><strong class="text-slate-800 focus-strong">Enterprise QA Operations & Leadership:</strong> Leading enterprise Quality Assurance operations across core banking and digital applications, designing custom QA execution portals, managing engineering resource allocation, and directing tool acquisition schedules.</li>
                 <li><strong class="text-slate-800 focus-strong">Embedding AI in QA Processes:</strong> Spearheaded the integration of AI tools into test case generation, automated regression execution, and intelligent defect triaging, accelerating QA cycle efficiency by 35%.</li>
+              </ul>
+            </div>
+
+            <!-- JOB 2 (JS BANK - SENIOR PROJECT MANAGER) -->
+            <div>
+              <div class="flex justify-between items-baseline mb-0.5">
+                <span class="font-semibold text-xs uppercase tracking-wide job-title-text" id="job2-title">Senior Project Manager</span>
+                <span class="text-[10px] text-slate-500 font-medium">Nov 2023 -- Dec 2025</span>
+              </div>
+              <div class="text-[9.5px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">JS Bank | Karachi, Pakistan</div>
+              <ul class="text-[10px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles" id="job2-bullets">
                 <li><strong class="text-slate-800 focus-strong">PMO Framework & Process Optimization:</strong> Architected and deployed a modernized PMO Framework across 12+ product lines, leveraging AI-assisted automation to streamline project pipelines and reduce delivery cycles by 22%.</li>
                 <li><strong class="text-slate-800 focus-strong">Key Systems & Upgrade Delivery:</strong> Governed end-to-end quality validation and deployment for high-impact financial solutions including <strong>Compliance Link Upgrade</strong>, <strong>Payment Safe System Deployment</strong>, and <strong>RTGS Phase 2 Upgrade</strong>.</li>
               </ul>
             </div>
 
-            <!-- JOB 2 -->
+            <!-- JOB 3 (THE BANK OF KHYBER) -->
             <div>
               <div class="flex justify-between items-baseline mb-0.5">
                 <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Unit Head QA & ALM</span>
-                <span class="text-[10.5px] text-slate-500 font-medium">Aug 2018 -- Nov 2023</span>
+                <span class="text-[10px] text-slate-500 font-medium">Aug 2018 -- Nov 2023</span>
               </div>
-              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">The Bank of Khyber | Karachi, Pakistan</div>
-              <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
+              <div class="text-[9.5px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">The Bank of Khyber | Karachi, Pakistan</div>
+              <ul class="text-[10px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                 <li><strong class="text-slate-800 focus-strong">UAT Dashboard Blueprint:</strong> Managed end-to-end Quality Assurance for Temenos T24 Core Banking migration, designing centralized execution dashboards and validating 15,000+ test cases with zero post-go-live critical defects.</li>
                 <li><strong class="text-slate-800 focus-strong">ITSM Design:</strong> Independently designed, customized, and deployed comprehensive IT Service Management (ITSM) systems via System Center Configuration Manager (SCCM).</li>
                 <li><strong class="text-slate-800 focus-strong">Digital Deliveries:</strong> Supervised automated/manual QA for Remittance BOK, Net Banking, and Mobile Banking solutions, scoring 94% customer UAT ratings at rollout.</li>
               </ul>
             </div>
 
-            <!-- JOB 3 -->
+            <!-- JOB 4 (VRG) -->
             <div>
               <div class="flex justify-between items-baseline mb-0.5">
                 <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Manager QA</span>
-                <span class="text-[10.5px] text-slate-500 font-medium">May 2017 -- Jul 2018</span>
+                <span class="text-[10px] text-slate-500 font-medium">May 2017 -- Jul 2018</span>
               </div>
-              <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">VRG (Virtual Remittance Gateway) | Karachi, Pakistan</div>
-              <ul class="text-[10.5px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
+              <div class="text-[9.5px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">VRG (Virtual Remittance Gateway) | Karachi, Pakistan</div>
+              <ul class="text-[10px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                 <li><strong class="text-slate-800 focus-strong">FinTech Platform Testing:</strong> Guided QA schedules for critical high-performance platforms, validating SAP Wallet Solutions Meezan, AMA Accounts, and ISO 8583 switch systems.</li>
               </ul>
             </div>
@@ -936,22 +988,10 @@
     <div id="page-2" class="resume-page flex flex-col justify-between">
       <div>
         
-        <!-- COMPACT HEADER -->
-        <div class="border-b border-slate-200 pb-2 mb-4 flex justify-between items-center" id="page2-header">
-          <div>
-            <h2 class="font-display font-light text-xl tracking-[0.15em] uppercase" id="p2-name">Syed Raheel Abbas</h2>
-            <p id="accent-text-2" class="text-[9.5px] font-semibold uppercase tracking-wide mt-0.5">QA • Project Management • Business Analysis • AI • Core Banking</p>
-          </div>
-          <div class="text-right text-[10px] text-slate-500 space-y-0.5" id="p2-contacts">
-            <div>+92 333 2177016 | +92 340 7177016</div>
-            <div class="font-semibold whitespace-nowrap"><a href="mailto:sraheelabbas@gmail.com" class="hover:underline">sraheelabbas@gmail.com</a></div>
-            <div class="font-semibold whitespace-nowrap" id="p2-linkedin-wrap">
-              <a href="https://www.linkedin.com/in/sraheelabbas/" target="_blank">linkedin.com/in/sraheelabbas</a>
-            </div>
-            <div class="font-semibold whitespace-nowrap" id="p2-portfolio-wrap">
-              <a href="https://bit.ly/4f3ue0q" target="_blank">bit.ly/4f3ue0q</a>
-            </div>
-          </div>
+        <!-- COMPACT HEADER (Clean full-width name & focus line, right contact removed) -->
+        <div class="border-b border-slate-200 pb-2 mb-4" id="page2-header">
+          <h2 class="font-display font-light text-xl tracking-[0.15em] uppercase" id="p2-name">Syed Raheel Abbas</h2>
+          <p id="accent-text-2" class="text-[9.5px] font-semibold uppercase tracking-wide mt-0.5">QA • Project Management • Business Analysis • AI • Core Banking</p>
         </div>
 
         <!-- TWO COLUMN LAYOUT -->
@@ -991,165 +1031,174 @@
                 <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">Kalsoft Ltd. | Karachi, Pakistan</div>
                 <ul class="text-[10px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
                   <li><strong class="text-slate-800">Key Enterprise Deliveries:</strong> Led quality assurance and business analysis for high-visibility public sector projects including <strong>Election Commission of Pakistan (ECP CERS)</strong>.</li>
-                  <li><strong class="text-slate-800">CMMI Audit Operations:</strong> Worked side-by-side with senior audit teams to standardise systems, securing global CMMI Process Level 3 Certification.</li>
-                </ul>
-              </div>
-
-              <!-- JOB 6 (Aventech) -->
-              <div>
-                <div class="flex justify-between items-baseline mb-0.5">
-                  <span class="font-semibold text-xs uppercase tracking-wide job-title-text">Senior SE (QA)</span>
-                  <span class="text-[10.5px] text-slate-500 font-medium">Feb 2005 -- Sep 2006</span>
-                </div>
-                <div class="text-[10px] text-indigo-900 font-semibold tracking-wide mb-1 uppercase">Aventech Pvt Ltd. | Karachi, Pakistan</div>
-                <ul class="text-[10px] text-slate-600 space-y-1 list-disc pl-4 text-justify bullet-styles">
-                  <li>Delivered QA, verification schedules, and client-facing validations for John Lewis Department Store and GlaxoSmithKline.</li>
                 </ul>
               </div>
             </div>
 
-            <!-- EDUCATION -->
+            <!-- EDUCATION & TRAINING -->
             <div>
-              <div class="border-b border-slate-200 pb-1 mb-2.5" id="edu-border-bottom">
+              <div class="border-b border-slate-200 pb-1 mb-2" id="edu-border-bottom">
                 <h3 class="font-display font-medium text-xs tracking-[0.15em] uppercase" id="edu-title">
-                  Education & Training
+                  Education & Certifications
                 </h3>
               </div>
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div>
-                  <div class="font-bold text-slate-900 deg-title">Masters in CS (MS)</div>
-                  <div class="text-slate-600 text-[10.5px] deg-sub">Mohammad Ali Jinnah University</div>
-                  <div class="text-slate-400 text-[10px] deg-date">Graduated: 2006</div>
+              <div class="space-y-2">
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <div class="font-bold text-slate-900 deg-title">Masters in CS (MS)</div>
+                    <div class="text-slate-600 text-[10px] deg-sub">Mohammad Ali Jinnah University</div>
+                    <div class="text-slate-400 text-[9px] deg-date">Graduated: 2006</div>
+                  </div>
+                  <div>
+                    <div class="font-bold text-slate-900 deg-title">Bachelors in CS (BS)</div>
+                    <div class="text-slate-600 text-[10px] deg-sub">Shah Abdul Latif University</div>
+                    <div class="text-slate-400 text-[9px] deg-date">Graduated: 2002</div>
+                  </div>
                 </div>
-                <div>
-                  <div class="font-bold text-slate-900 deg-title">Bachelors in CS (BS)</div>
-                  <div class="text-slate-600 text-[10.5px] deg-sub">Shah Abdul Latif University</div>
-                  <div class="text-slate-400 text-[10px] deg-date">Graduated: 2002</div>
+                <!-- Google Coursera Certifications Banner -->
+                <div class="bg-indigo-50/70 border border-indigo-200/70 rounded-md p-1.5 flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-certificate text-indigo-700 text-xs"></i>
+                    <span class="text-[9.5px] font-bold text-indigo-950">Coursera Verified Certifications:</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="bg-white border border-indigo-200 text-indigo-900 text-[8.5px] font-semibold px-2 py-0.5 rounded shadow-2xs flex items-center gap-1">
+                      <i class="fa-brands fa-google text-amber-500 text-[9px]"></i> Google AI Essentials
+                    </span>
+                    <span class="bg-white border border-indigo-200 text-indigo-900 text-[8.5px] font-semibold px-2 py-0.5 rounded shadow-2xs flex items-center gap-1">
+                      <i class="fa-brands fa-google text-blue-500 text-[9px]"></i> Google Data Analytics
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
 
           </div>
 
-          <!-- RIGHT SIDE (col-span-4) - Sidebar GUI -->
-          <div id="side-block" class="col-span-4 bg-indigo-950 text-white rounded-xl p-3.5 space-y-4 transition-all duration-300">
+          <!-- RIGHT SIDE (col-span-4) - Sidebar GUI with Professionally Aligned Gauges -->
+          <div id="side-block" class="col-span-4 bg-indigo-950 text-white rounded-xl p-3.5 space-y-3.5 transition-all duration-300">
             
             <!-- STRENGTHS -->
             <div>
-              <div class="flex items-center gap-2 border-b border-white/20 pb-1 mb-2.5" id="side-border-1">
+              <div class="flex items-center gap-2 border-b border-white/20 pb-1.5 mb-2.5" id="side-border-1">
                 <i class="fa-solid fa-hand-fist text-xs"></i>
                 <h4 class="font-display font-bold text-[10px] tracking-widest uppercase">Strengths</h4>
               </div>
               <div class="grid grid-cols-2 gap-1.5 text-[9.5px]">
-                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
-                  <i class="fa-solid fa-paint-brush text-[8px] text-red-700"></i> Creativity
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-2 py-1.5 rounded-md flex items-center justify-start gap-1.5 shadow-xs border border-slate-200/60 transition-all">
+                  <i class="fa-solid fa-paint-brush text-[8.5px] text-red-600 w-3 text-center"></i> Creativity
                 </span>
-                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
-                  <i class="fa-solid fa-shield-halved text-[8px] text-indigo-800"></i> Courage
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-2 py-1.5 rounded-md flex items-center justify-start gap-1.5 shadow-xs border border-slate-200/60 transition-all">
+                  <i class="fa-solid fa-shield-halved text-[8.5px] text-indigo-700 w-3 text-center"></i> Courage
                 </span>
-                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
-                  <i class="fa-solid fa-heart text-[8px] text-rose-600"></i> Sincerity
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-2 py-1.5 rounded-md flex items-center justify-start gap-1.5 shadow-xs border border-slate-200/60 transition-all">
+                  <i class="fa-solid fa-heart text-[8.5px] text-rose-600 w-3 text-center"></i> Sincerity
                 </span>
-                <span class="strength-badge bg-white text-indigo-950 font-bold px-1.5 py-1 rounded flex items-center gap-1 shadow-sm">
-                  <i class="fa-solid fa-brain text-[8px] text-amber-600"></i> Wisdom
+                <span class="strength-badge bg-white text-indigo-950 font-bold px-2 py-1.5 rounded-md flex items-center justify-start gap-1.5 shadow-xs border border-slate-200/60 transition-all">
+                  <i class="fa-solid fa-brain text-[8.5px] text-amber-600 w-3 text-center"></i> Wisdom
                 </span>
               </div>
             </div>
 
-            <!-- LANGUAGES -->
+            <!-- LANGUAGES (Symmetrically Aligned Circular Donut Graphs) -->
             <div>
-              <div class="flex items-center gap-2 border-b border-white/20 pb-1 mb-2.5" id="side-border-2">
+              <div class="flex items-center gap-2 border-b border-white/20 pb-1.5 mb-2.5" id="side-border-2">
                 <i class="fa-solid fa-globe text-xs"></i>
                 <h4 class="font-display font-bold text-[10px] tracking-widest uppercase">Languages</h4>
               </div>
-              <div class="grid grid-cols-2 gap-y-2.5 gap-x-2">
-                <!-- Urdu -->
-                <div class="text-center">
-                  <div class="relative w-8 h-8 mx-auto flex items-center justify-center">
-                    <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="16" cy="16" r="12" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="16" cy="16" r="12" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="75" stroke-dashoffset="8"/>
+              <div class="grid grid-cols-3 gap-y-3 gap-x-2 items-center justify-items-center">
+                <!-- Urdu (90%) -->
+                <div class="flex flex-col items-center justify-center text-center">
+                  <div class="relative w-9 h-9 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="transparent" stroke-dasharray="88" stroke-dashoffset="9"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text">90%</span>
+                    <span class="absolute inset-0 flex items-center justify-center text-[8px] font-bold lang-percent-text">90%</span>
                   </div>
-                  <span class="block text-[8px] font-semibold mt-0.5">Urdu</span>
+                  <span class="block text-[8.5px] font-semibold mt-1 tracking-wide">Urdu</span>
                 </div>
-                <!-- English -->
-                <div class="text-center">
-                  <div class="relative w-8 h-8 mx-auto flex items-center justify-center">
-                    <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="16" cy="16" r="12" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="16" cy="16" r="12" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="75" stroke-dashoffset="15"/>
+
+                <!-- English (80%) -->
+                <div class="flex flex-col items-center justify-center text-center">
+                  <div class="relative w-9 h-9 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="transparent" stroke-dasharray="88" stroke-dashoffset="18"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text">80%</span>
+                    <span class="absolute inset-0 flex items-center justify-center text-[8px] font-bold lang-percent-text">80%</span>
                   </div>
-                  <span class="block text-[8px] font-semibold mt-0.5">English</span>
+                  <span class="block text-[8.5px] font-semibold mt-1 tracking-wide">English</span>
                 </div>
-                <!-- Punjabi -->
-                <div class="text-center">
-                  <div class="relative w-8 h-8 mx-auto flex items-center justify-center">
-                    <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="16" cy="16" r="12" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="16" cy="16" r="12" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="75" stroke-dashoffset="26"/>
+
+                <!-- Punjabi (65%) -->
+                <div class="flex flex-col items-center justify-center text-center">
+                  <div class="relative w-9 h-9 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="transparent" stroke-dasharray="88" stroke-dashoffset="31"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text">65%</span>
+                    <span class="absolute inset-0 flex items-center justify-center text-[8px] font-bold lang-percent-text">65%</span>
                   </div>
-                  <span class="block text-[8px] font-semibold mt-0.5">Punjabi</span>
+                  <span class="block text-[8.5px] font-semibold mt-1 tracking-wide">Punjabi</span>
                 </div>
-                <!-- Sindhi -->
-                <div class="text-center">
-                  <div class="relative w-8 h-8 mx-auto flex items-center justify-center">
-                    <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="16" cy="16" r="12" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="16" cy="16" r="12" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="75" stroke-dashoffset="52"/>
+
+                <!-- Sindhi (30%) -->
+                <div class="flex flex-col items-center justify-center text-center">
+                  <div class="relative w-9 h-9 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="transparent" stroke-dasharray="88" stroke-dashoffset="62"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text">30%</span>
+                    <span class="absolute inset-0 flex items-center justify-center text-[8px] font-bold lang-percent-text">30%</span>
                   </div>
-                  <span class="block text-[8px] font-semibold mt-0.5">Sindhi</span>
+                  <span class="block text-[8.5px] font-semibold mt-1 tracking-wide">Sindhi</span>
                 </div>
-                <!-- Arabic -->
-                <div class="text-center">
-                  <div class="relative w-8 h-8 mx-auto flex items-center justify-center">
-                    <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="16" cy="16" r="12" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="16" cy="16" r="12" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="75" stroke-dashoffset="56"/>
+
+                <!-- Arabic (25%) -->
+                <div class="flex flex-col items-center justify-center text-center">
+                  <div class="relative w-9 h-9 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="transparent" stroke-dasharray="88" stroke-dashoffset="66"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text">25%</span>
+                    <span class="absolute inset-0 flex items-center justify-center text-[8px] font-bold lang-percent-text">25%</span>
                   </div>
-                  <span class="block text-[8px] font-semibold mt-0.5">Arabic</span>
+                  <span class="block text-[8.5px] font-semibold mt-1 tracking-wide">Arabic</span>
                 </div>
-                <!-- Farsi -->
-                <div class="text-center">
-                  <div class="relative w-8 h-8 mx-auto flex items-center justify-center">
-                    <svg class="w-full h-full transform -rotate-90">
-                      <circle class="lang-bg-circle" cx="16" cy="16" r="12" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="transparent"/>
-                      <circle class="lang-circle" cx="16" cy="16" r="12" stroke="#ffffff" stroke-width="3" fill="transparent" stroke-dasharray="75" stroke-dashoffset="60"/>
+
+                <!-- Farsi (20%) -->
+                <div class="flex flex-col items-center justify-center text-center">
+                  <div class="relative w-9 h-9 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <circle class="lang-bg-circle" cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="transparent"/>
+                      <circle class="lang-circle" cx="18" cy="18" r="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="transparent" stroke-dasharray="88" stroke-dashoffset="70"/>
                     </svg>
-                    <span class="absolute text-[7.5px] font-bold lang-percent-text">20%</span>
+                    <span class="absolute inset-0 flex items-center justify-center text-[8px] font-bold lang-percent-text">20%</span>
                   </div>
-                  <span class="block text-[8px] font-semibold mt-0.5">Farsi</span>
+                  <span class="block text-[8.5px] font-semibold mt-1 tracking-wide">Farsi</span>
                 </div>
               </div>
             </div>
 
             <!-- LIFETIME ACHIEVEMENTS -->
             <div class="border-t border-white/10 pt-2.5" id="side-border-3">
-              <h4 class="font-display font-bold text-[9px] tracking-widest uppercase text-slate-300 mb-1.5" id="poc-sub-title">Lifetime Achievements</h4>
+              <h4 class="font-display font-bold text-[9px] tracking-widest uppercase text-slate-300 mb-2" id="poc-sub-title">Lifetime Achievements</h4>
               <ul class="text-[8.5px] space-y-1.5 leading-tight" id="poc-list-items">
-                <li class="flex items-start gap-1.5">
-                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px]" id="poc-tick-1"></i>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px] shrink-0" id="poc-tick-1"></i>
                   <span><strong>UBL:</strong> First TFS ALM Asia Implementation</span>
                 </li>
-                <li class="flex items-start gap-1.5">
-                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px]" id="poc-tick-2"></i>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px] shrink-0" id="poc-tick-2"></i>
                   <span><strong>Kalsoft / ECP:</strong> ECP CERS (PASHA Award)</span>
                 </li>
-                <li class="flex items-start gap-1.5">
-                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px]" id="poc-tick-3"></i>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px] shrink-0" id="poc-tick-3"></i>
                   <span><strong>JS Bank:</strong> Compliance Link & RTGS Phase 2 Upgrade</span>
                 </li>
-                <li class="flex items-start gap-1.5">
-                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px]" id="poc-tick-4"></i>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5 text-[9px] shrink-0" id="poc-tick-4"></i>
                   <span><strong>JS Bank:</strong> Payment Safe Deployment</span>
                 </li>
               </ul>
